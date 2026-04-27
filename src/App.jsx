@@ -8,6 +8,7 @@ import {  Bot,
 import './App.css';
 
 const BASE_IMG_URL = 'https://cnb.cool/catfishzone/san-guo_agents/-/git/raw/main/task-002-imgs/';
+const IMAGE_EXTENSIONS = ['webp', 'png'];
 // const STATES = [
 //   {
 //     key: 'all',
@@ -224,6 +225,10 @@ const INTRO_METRICS = [
   { label: '原创角色', value: '266', note: '涵盖君王、文臣、武将' },
   { label: '设计方式', value: 'AI+', note: 'AI 设计与人工视觉统筹' },];
 
+function buildImageUrl(code, name, extension = 'webp') {
+  return `${BASE_IMG_URL}${code}_${encodeURIComponent(name)}.${extension}`;
+}
+
 function useReveal() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -263,6 +268,37 @@ function Reveal({ children, className = '', delay = 0 }) {
   );
 }
 
+function CharacterImage({ code, name, className = '' }) {
+  const [extensionIndex, setExtensionIndex] = useState(0);
+
+  useEffect(() => {
+    setExtensionIndex(0);
+  }, [code, name]);
+
+  const extension = IMAGE_EXTENSIONS[extensionIndex] ?? IMAGE_EXTENSIONS[0];
+  const imageSrc = buildImageUrl(code, name, extension);
+
+  const handleError = () => {
+    setExtensionIndex((current) => {
+      const nextIndex = current + 1;
+      return nextIndex < IMAGE_EXTENSIONS.length ? nextIndex : current;
+    });
+  };
+
+  return (
+    <img
+      src={imageSrc}
+      alt={name}
+      loading="lazy"
+      onError={handleError}
+      onContextMenu={(e) => e.preventDefault()}
+      draggable="false"
+      onDragStart={(e) => e.preventDefault()}
+      className={className}
+    />
+  );
+}
+
 // function buildCharacters() {
 //   let index = 0;
 
@@ -294,7 +330,6 @@ function buildCharacters() {
         stateKey: state.key,
         stateLabel: `${state.label}国`,
         tone: state.tone,
-        image: `${BASE_IMG_URL}${code}_${encodeURIComponent(name)}.png`,
         note: '原创角色·AI辅助设计',
       };
     }),
@@ -394,14 +429,9 @@ function App() {
             {featuredCharacters.map((item, index) => (
               <Reveal key={item.id} delay={index * 80}>
                 <article className="featured-card">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    loading="lazy" 
-                    
-                    onContextMenu={(e) => e.preventDefault()}
-                    draggable="false"
-                    onDragStart={(e) => e.preventDefault()}
+                  <CharacterImage
+                    code={item.code}
+                    name={item.name}
                     className="select-none pointer-events-none"
                   />
                   <div className="featured-overlay" />
@@ -450,13 +480,9 @@ function App() {
               <Reveal key={`${activeState}-${item.id}`} delay={(index % 12) * 35}>
                 <article className="gallery-card">
                   <div className="gallery-image-wrap">
-                  <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      loading="lazy" 
-                      onContextMenu={(e) => e.preventDefault()}
-                      draggable="false"
-                      onDragStart={(e) => e.preventDefault()}
+                    <CharacterImage
+                      code={item.code}
+                      name={item.name}
                       className="select-none pointer-events-none"
                     />
                     <div className="gallery-glow" aria-hidden="true" />
@@ -501,4 +527,3 @@ function App() {
 }
 
 export default App;
-

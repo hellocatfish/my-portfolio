@@ -7,6 +7,6 @@ export default defineConfig({
     react(),
     tailwindcss(), // <-- 2. 启用插件
   ],
-  // base: '/my-portfolio/', // 保持您的 github pages 路径不变
+  //   // 保持您的 github pages 路径不变
   base: '/', // suit for cloudflare
 })
