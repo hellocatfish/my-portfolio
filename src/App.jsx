@@ -330,7 +330,7 @@ function buildCharacters() {
         stateKey: state.key,
         stateLabel: `${state.label}国`,
         tone: state.tone,
-        note: '原创角色·AI辅助设计',
+        note: '王道爵士',
       };
     }),
   );
@@ -497,11 +497,7 @@ function App() {
                     <div className="gallery-meta">
                       <span>
                         <Crown size={14} />
-                        视觉设计
-                      </span>
-                      <span>
-                        <Bot size={14} />
-                        {item.note}
+                        原创角色
                       </span>
                     </div>
                   </div>
