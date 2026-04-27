@@ -475,18 +475,30 @@
 
 @media (max-width: 560px) {
   .hero-copy h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* 稍微调小一点标题，防止手机端溢出 */
   }
 
-  .metrics-grid,
+  /* 核心改动：把 1fr 改为 2 列 */
   .featured-grid,
   .gallery-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px; /* 缩小间距，增加画廊精致感 */
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr; /* 数据统计卡片建议保持 1 列，看起来更清晰 */
   }
 
   .gallery-copy,
   .featured-copy {
-    padding: 16px;
+    padding: 12px; /* 缩小内边距 */
+  }
+
+  /* 调整卡片内的文字大小，适配双列布局 */
+  .gallery-copy h3,
+  .featured-copy h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
   }
 
   .filter-bar {
