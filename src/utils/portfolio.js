@@ -1,4 +1,4 @@
-const BASE_IMAGE_URL = 'https://cnb.cool/catfishzone/san-guo_agents/-/git/raw/main/task-002-imgs/';
+const BASE_IMAGE_URL = 'https://zhanguo-imgs-1379320306.cos.accelerate.myqcloud.com/zhanguo_imgs/';
 const IMAGE_EXTENSIONS = ['webp', 'png'];
 
 export function getImageExtensions() {

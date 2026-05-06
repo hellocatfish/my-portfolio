@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { buildSmallImageUrl } from '../utils/portfolio';
 
 function sampleCharacters(characters, maxItems) {
   if (characters.length <= maxItems) {
@@ -73,9 +74,25 @@ function rotateZ(vector, angle) {
   };
 }
 
+function preloadImage(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = resolve;
+    img.src = url;
+  });
+}
+
 export default function SphereCardCloud({ activeStateLabel, activeTone, characters, renderImage }) {
   const sphereCharacters = useMemo(() => buildSphereLayout(characters), [characters]);
   const [orbitAngle, setOrbitAngle] = useState(0);
+  const [imagesReady, setImagesReady] = useState(false);
+
+  useEffect(() => {
+    setImagesReady(false);
+    const urls = sphereCharacters.map((c) => buildSmallImageUrl(c.code, c.name));
+    Promise.all(urls.map(preloadImage)).then(() => setImagesReady(true));
+  }, [sphereCharacters]);
 
   useEffect(() => {
     let frameId = 0;
@@ -150,7 +167,13 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
         <div className="sphere-cloud-halo sphere-cloud-halo-right" aria-hidden="true" />
         <div className="sphere-cloud-core" aria-hidden="true" />
 
-        <div className="sphere-cloud-scene">
+        <div
+          className="sphere-cloud-scene"
+          style={{
+            opacity: imagesReady ? 1 : 0,
+            transition: 'opacity 0.6s ease',
+          }}
+        >
           {renderedCharacters.map((character) => (
             <article
               key={`sphere-${character.id}`}
