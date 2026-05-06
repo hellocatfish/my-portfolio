@@ -105,6 +105,22 @@ export default function PortfolioPage() {
     <div className="page-shell">
       <div className="page-noise" aria-hidden="true" />
 
+      {SPHERE_CLOUD_ENABLED && (
+        <SphereCardCloud
+          activeStateLabel={activeStateMeta.label}
+          activeTone={activeStateMeta.tone}
+          characters={CHARACTERS}
+          renderImage={(item, className) => (
+            <CharacterImage
+              code={item.code}
+              name={item.name}
+              className={className}
+              variant="sphere"
+            />
+          )}
+        />
+      )}
+
       <header className="hero">
         <div className="hero-backdrop hero-backdrop-left" aria-hidden="true" />
         <div className="hero-backdrop hero-backdrop-right" aria-hidden="true" />
@@ -230,24 +246,6 @@ export default function PortfolioPage() {
             </div>
           </Reveal>
 
-          {SPHERE_CLOUD_ENABLED && (
-            <Reveal delay={180}>
-              <SphereCardCloud
-                activeStateLabel={activeStateMeta.label}
-                activeTone={activeStateMeta.tone}
-                characters={galleryCharacters}
-                renderImage={(item, className) => (
-                  <CharacterImage
-                    code={item.code}
-                    name={item.name}
-                    className={className}
-                    variant="sphere"
-                  />
-                )}
-              />
-            </Reveal>
-          )}
-
           <Reveal delay={220}>
             <div className="gallery-summary card-panel">
               <div>
@@ -255,7 +253,7 @@ export default function PortfolioPage() {
                 <strong>{activeStateMeta.label === '全部' ? '全阵营总览' : `${activeStateMeta.label}国档案`}</strong>
               </div>
               <p>
-                当前阵营关键词为“{activeStateMeta.tone}”。
+                当前阵营关键词为"{activeStateMeta.tone}"。
               </p>
             </div>
           </Reveal>

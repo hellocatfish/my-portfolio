@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { buildSmallImageUrl } from '../utils/portfolio';
+import { STATES } from '../data/portfolioData';
 
 function sampleCharacters(characters, maxItems) {
   if (characters.length <= maxItems) {
@@ -83,8 +84,26 @@ function preloadImage(url) {
   });
 }
 
+// Prevent right-click globally on the sphere cloud
+function preventContextMenu(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
+
 export default function SphereCardCloud({ activeStateLabel, activeTone, characters, renderImage }) {
-  const sphereCharacters = useMemo(() => buildSphereLayout(characters), [characters]);
+  const [activeState, setActiveState] = useState('all');
+  const containerRef = useRef(null);
+
+  // Get filtered characters based on sphere's own active state
+  const sphereFilteredCharacters = useMemo(() => {
+    if (activeState === 'all') {
+      return characters;
+    }
+    return characters.filter((item) => item.stateKey === activeState);
+  }, [characters, activeState]);
+
+  const sphereCharacters = useMemo(() => buildSphereLayout(sphereFilteredCharacters), [sphereFilteredCharacters]);
   const [imagesReady, setImagesReady] = useState(false);
   const [visible, setVisible] = useState(true);
 
@@ -101,6 +120,45 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   const orbitRef = useRef(0);
   const timeRef = useRef(0);
   const [, forceUpdate] = useState(0);
+  const [viewportScale, setViewportScale] = useState(1);
+  const stageRef = useRef(null);
+
+  // Block right-click on the entire component via useEffect + document event
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleContextMenu = (e) => {
+      if (container.contains(e.target)) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu, true);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu, true);
+    };
+  }, []);
+
+  // Track visual viewport scale for pinch-zoom compensation
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    if (!viewport) return;
+
+    const handleResize = () => {
+      setViewportScale(viewport.scale);
+    };
+
+    viewport.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      viewport.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     setImagesReady(false);
@@ -262,24 +320,23 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   });
 
   return (
-    <div className="sphere-cloud card-panel">
-      <div className="sphere-cloud-copy">
-        <div>
-          <span className="sphere-cloud-label">速览</span>
-          <h3>{activeStateLabel === '全部' ? '七国' : `${activeStateLabel}国`}</h3>
-        </div>
-        <button
-          type="button"
-          className="sphere-cloud-toggle"
-          onClick={() => setVisible((v) => !v)}
-          aria-label={visible ? '关闭球形卡牌云' : '开启球形卡牌云'}
-        >
-          <span className="sphere-cloud-toggle-icon">{visible ? '✕' : '◎'}</span>
-          <span>{visible ? '关闭' : '开启'}</span>
-        </button>
+    <div className="sphere-cloud card-panel" ref={containerRef} onContextMenu={preventContextMenu}>
+      {/* Faction filter bar for sphere cloud */}
+      <div className="sphere-cloud-filter-bar">
+        {STATES.map((state) => (
+          <button
+            key={state.key}
+            type="button"
+            className={`sphere-cloud-chip ${state.key === activeState ? 'active' : ''}`}
+            onClick={() => setActiveState(state.key)}
+          >
+            <span>{state.label}</span>
+          </button>
+        ))}
       </div>
 
       <div
+        ref={stageRef}
         className="sphere-cloud-stage"
         style={{
           maxHeight: visible ? undefined : '0',
@@ -297,6 +354,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
         onTouchStart={visible ? handlePointerDown : undefined}
         onTouchMove={visible ? handlePointerMove : undefined}
         onTouchEnd={visible ? handlePointerUp : undefined}
+        onContextMenu={preventContextMenu}
       >
         <div className="sphere-cloud-halo sphere-cloud-halo-left" aria-hidden="true" />
         <div className="sphere-cloud-halo sphere-cloud-halo-right" aria-hidden="true" />
@@ -307,6 +365,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           style={{
             opacity: imagesReady ? 1 : 0,
             transition: 'opacity 0.6s ease',
+            zoom: viewportScale,
           }}
         >
           {renderedCharacters.map((character) => (
@@ -314,6 +373,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
               key={`sphere-${character.id}`}
               className="sphere-cloud-card"
               style={character.style}
+              onContextMenu={preventContextMenu}
             >
               <div className="sphere-cloud-card-shell">
                 <div className="sphere-cloud-thumb">
@@ -328,6 +388,16 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           ))}
         </div>
       </div>
+
+      <button
+        type="button"
+        className="sphere-cloud-toggle"
+        onClick={() => setVisible((v) => !v)}
+        aria-label={visible ? '关闭球形卡牌云' : '开启球形卡牌云'}
+      >
+        <span className="sphere-cloud-toggle-icon">{visible ? '✕' : '◎'}</span>
+        <span>{visible ? '关闭' : '开启'}</span>
+      </button>
     </div>
   );
 }

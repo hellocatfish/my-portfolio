@@ -1,4 +1,4 @@
-﻿﻿.page-shell {
+﻿﻿﻿.page-shell {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -398,13 +398,50 @@
 .sphere-cloud {
   position: relative;
   overflow: hidden;
-  padding: 26px;
+  padding: 20px 26px 26px;
   border-radius: 32px;
   margin-bottom: 22px;
   background:
     radial-gradient(circle at 18% 22%, rgba(191, 84, 98, 0.16), transparent 26%),
     radial-gradient(circle at 82% 22%, rgba(120, 149, 216, 0.14), transparent 26%),
     linear-gradient(180deg, rgba(19, 23, 34, 0.96), rgba(11, 14, 22, 0.88));
+}
+
+.sphere-cloud-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.sphere-cloud-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(246, 241, 232, 0.65);
+  font-size: 0.8rem;
+  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+
+.sphere-cloud-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(246, 241, 232, 0.9);
+}
+
+.sphere-cloud-chip.active {
+  background: rgba(240, 198, 113, 0.18);
+  border-color: rgba(240, 198, 113, 0.35);
+  color: #f3d694;
 }
 
 .sphere-cloud-copy {
@@ -432,6 +469,10 @@
   cursor: pointer;
   transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
   white-space: nowrap;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
 }
 
 .sphere-cloud-toggle:hover {
@@ -476,16 +517,20 @@
 .sphere-cloud-stage {
   position: relative;
   z-index: 1;
-  min-height: 600px;
+  min-height: max(480px, 56vmin);
+  max-height: 72vh;
   padding: 16px 0 10px;
-  perspective: 1800px;
+  perspective: max(1800px, 180vmin);
   perspective-origin: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .sphere-cloud-scene {
   position: relative;
-  width: min(100%, 940px);
-  height: 540px;
+  width: min(100%, min(940px, 88vmin));
+  height: min(540px, 52vmin);
   margin: 0 auto;
   transform-style: preserve-3d;
 }
@@ -535,18 +580,21 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 132px;
+  width: clamp(74px, min(18vw, 13vmin), 132px);
   transform-style: preserve-3d;
   will-change: transform;
   transform:
     translate3d(
-      calc(var(--card-x) * 248px + var(--card-sway-x)),
-      calc(var(--card-y) * 180px + var(--card-sway-y)),
-      calc(var(--card-z) * 200px + var(--card-sway-z))
+      calc(var(--card-x) * min(248px, 24vmin) + var(--card-sway-x)),
+      calc(var(--card-y) * min(180px, 17.5vmin) + var(--card-sway-y)),
+      calc(var(--card-z) * min(200px, 19.5vmin) + var(--card-sway-z))
     )
     scale(var(--card-scale));
-  margin: -72px 0 0 -66px;
+  margin: -72px 0 0 calc(clamp(74px, min(18vw, 13vmin), 132px) / -2);
   opacity: var(--card-opacity);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .sphere-cloud-card-shell {
@@ -586,6 +634,9 @@
   min-height: 0;
   min-width: 0;
   flex-shrink: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 
 .sphere-cloud-meta {
@@ -725,23 +776,12 @@
   }
 
   .sphere-cloud-stage {
-    min-height: 520px;
+    min-height: max(420px, 52vmin);
+    max-height: 68vh;
   }
 
   .sphere-cloud-scene {
-    height: 460px;
-  }
-
-  .sphere-cloud-card {
-    width: 118px;
-    margin: -64px 0 0 -59px;
-    transform:
-      translate3d(
-        calc(var(--card-x) * 216px + var(--card-sway-x)),
-        calc(var(--card-y) * 158px + var(--card-sway-y)),
-        calc(var(--card-z) * 180px + var(--card-sway-z))
-      )
-      scale(var(--card-scale));
+    height: min(420px, 48vmin);
   }
 
 }
@@ -775,33 +815,32 @@
   }
 
   .sphere-cloud {
-    padding: 20px;
+    padding: 16px;
     border-radius: 26px;
   }
 
+  .sphere-cloud-filter-bar {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .sphere-cloud-chip {
+    padding: 5px 12px;
+    font-size: 0.72rem;
+  }
+
   .sphere-cloud-stage {
-    min-height: 420px;
+    min-height: max(380px, 52vmin);
+    max-height: 70vh;
   }
 
   .sphere-cloud-scene {
-    height: 360px;
+    height: min(340px, 50vmin);
   }
 
   .sphere-cloud-core {
     width: 250px;
     height: 250px;
-  }
-
-  .sphere-cloud-card {
-    width: 92px;
-    margin: -50px 0 0 -46px;
-    transform:
-      translate3d(
-        calc(var(--card-x) * 168px + var(--card-sway-x)),
-        calc(var(--card-y) * 126px + var(--card-sway-y)),
-        calc(var(--card-z) * 126px + var(--card-sway-z))
-      )
-      scale(var(--card-scale));
   }
 
   .sphere-cloud-meta strong {
@@ -852,42 +891,44 @@
   }
 
   .sphere-cloud {
-    padding: 16px;
+    padding: 10px;
   }
 
-  .sphere-cloud-copy h3 {
-    font-size: 1.5rem;
+  .sphere-cloud-filter-bar {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .sphere-cloud-chip {
+    padding: 4px 10px;
+    font-size: 0.65rem;
   }
 
   .sphere-cloud-toggle {
     padding: 8px 14px;
     font-size: 0.78rem;
     gap: 6px;
+    bottom: 12px;
+    right: 12px;
   }
 
   .sphere-cloud-stage {
-    min-height: 340px;
+    min-height: max(340px, 60vmin);
+    max-height: 75vh;
   }
 
   .sphere-cloud-scene {
-    height: 280px;
+    height: min(360px, 62vmin);
   }
 
   .sphere-cloud-core {
-    width: 190px;
-    height: 190px;
+    width: 210px;
+    height: 210px;
   }
 
-  .sphere-cloud-card {
-    width: 74px;
-    margin: -40px 0 0 -37px;
-    transform:
-      translate3d(
-        calc(var(--card-x) * 126px + var(--card-sway-x)),
-        calc(var(--card-y) * 98px + var(--card-sway-y)),
-        calc(var(--card-z) * 92px + var(--card-sway-z))
-      )
-      scale(var(--card-scale));
+  .sphere-cloud-image {
+    -webkit-touch-callout: none;
+    pointer-events: none;
   }
 
   .sphere-cloud-thumb {
@@ -895,7 +936,7 @@
   }
 
   .sphere-cloud-meta {
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   .sphere-cloud-meta span {
