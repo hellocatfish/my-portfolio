@@ -7,12 +7,12 @@ import {
   Sparkles,
   SwatchBook,
 } from 'lucide-react';
+import SphereCardCloud from '../components/SphereCardCloud';
 import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioData';
 import {
   buildCharacters,
-  buildImageUrl,
+  buildImageCandidates,
   buildMetrics,
-  getImageExtensions,
   getStateCharacterCount,
 } from '../utils/portfolio';
 import { useReveal } from '../utils/useReveal';
@@ -33,21 +33,23 @@ function Reveal({ children, className = '', delay = 0 }) {
   );
 }
 
-function CharacterImage({ code, name, className = '' }) {
-  const [extensionIndex, setExtensionIndex] = useState(0);
-  const imageExtensions = getImageExtensions();
+function CharacterImage({ code, name, className = '', variant = 'default' }) {
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const imageCandidates = useMemo(
+    () => buildImageCandidates(code, name, variant),
+    [code, name, variant],
+  );
 
   useEffect(() => {
-    setExtensionIndex(0);
-  }, [code, name]);
+    setSourceIndex(0);
+  }, [code, name, variant]);
 
-  const extension = imageExtensions[extensionIndex] ?? imageExtensions[0];
-  const imageSrc = buildImageUrl(code, name, extension);
+  const imageSrc = imageCandidates[sourceIndex] ?? imageCandidates[0];
 
   const handleError = () => {
-    setExtensionIndex((current) => {
+    setSourceIndex((current) => {
       const nextIndex = current + 1;
-      return nextIndex < imageExtensions.length ? nextIndex : current;
+      return nextIndex < imageCandidates.length ? nextIndex : current;
     });
   };
 
@@ -223,20 +225,36 @@ export default function PortfolioPage() {
           </Reveal>
 
           <Reveal delay={180}>
+            <SphereCardCloud
+              activeStateLabel={activeStateMeta.label}
+              activeTone={activeStateMeta.tone}
+              characters={galleryCharacters}
+              renderImage={(item, className) => (
+                <CharacterImage
+                  code={item.code}
+                  name={item.name}
+                  className={className}
+                  variant="sphere"
+                />
+              )}
+            />
+          </Reveal>
+
+          <Reveal delay={220}>
             <div className="gallery-summary card-panel">
               <div>
                 <span className="gallery-summary-label">当前视图</span>
                 <strong>{activeStateMeta.label === '全部' ? '全阵营总览' : `${activeStateMeta.label}国档案`}</strong>
               </div>
               <p>
-                共展示 {activeCount} 位角色，当前阵营关键词为“{activeStateMeta.tone}”。
+                当前阵营关键词为“{activeStateMeta.tone}”。
               </p>
             </div>
           </Reveal>
 
           <div className="gallery-grid">
             {galleryCharacters.map((item, index) => (
-              <Reveal key={`${activeState}-${item.id}`} delay={(index % 12) * 35}>
+              <Reveal key={`${activeState}-${item.id}`} delay={80 + (index % 12) * 35}>
                 <article className="gallery-card">
                   <div className="gallery-image-wrap">
                     <CharacterImage

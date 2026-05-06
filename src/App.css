@@ -395,6 +395,181 @@
   line-height: 1.75;
 }
 
+.sphere-cloud {
+  position: relative;
+  overflow: hidden;
+  padding: 26px;
+  border-radius: 32px;
+  margin-bottom: 22px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(191, 84, 98, 0.16), transparent 26%),
+    radial-gradient(circle at 82% 22%, rgba(120, 149, 216, 0.14), transparent 26%),
+    linear-gradient(180deg, rgba(19, 23, 34, 0.96), rgba(11, 14, 22, 0.88));
+}
+
+.sphere-cloud-copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.75fr);
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.sphere-cloud-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f3d694;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sphere-cloud-copy h3 {
+  margin: 16px 0 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  letter-spacing: -0.04em;
+}
+
+.sphere-cloud-copy p {
+  margin: 0;
+  color: rgba(238, 232, 223, 0.74);
+  line-height: 1.8;
+}
+
+.sphere-cloud-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 600px;
+  padding: 16px 0 10px;
+  perspective: 1800px;
+  perspective-origin: center;
+}
+
+.sphere-cloud-scene {
+  position: relative;
+  width: min(100%, 940px);
+  height: 540px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+}
+
+.sphere-cloud-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 35% 32%, rgba(255, 255, 255, 0.2), transparent 32%),
+    radial-gradient(circle, rgba(240, 198, 113, 0.12) 0%, rgba(71, 96, 154, 0.08) 45%, rgba(9, 11, 19, 0) 74%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 120px rgba(240, 198, 113, 0.12),
+    inset 0 0 60px rgba(255, 255, 255, 0.04);
+  filter: blur(0.2px);
+}
+
+.sphere-cloud-halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.58;
+}
+
+.sphere-cloud-halo-left {
+  top: 22%;
+  left: 18%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(189, 76, 89, 0.32) 0%, rgba(189, 76, 89, 0) 72%);
+}
+
+.sphere-cloud-halo-right {
+  right: 20%;
+  bottom: 18%;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(108, 140, 215, 0.24) 0%, rgba(108, 140, 215, 0) 72%);
+}
+
+.sphere-cloud-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 132px;
+  transform-style: preserve-3d;
+  transform:
+    translate3d(
+      calc(var(--card-x) * 248px),
+      calc(var(--card-y) * 180px),
+      calc(var(--card-z) * 200px)
+    )
+    scale(var(--card-scale));
+  margin: -72px 0 0 -66px;
+  opacity: var(--card-opacity);
+  animation: sphere-float 8.5s ease-in-out infinite;
+  animation-delay: var(--float-delay);
+}
+
+.sphere-cloud-card-shell {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform:
+    rotateX(var(--card-rotate-x))
+    rotateY(var(--card-rotate-y))
+    rotateZ(var(--card-rotate-z));
+  filter: blur(var(--card-blur));
+  transition: filter 340ms ease, opacity 340ms ease, transform 340ms ease;
+}
+
+.sphere-cloud-thumb {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5.4;
+  border-radius: 22px;
+  background: rgba(18, 22, 30, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  transition: box-shadow 340ms ease, transform 340ms ease;
+}
+
+.sphere-cloud-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.03) brightness(0.98);
+}
+
+.sphere-cloud-meta {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.sphere-cloud-meta span {
+  color: rgba(243, 214, 148, 0.8);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sphere-cloud-meta strong {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -498,16 +673,83 @@
   }
 }
 
+@keyframes sphere-float {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        calc(var(--card-x) * 248px + var(--card-sway-x)),
+        calc(var(--card-y) * 180px + var(--card-sway-y)),
+        calc(var(--card-z) * 200px + var(--card-sway-z))
+      )
+      scale(var(--card-scale));
+  }
+
+  50% {
+    transform:
+      translate3d(
+        calc(var(--card-x) * 248px + var(--card-sway-x)),
+        calc(var(--card-y) * 180px + var(--card-sway-y) - 10px),
+        calc(var(--card-z) * 200px + var(--card-sway-z))
+      )
+      scale(calc(var(--card-scale) + 0.04));
+  }
+}
+
 @media (max-width: 1180px) {
   .hero-grid,
   .section-heading,
-  .gallery-summary {
+  .gallery-summary,
+  .sphere-cloud-copy {
     grid-template-columns: 1fr;
   }
 
   .featured-grid,
   .gallery-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sphere-cloud-stage {
+    min-height: 520px;
+  }
+
+  .sphere-cloud-scene {
+    height: 460px;
+  }
+
+  .sphere-cloud-card {
+    width: 118px;
+    margin: -64px 0 0 -59px;
+    transform:
+      translate3d(
+        calc(var(--card-x) * 216px),
+        calc(var(--card-y) * 158px),
+        calc(var(--card-z) * 180px)
+      )
+      scale(var(--card-scale));
+  }
+
+  @keyframes sphere-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 216px + var(--card-sway-x)),
+          calc(var(--card-y) * 158px + var(--card-sway-y)),
+          calc(var(--card-z) * 180px + var(--card-sway-z))
+        )
+        scale(var(--card-scale));
+    }
+
+    50% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 216px + var(--card-sway-x)),
+          calc(var(--card-y) * 158px + var(--card-sway-y) - 8px),
+          calc(var(--card-z) * 180px + var(--card-sway-z))
+        )
+        scale(calc(var(--card-scale) + 0.04));
+    }
   }
 }
 
@@ -539,6 +781,63 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .sphere-cloud {
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .sphere-cloud-stage {
+    min-height: 420px;
+  }
+
+  .sphere-cloud-scene {
+    height: 360px;
+  }
+
+  .sphere-cloud-core {
+    width: 250px;
+    height: 250px;
+  }
+
+  .sphere-cloud-card {
+    width: 92px;
+    margin: -50px 0 0 -46px;
+    transform:
+      translate3d(
+        calc(var(--card-x) * 168px),
+        calc(var(--card-y) * 126px),
+        calc(var(--card-z) * 126px)
+      )
+      scale(var(--card-scale));
+  }
+
+  .sphere-cloud-meta strong {
+    font-size: 0.8rem;
+  }
+
+  @keyframes sphere-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 168px + var(--card-sway-x)),
+          calc(var(--card-y) * 126px + var(--card-sway-y)),
+          calc(var(--card-z) * 126px + var(--card-sway-z))
+        )
+        scale(var(--card-scale));
+    }
+
+    50% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 168px + var(--card-sway-x)),
+          calc(var(--card-y) * 126px + var(--card-sway-y) - 6px),
+          calc(var(--card-z) * 126px + var(--card-sway-z))
+        )
+        scale(calc(var(--card-scale) + 0.04));
+    }
+  }
+
   .footer {
     flex-direction: column;
     align-items: flex-start;
@@ -559,7 +858,72 @@
   }
 
   .metrics-grid {
-    grid-template-columns: 1fr; /* 数据统计卡片建议保持 1 列，看起来更清晰 */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 14px 12px 12px;
+  }
+
+  .metric-card span {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+
+  .metric-card strong {
+    margin: 10px 0 4px;
+    font-size: 1.35rem;
+  }
+
+  .metric-card p {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .sphere-cloud {
+    padding: 16px;
+  }
+
+  .sphere-cloud-copy h3 {
+    font-size: 1.5rem;
+  }
+
+  .sphere-cloud-stage {
+    min-height: 340px;
+  }
+
+  .sphere-cloud-scene {
+    height: 280px;
+  }
+
+  .sphere-cloud-core {
+    width: 190px;
+    height: 190px;
+  }
+
+  .sphere-cloud-card {
+    width: 74px;
+    margin: -40px 0 0 -37px;
+    transform:
+      translate3d(
+        calc(var(--card-x) * 126px),
+        calc(var(--card-y) * 98px),
+        calc(var(--card-z) * 92px)
+      )
+      scale(var(--card-scale));
+  }
+
+  .sphere-cloud-meta {
+    margin-top: 8px;
+  }
+
+  .sphere-cloud-meta span {
+    font-size: 0.58rem;
+  }
+
+  .sphere-cloud-meta strong {
+    font-size: 0.72rem;
   }
 
   .gallery-copy,
@@ -583,5 +947,28 @@
     flex: 1 1 calc(50% - 10px);
     justify-content: center;
     text-align: center;
+  }
+
+  @keyframes sphere-float {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 126px + var(--card-sway-x)),
+          calc(var(--card-y) * 98px + var(--card-sway-y)),
+          calc(var(--card-z) * 92px + var(--card-sway-z))
+        )
+        scale(var(--card-scale));
+    }
+
+    50% {
+      transform:
+        translate3d(
+          calc(var(--card-x) * 126px + var(--card-sway-x)),
+          calc(var(--card-y) * 98px + var(--card-sway-y) - 5px),
+          calc(var(--card-z) * 92px + var(--card-sway-z))
+        )
+        scale(calc(var(--card-scale) + 0.04));
+    }
   }
 }

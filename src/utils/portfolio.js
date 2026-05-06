@@ -9,6 +9,22 @@ export function buildImageUrl(code, name, extension = IMAGE_EXTENSIONS[0]) {
   return `${BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}.${extension}`;
 }
 
+export function buildSmallImageUrl(code, name) {
+  return `${BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}-small.webp`;
+}
+
+export function buildImageCandidates(code, name, variant = 'default') {
+  if (variant === 'sphere') {
+    return [
+      buildSmallImageUrl(code, name),
+      buildImageUrl(code, name, 'webp'),
+      buildImageUrl(code, name, 'png'),
+    ];
+  }
+
+  return IMAGE_EXTENSIONS.map((extension) => buildImageUrl(code, name, extension));
+}
+
 export function buildCharacters(states) {
   return states.slice(1).flatMap((state) =>
     state.names.map(({ code, name }) => ({
