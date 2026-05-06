@@ -520,8 +520,6 @@
   min-height: max(480px, 56vmin);
   max-height: 72vh;
   padding: 16px 0 10px;
-  perspective: max(1800px, 180vmin);
-  perspective-origin: center;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
@@ -534,7 +532,6 @@
   width: min(100%, min(940px, 88vmin));
   height: min(540px, 52vmin);
   transform: translate(-50%, -50%);
-  transform-style: preserve-3d;
 }
 
 .sphere-cloud-core {
@@ -580,14 +577,8 @@
 
 .sphere-cloud-card {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: var(--card-width);
-  transform-style: preserve-3d;
-  will-change: transform;
-  transform:
-    translate3d(var(--card-pos-x), var(--card-pos-y), var(--card-pos-z))
-    translate(-50%, -50%);
+  top: calc(50% + var(--card-dy));
+  left: calc(50% + var(--card-dx));
   margin: 0;
   opacity: var(--card-opacity);
   -webkit-touch-callout: none;
@@ -596,14 +587,8 @@
 }
 
 .sphere-cloud-card-shell {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transform:
-    rotateX(var(--card-rotate-x))
-    rotateY(var(--card-rotate-y))
-    rotateZ(var(--card-rotate-z));
   filter: blur(var(--card-blur));
-  transition: filter 340ms ease, opacity 340ms ease, transform 340ms ease;
+  transition: filter 340ms ease;
 }
 
 .sphere-cloud-thumb {

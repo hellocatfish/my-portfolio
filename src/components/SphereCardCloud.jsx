@@ -178,13 +178,12 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   // Card width = image height × (4/5.4), where image height = core size / 3
   const coreSize = getSphereCoreSize();
   const cardWidth = Math.round(coreSize / 3 * (4 / 5.4));
+  const cardHeight = Math.round(cardWidth * 5.4 / 4);
 
   // Card orbit radii proportional to the actual sphere core size
-  // Ratios from desktop: X=1.46×radius, Y=1.06×radius, Z=1.18×radius
   const coreRadius = coreSize / 2;
   const orbRadX = coreRadius * 1.46;
   const orbRadY = coreRadius * 1.06;
-  const orbRadZ = coreRadius * 1.18;
 
   const renderedCharacters = sphereCharacters
     .map((character, index) => {
@@ -192,40 +191,33 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24), -0.12);
 
       // Current z-depth after all rotations, normalized to 0-1
-      // 1.0 = directly facing viewer, 0.0 = facing away
       const currentDepth = (tiltedVector.z + 1) / 2;
 
-      // Visual depth: card size is CONSTANT (=core/3) via CSS width
-      // Depth is conveyed through opacity + blur only
+      // Visual depth conveyed through opacity + blur — card size is invariant
       const opacity = 0.10 + currentDepth * 0.90;       // 0.10 (back) → 1.00 (front)
       const blur = (1 - currentDepth) * 2.4;             // 2.4px (back) → 0px (front)
 
-      // Smooth sway driven by time (not by rotation angle), eliminates jitter
+      // Smooth 2D sway
       const floatPhase = timeNow * (0.74 + (index % 7) * 0.06) + index * 0.85;
       const swayX = Math.sin(floatPhase) * 12;
       const swayY = Math.cos(floatPhase * 0.87) * 10 - Math.sin(floatPhase * 0.42) * 5;
-      const swayZ = Math.sin(floatPhase * 0.65) * 5;
-      const rotateYDeg = Math.sin(timeNow * 0.7 + index * 0.5) * 15;
-      const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
-      const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
 
-      // Pre-compute pixel positions
+      // 2D pixel positions (no z-axis — avoids Safari 3D distortion)
       const posX = tiltedVector.x * orbRadX + swayX;
       const posY = tiltedVector.y * orbRadY + swayY;
-      const posZ = tiltedVector.z * orbRadZ + swayZ;
+
+      // Offsets so that card center lands at (scene_center + posX/Y)
+      const dx = posX - cardWidth / 2;
+      const dy = posY - cardHeight / 2;
 
       return {
         ...character,
         sortZ: tiltedVector.z,
         style: {
-          '--card-width': `${cardWidth}px`,
-          '--card-pos-x': `${posX.toFixed(2)}px`,
-          '--card-pos-y': `${posY.toFixed(2)}px`,
-          '--card-pos-z': `${posZ.toFixed(2)}px`,
+          width: `${cardWidth}px`,
+          '--card-dx': `${dx.toFixed(2)}px`,
+          '--card-dy': `${dy.toFixed(2)}px`,
           '--card-opacity': `${opacity.toFixed(4)}`,
-          '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
-          '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
-          '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
           '--card-blur': `${blur.toFixed(2)}px`,
         },
       };
