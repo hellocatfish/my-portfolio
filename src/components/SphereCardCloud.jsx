@@ -28,16 +28,12 @@ function buildSphereLayout(characters) {
     const y = Math.sin(theta) * Math.sin(phi);
     const z = Math.cos(phi);
 
-    const depth = (z + 1) / 2;
-    const scale = 0.62 + depth * 0.48;
-    const opacity = 0.34 + depth * 0.62;
-
     return {
       ...character,
       vector: { x, y, z },
-      baseScale: scale,
-      baseOpacity: opacity,
-      floatDelay: `${(index % 7) * 0.55}s`,
+      // Uniform base — all visual depth variation comes from per-frame depth
+      baseScale: 1,
+      baseOpacity: 1,
     };
   });
 }
@@ -120,7 +116,6 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   const orbitRef = useRef(0);
   const timeRef = useRef(0);
   const [, forceUpdate] = useState(0);
-  const [viewportScale, setViewportScale] = useState(1);
   const stageRef = useRef(null);
 
   // Block right-click on the entire component via useEffect + document event
@@ -140,23 +135,6 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
 
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu, true);
-    };
-  }, []);
-
-  // Track visual viewport scale for pinch-zoom compensation
-  useEffect(() => {
-    const viewport = window.visualViewport;
-    if (!viewport) return;
-
-    const handleResize = () => {
-      setViewportScale(viewport.scale);
-    };
-
-    viewport.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => {
-      viewport.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -220,6 +198,9 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   }, []);
 
   const handlePointerDown = useCallback((e) => {
+    // Skip multi-touch events — allow native pinch-zoom
+    if (e.touches && e.touches.length > 1) return;
+
     e.preventDefault();
     isDragging.current = true;
     setIsUserDragging(true);
@@ -235,6 +216,10 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
 
   const handlePointerMove = useCallback((e) => {
     if (!isDragging.current) return;
+
+    // Skip multi-touch events during drag
+    if (e.touches && e.touches.length > 1) return;
+
     e.preventDefault();
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -283,41 +268,50 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   const totalAngleY = autoRotateRef.current ? orbitNow : userAngleY;
   const totalAngleX = autoRotateRef.current ? 0 : userAngleX;
 
-  const renderedCharacters = sphereCharacters.map((character, index) => {
-    const orbitalVector = rotateY(character.vector, totalAngleY);
-    const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24 + totalAngleX), -0.12);
-    const depth = (tiltedVector.z + 1) / 2;
-    const scale = character.baseScale * (0.9 + depth * 0.22);
-    const opacity = Math.max(0.28, character.baseOpacity * (0.82 + depth * 0.2));
+  const renderedCharacters = sphereCharacters
+    .map((character, index) => {
+      const orbitalVector = rotateY(character.vector, totalAngleY);
+      const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24 + totalAngleX), -0.12);
 
-    // Smooth sway driven by time (not by rotation angle), eliminates jitter
-    const floatPhase = timeNow * (0.74 + (index % 7) * 0.06) + index * 0.85;
-    const swayX = Math.sin(floatPhase) * 12;
-    const swayY = Math.cos(floatPhase * 0.87) * 10 - Math.sin(floatPhase * 0.42) * 5;
-    const swayZ = Math.sin(floatPhase * 0.65) * 5;
-    const rotateYDeg = Math.sin(timeNow * 0.7 + index * 0.5) * 15;
-    const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
-    const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
-    const blur = (1 - depth) * 1.6;
+      // Current z-depth after all rotations, normalized to 0-1
+      // 1.0 = directly facing viewer, 0.0 = facing away
+      const currentDepth = (tiltedVector.z + 1) / 2;
 
-    return {
-      ...character,
-      style: {
-        '--card-x': `${tiltedVector.x.toFixed(4)}`,
-        '--card-y': `${tiltedVector.y.toFixed(4)}`,
-        '--card-z': `${tiltedVector.z.toFixed(4)}`,
-        '--card-scale': `${scale.toFixed(4)}`,
-        '--card-opacity': `${opacity.toFixed(4)}`,
-        '--card-sway-x': `${swayX.toFixed(2)}px`,
-        '--card-sway-y': `${swayY.toFixed(2)}px`,
-        '--card-sway-z': `${swayZ.toFixed(2)}px`,
-        '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
-        '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
-        '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
-        '--card-blur': `${blur.toFixed(2)}px`,
-      },
-    };
-  });
+      // Visual properties driven purely by current depth — no double-multiplication
+      const scale = 0.50 + currentDepth * 0.50;        // 0.50 (back) → 1.00 (front)
+      const opacity = 0.10 + currentDepth * 0.90;       // 0.10 (back) → 1.00 (front)
+      const blur = (1 - currentDepth) * 2.4;             // 2.4px (back) → 0px (front)
+
+      // Smooth sway driven by time (not by rotation angle), eliminates jitter
+      const floatPhase = timeNow * (0.74 + (index % 7) * 0.06) + index * 0.85;
+      const swayX = Math.sin(floatPhase) * 12;
+      const swayY = Math.cos(floatPhase * 0.87) * 10 - Math.sin(floatPhase * 0.42) * 5;
+      const swayZ = Math.sin(floatPhase * 0.65) * 5;
+      const rotateYDeg = Math.sin(timeNow * 0.7 + index * 0.5) * 15;
+      const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
+      const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
+
+      return {
+        ...character,
+        sortZ: tiltedVector.z,
+        style: {
+          '--card-x': `${tiltedVector.x.toFixed(4)}`,
+          '--card-y': `${tiltedVector.y.toFixed(4)}`,
+          '--card-z': `${tiltedVector.z.toFixed(4)}`,
+          '--card-scale': `${scale.toFixed(4)}`,
+          '--card-opacity': `${opacity.toFixed(4)}`,
+          '--card-sway-x': `${swayX.toFixed(2)}px`,
+          '--card-sway-y': `${swayY.toFixed(2)}px`,
+          '--card-sway-z': `${swayZ.toFixed(2)}px`,
+          '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
+          '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
+          '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
+          '--card-blur': `${blur.toFixed(2)}px`,
+        },
+      };
+    })
+    // z-order: back cards first in DOM → rendered behind front cards
+    .sort((a, b) => a.sortZ - b.sortZ);
 
   return (
     <div className="sphere-cloud card-panel" ref={containerRef} onContextMenu={preventContextMenu}>
@@ -345,7 +339,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           opacity: visible ? 1 : 0,
           transition: 'max-height 0.5s ease, min-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease',
           overflow: 'hidden',
-          touchAction: 'none',
+          touchAction: 'manipulation',
         }}
         onMouseDown={visible ? handlePointerDown : undefined}
         onMouseMove={visible ? handlePointerMove : undefined}
@@ -365,7 +359,6 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           style={{
             opacity: imagesReady ? 1 : 0,
             transition: 'opacity 0.6s ease',
-            zoom: viewportScale,
           }}
         >
           {renderedCharacters.map((character) => (

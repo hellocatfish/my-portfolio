@@ -1,4 +1,4 @@
-﻿﻿﻿.page-shell {
+﻿﻿.page-shell {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -580,7 +580,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(74px, min(18vw, 13vmin), 132px);
+  width: clamp(52px, min(14vw, 11vmin), 84px);
   transform-style: preserve-3d;
   will-change: transform;
   transform:
@@ -589,8 +589,9 @@
       calc(var(--card-y) * min(180px, 17.5vmin) + var(--card-sway-y)),
       calc(var(--card-z) * min(200px, 19.5vmin) + var(--card-sway-z))
     )
+    translate(-50%, -50%)
     scale(var(--card-scale));
-  margin: -72px 0 0 calc(clamp(74px, min(18vw, 13vmin), 132px) / -2);
+  margin: 0;
   opacity: var(--card-opacity);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
