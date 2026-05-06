@@ -528,10 +528,12 @@
 }
 
 .sphere-cloud-scene {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: min(100%, min(940px, 88vmin));
   height: min(540px, 52vmin);
-  margin: 0 auto;
+  transform: translate(-50%, -50%);
   transform-style: preserve-3d;
 }
 
@@ -584,11 +586,7 @@
   transform-style: preserve-3d;
   will-change: transform;
   transform:
-    translate3d(
-      calc(var(--card-x) * min(248px, 24vmin) + var(--card-sway-x)),
-      calc(var(--card-y) * min(180px, 17.5vmin) + var(--card-sway-y)),
-      calc(var(--card-z) * min(200px, 19.5vmin) + var(--card-sway-z))
-    )
+    translate3d(var(--card-pos-x), var(--card-pos-y), var(--card-pos-z))
     translate(-50%, -50%)
     scale(var(--card-scale));
   margin: 0;

@@ -87,6 +87,17 @@ function preventContextMenu(e) {
   return false;
 }
 
+/**
+ * Returns the sphere core diameter (px) that matches the CSS breakpoints.
+ * Core is always a circle, so diameter === CSS width/height.
+ */
+function getSphereCoreSize() {
+  const w = window.innerWidth;
+  if (w <= 560) return 210;
+  if (w <= 860) return 250;
+  return 340;
+}
+
 export default function SphereCardCloud({ activeStateLabel, activeTone, characters, renderImage }) {
   const [activeState, setActiveState] = useState('all');
   const containerRef = useRef(null);
@@ -268,6 +279,13 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   const totalAngleY = autoRotateRef.current ? orbitNow : userAngleY;
   const totalAngleX = autoRotateRef.current ? 0 : userAngleX;
 
+  // Card orbit radii proportional to the actual sphere core size
+  // Ratios from desktop: X=1.46×radius, Y=1.06×radius, Z=1.18×radius
+  const coreRadius = getSphereCoreSize() / 2;
+  const orbRadX = coreRadius * 1.46;
+  const orbRadY = coreRadius * 1.06;
+  const orbRadZ = coreRadius * 1.18;
+
   const renderedCharacters = sphereCharacters
     .map((character, index) => {
       const orbitalVector = rotateY(character.vector, totalAngleY);
@@ -291,18 +309,20 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
       const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
 
+      // Pre-compute pixel positions to avoid CSS calc() with vmin across breakpoints
+      const posX = tiltedVector.x * orbRadX + swayX;
+      const posY = tiltedVector.y * orbRadY + swayY;
+      const posZ = tiltedVector.z * orbRadZ + swayZ;
+
       return {
         ...character,
         sortZ: tiltedVector.z,
         style: {
-          '--card-x': `${tiltedVector.x.toFixed(4)}`,
-          '--card-y': `${tiltedVector.y.toFixed(4)}`,
-          '--card-z': `${tiltedVector.z.toFixed(4)}`,
+          '--card-pos-x': `${posX.toFixed(2)}px`,
+          '--card-pos-y': `${posY.toFixed(2)}px`,
+          '--card-pos-z': `${posZ.toFixed(2)}px`,
           '--card-scale': `${scale.toFixed(4)}`,
           '--card-opacity': `${opacity.toFixed(4)}`,
-          '--card-sway-x': `${swayX.toFixed(2)}px`,
-          '--card-sway-y': `${swayY.toFixed(2)}px`,
-          '--card-sway-z': `${swayZ.toFixed(2)}px`,
           '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
           '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
           '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
