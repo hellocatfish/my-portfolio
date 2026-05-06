@@ -107,9 +107,9 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       const swayX = Math.sin(orbitAngle * 1.3 + index * 0.7) * 12;
       const swayY = Math.cos(orbitAngle * 1.15 + index * 0.55) * 10;
       const swayZ = Math.sin(orbitAngle * 0.9 + index * 0.42) * 5;
-      const rotateY = Math.sin(orbitAngle * 1.1 + index * 0.5) * 15;
-      const rotateX = Math.cos(orbitAngle * 0.85 + index * 0.6) * 10;
-      const rotateZ = Math.sin(orbitAngle * 0.95 + index * 0.45) * 6;
+      const rotateYDeg = Math.sin(orbitAngle * 1.1 + index * 0.5) * 15;
+      const rotateXDeg = Math.cos(orbitAngle * 0.85 + index * 0.6) * 10;
+      const rotateZDeg = Math.sin(orbitAngle * 0.95 + index * 0.45) * 6;
       const blur = (1 - depth) * 1.6;
 
       return {
@@ -124,9 +124,9 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           '--card-sway-x': `${swayX.toFixed(2)}px`,
           '--card-sway-y': `${swayY.toFixed(2)}px`,
           '--card-sway-z': `${swayZ.toFixed(2)}px`,
-          '--card-rotate-y': `${rotateY.toFixed(2)}deg`,
-          '--card-rotate-x': `${rotateX.toFixed(2)}deg`,
-          '--card-rotate-z': `${rotateZ.toFixed(2)}deg`,
+          '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
+          '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
+          '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
           '--card-blur': `${blur.toFixed(2)}px`,
         },
       };
