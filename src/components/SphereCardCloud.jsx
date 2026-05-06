@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { buildSmallImageUrl } from '../utils/portfolio';
 import { STATES } from '../data/portfolioData';
 
@@ -114,16 +114,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
   const [imagesReady, setImagesReady] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  // Drag rotation state
-  const [userAngleY, setUserAngleY] = useState(0);
-  const [userAngleX, setUserAngleX] = useState(0);
-  const [isUserDragging, setIsUserDragging] = useState(false);
-  const isDragging = useRef(false);
-  const lastPointerPos = useRef({ x: 0, y: 0 });
-  const velocityRef = useRef({ x: 0, y: 0 });
-  const currentAngleRef = useRef({ angleY: 0, angleX: 0 });
-  const autoRotateRef = useRef(true);
-  const lastDragTime = useRef(0);
+  // Rotation state
   const orbitRef = useRef(0);
   const timeRef = useRef(0);
   const [, forceUpdate] = useState(0);
@@ -155,7 +146,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
     Promise.all(urls.map(preloadImage)).then(() => setImagesReady(true));
   }, [sphereCharacters]);
 
-  // Animation loop: handles auto-rotate + inertia + sway
+  // Animation loop: auto-rotation + sway time
   useEffect(() => {
     let startTime = 0;
     let rafId = 0;
@@ -166,37 +157,9 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       }
 
       const elapsed = time - startTime;
-      const autoAngle = -((elapsed / 34000) * Math.PI * 2);
-      orbitRef.current = autoAngle;
-      timeRef.current = elapsed / 1000; // seconds
+      orbitRef.current = -((elapsed / 34000) * Math.PI * 2);
+      timeRef.current = elapsed / 1000;
 
-      if (!autoRotateRef.current && !isDragging.current) {
-        const decay = 0.955;
-        velocityRef.current.x *= decay;
-        velocityRef.current.y *= decay;
-
-        if (Math.abs(velocityRef.current.x) > 0.0002 || Math.abs(velocityRef.current.y) > 0.0002) {
-          currentAngleRef.current.angleY += velocityRef.current.x;
-          currentAngleRef.current.angleX += velocityRef.current.y;
-
-          // Clamp X rotation
-          currentAngleRef.current.angleX = Math.max(
-            -Math.PI / 2,
-            Math.min(Math.PI / 2, currentAngleRef.current.angleX),
-          );
-
-          setUserAngleY(currentAngleRef.current.angleY);
-          setUserAngleX(currentAngleRef.current.angleX);
-        } else {
-          // Inertia stopped, resume auto-rotate
-          autoRotateRef.current = true;
-          currentAngleRef.current = { angleY: 0, angleX: 0 };
-          setUserAngleY(0);
-          setUserAngleX(0);
-        }
-      }
-
-      // Trigger re-render every frame for smooth sway animation
       forceUpdate((n) => n + 1);
       rafId = window.requestAnimationFrame(loop);
     };
@@ -208,95 +171,32 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
     };
   }, []);
 
-  const handlePointerDown = useCallback((e) => {
-    // Skip multi-touch events — allow native pinch-zoom
-    if (e.touches && e.touches.length > 1) return;
-
-    e.preventDefault();
-    isDragging.current = true;
-    setIsUserDragging(true);
-    autoRotateRef.current = false;
-
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    lastPointerPos.current = { x: clientX, y: clientY };
-    velocityRef.current = { x: 0, y: 0 };
-    lastDragTime.current = performance.now();
-  }, []);
-
-  const handlePointerMove = useCallback((e) => {
-    if (!isDragging.current) return;
-
-    // Skip multi-touch events during drag
-    if (e.touches && e.touches.length > 1) return;
-
-    e.preventDefault();
-
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    const dx = clientX - lastPointerPos.current.x;
-    const dy = clientY - lastPointerPos.current.y;
-
-    const now = performance.now();
-    const dt = Math.max(now - lastDragTime.current, 1);
-    lastDragTime.current = now;
-
-    const sensitivity = 0.006;
-    const deltaAngleY = dx * sensitivity;
-    const deltaAngleX = -dy * sensitivity;
-
-    // Track velocity for inertia (normalized to ~60fps)
-    velocityRef.current = {
-      x: deltaAngleY * (16 / dt) * 0.8,
-      y: deltaAngleX * (16 / dt) * 0.8,
-    };
-
-    currentAngleRef.current.angleY += deltaAngleY;
-    currentAngleRef.current.angleX += deltaAngleX;
-
-    // Clamp X rotation to prevent flipping
-    currentAngleRef.current.angleX = Math.max(
-      -Math.PI / 2,
-      Math.min(Math.PI / 2, currentAngleRef.current.angleX),
-    );
-
-    setUserAngleY(currentAngleRef.current.angleY);
-    setUserAngleX(currentAngleRef.current.angleX);
-
-    lastPointerPos.current = { x: clientX, y: clientY };
-  }, []);
-
-  const handlePointerUp = useCallback(() => {
-    isDragging.current = false;
-    setIsUserDragging(false);
-  }, []);
-
   // Compute rendered characters (runs every render frame)
   const orbitNow = orbitRef.current;
   const timeNow = timeRef.current;
-  const totalAngleY = autoRotateRef.current ? orbitNow : userAngleY;
-  const totalAngleX = autoRotateRef.current ? 0 : userAngleX;
+
+  // Card width = image height × (4/5.4), where image height = core size / 3
+  const coreSize = getSphereCoreSize();
+  const cardWidth = Math.round(coreSize / 3 * (4 / 5.4));
 
   // Card orbit radii proportional to the actual sphere core size
   // Ratios from desktop: X=1.46×radius, Y=1.06×radius, Z=1.18×radius
-  const coreRadius = getSphereCoreSize() / 2;
+  const coreRadius = coreSize / 2;
   const orbRadX = coreRadius * 1.46;
   const orbRadY = coreRadius * 1.06;
   const orbRadZ = coreRadius * 1.18;
 
   const renderedCharacters = sphereCharacters
     .map((character, index) => {
-      const orbitalVector = rotateY(character.vector, totalAngleY);
-      const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24 + totalAngleX), -0.12);
+      const orbitalVector = rotateY(character.vector, orbitNow);
+      const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24), -0.12);
 
       // Current z-depth after all rotations, normalized to 0-1
       // 1.0 = directly facing viewer, 0.0 = facing away
       const currentDepth = (tiltedVector.z + 1) / 2;
 
-      // Visual properties driven purely by current depth — no double-multiplication
-      const scale = 0.50 + currentDepth * 0.50;        // 0.50 (back) → 1.00 (front)
+      // Visual depth: card size is CONSTANT (=core/3) via CSS width
+      // Depth is conveyed through opacity + blur only
       const opacity = 0.10 + currentDepth * 0.90;       // 0.10 (back) → 1.00 (front)
       const blur = (1 - currentDepth) * 2.4;             // 2.4px (back) → 0px (front)
 
@@ -309,7 +209,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
       const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
 
-      // Pre-compute pixel positions to avoid CSS calc() with vmin across breakpoints
+      // Pre-compute pixel positions
       const posX = tiltedVector.x * orbRadX + swayX;
       const posY = tiltedVector.y * orbRadY + swayY;
       const posZ = tiltedVector.z * orbRadZ + swayZ;
@@ -318,10 +218,10 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
         ...character,
         sortZ: tiltedVector.z,
         style: {
+          '--card-width': `${cardWidth}px`,
           '--card-pos-x': `${posX.toFixed(2)}px`,
           '--card-pos-y': `${posY.toFixed(2)}px`,
           '--card-pos-z': `${posZ.toFixed(2)}px`,
-          '--card-scale': `${scale.toFixed(4)}`,
           '--card-opacity': `${opacity.toFixed(4)}`,
           '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
           '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
@@ -359,15 +259,7 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           opacity: visible ? 1 : 0,
           transition: 'max-height 0.5s ease, min-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease',
           overflow: 'hidden',
-          touchAction: 'manipulation',
         }}
-        onMouseDown={visible ? handlePointerDown : undefined}
-        onMouseMove={visible ? handlePointerMove : undefined}
-        onMouseUp={visible ? handlePointerUp : undefined}
-        onMouseLeave={visible ? handlePointerUp : undefined}
-        onTouchStart={visible ? handlePointerDown : undefined}
-        onTouchMove={visible ? handlePointerMove : undefined}
-        onTouchEnd={visible ? handlePointerUp : undefined}
         onContextMenu={preventContextMenu}
       >
         <div className="sphere-cloud-halo sphere-cloud-halo-left" aria-hidden="true" />

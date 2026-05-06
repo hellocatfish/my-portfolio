@@ -582,13 +582,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: clamp(52px, min(14vw, 11vmin), 84px);
+  width: var(--card-width);
   transform-style: preserve-3d;
   will-change: transform;
   transform:
     translate3d(var(--card-pos-x), var(--card-pos-y), var(--card-pos-z))
-    translate(-50%, -50%)
-    scale(var(--card-scale));
+    translate(-50%, -50%);
   margin: 0;
   opacity: var(--card-opacity);
   -webkit-touch-callout: none;
