@@ -19,6 +19,12 @@ import { useReveal } from '../utils/useReveal';
 
 const CHARACTERS = buildCharacters(STATES);
 
+/**
+ * 球形卡牌云总开关
+ * 设为 false 可彻底关闭球形卡牌云，前端不再渲染该组件
+ */
+const SPHERE_CLOUD_ENABLED = true;
+
 function Reveal({ children, className = '', delay = 0 }) {
   const [ref, visible] = useReveal();
 
@@ -224,21 +230,23 @@ export default function PortfolioPage() {
             </div>
           </Reveal>
 
-          <Reveal delay={180}>
-            <SphereCardCloud
-              activeStateLabel={activeStateMeta.label}
-              activeTone={activeStateMeta.tone}
-              characters={galleryCharacters}
-              renderImage={(item, className) => (
-                <CharacterImage
-                  code={item.code}
-                  name={item.name}
-                  className={className}
-                  variant="sphere"
-                />
-              )}
-            />
-          </Reveal>
+          {SPHERE_CLOUD_ENABLED && (
+            <Reveal delay={180}>
+              <SphereCardCloud
+                activeStateLabel={activeStateMeta.label}
+                activeTone={activeStateMeta.tone}
+                characters={galleryCharacters}
+                renderImage={(item, className) => (
+                  <CharacterImage
+                    code={item.code}
+                    name={item.name}
+                    className={className}
+                    variant="sphere"
+                  />
+                )}
+              />
+            </Reveal>
+          )}
 
           <Reveal delay={220}>
             <div className="gallery-summary card-panel">

@@ -1,4 +1,4 @@
-﻿.page-shell {
+﻿﻿.page-shell {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
@@ -411,10 +411,42 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.75fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
-  align-items: end;
+  align-items: center;
   margin-bottom: 24px;
+}
+
+.sphere-cloud-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f3d694;
+  font-size: 0.85rem;
+  font-family: 'Noto Sans SC', system-ui, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  white-space: nowrap;
+}
+
+.sphere-cloud-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.sphere-cloud-toggle:active {
+  transform: translateY(0);
+}
+
+.sphere-cloud-toggle-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .sphere-cloud-label {
@@ -505,17 +537,16 @@
   left: 50%;
   width: 132px;
   transform-style: preserve-3d;
+  will-change: transform;
   transform:
     translate3d(
-      calc(var(--card-x) * 248px),
-      calc(var(--card-y) * 180px),
-      calc(var(--card-z) * 200px)
+      calc(var(--card-x) * 248px + var(--card-sway-x)),
+      calc(var(--card-y) * 180px + var(--card-sway-y)),
+      calc(var(--card-z) * 200px + var(--card-sway-z))
     )
     scale(var(--card-scale));
   margin: -72px 0 0 -66px;
   opacity: var(--card-opacity);
-  animation: sphere-float 8.5s ease-in-out infinite;
-  animation-delay: var(--float-delay);
 }
 
 .sphere-cloud-card-shell {
@@ -540,6 +571,9 @@
     0 14px 34px rgba(0, 0, 0, 0.24),
     0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   transition: box-shadow 340ms ease, transform 340ms ease;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
 }
 
 .sphere-cloud-image {
@@ -548,6 +582,10 @@
   height: 100%;
   object-fit: cover;
   filter: saturate(1.03) brightness(0.98);
+  background: rgba(18, 22, 30, 0.92);
+  min-height: 0;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .sphere-cloud-meta {
@@ -673,29 +711,6 @@
   }
 }
 
-@keyframes sphere-float {
-  0%,
-  100% {
-    transform:
-      translate3d(
-        calc(var(--card-x) * 248px + var(--card-sway-x)),
-        calc(var(--card-y) * 180px + var(--card-sway-y)),
-        calc(var(--card-z) * 200px + var(--card-sway-z))
-      )
-      scale(var(--card-scale));
-  }
-
-  50% {
-    transform:
-      translate3d(
-        calc(var(--card-x) * 248px + var(--card-sway-x)),
-        calc(var(--card-y) * 180px + var(--card-sway-y) - 10px),
-        calc(var(--card-z) * 200px + var(--card-sway-z))
-      )
-      scale(calc(var(--card-scale) + 0.04));
-  }
-}
-
 @media (max-width: 1180px) {
   .hero-grid,
   .section-heading,
@@ -722,35 +737,13 @@
     margin: -64px 0 0 -59px;
     transform:
       translate3d(
-        calc(var(--card-x) * 216px),
-        calc(var(--card-y) * 158px),
-        calc(var(--card-z) * 180px)
+        calc(var(--card-x) * 216px + var(--card-sway-x)),
+        calc(var(--card-y) * 158px + var(--card-sway-y)),
+        calc(var(--card-z) * 180px + var(--card-sway-z))
       )
       scale(var(--card-scale));
   }
 
-  @keyframes sphere-float {
-    0%,
-    100% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 216px + var(--card-sway-x)),
-          calc(var(--card-y) * 158px + var(--card-sway-y)),
-          calc(var(--card-z) * 180px + var(--card-sway-z))
-        )
-        scale(var(--card-scale));
-    }
-
-    50% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 216px + var(--card-sway-x)),
-          calc(var(--card-y) * 158px + var(--card-sway-y) - 8px),
-          calc(var(--card-z) * 180px + var(--card-sway-z))
-        )
-        scale(calc(var(--card-scale) + 0.04));
-    }
-  }
 }
 
 @media (max-width: 860px) {
@@ -804,38 +797,15 @@
     margin: -50px 0 0 -46px;
     transform:
       translate3d(
-        calc(var(--card-x) * 168px),
-        calc(var(--card-y) * 126px),
-        calc(var(--card-z) * 126px)
+        calc(var(--card-x) * 168px + var(--card-sway-x)),
+        calc(var(--card-y) * 126px + var(--card-sway-y)),
+        calc(var(--card-z) * 126px + var(--card-sway-z))
       )
       scale(var(--card-scale));
   }
 
   .sphere-cloud-meta strong {
     font-size: 0.8rem;
-  }
-
-  @keyframes sphere-float {
-    0%,
-    100% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 168px + var(--card-sway-x)),
-          calc(var(--card-y) * 126px + var(--card-sway-y)),
-          calc(var(--card-z) * 126px + var(--card-sway-z))
-        )
-        scale(var(--card-scale));
-    }
-
-    50% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 168px + var(--card-sway-x)),
-          calc(var(--card-y) * 126px + var(--card-sway-y) - 6px),
-          calc(var(--card-z) * 126px + var(--card-sway-z))
-        )
-        scale(calc(var(--card-scale) + 0.04));
-    }
   }
 
   .footer {
@@ -889,6 +859,12 @@
     font-size: 1.5rem;
   }
 
+  .sphere-cloud-toggle {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
+
   .sphere-cloud-stage {
     min-height: 340px;
   }
@@ -907,11 +883,15 @@
     margin: -40px 0 0 -37px;
     transform:
       translate3d(
-        calc(var(--card-x) * 126px),
-        calc(var(--card-y) * 98px),
-        calc(var(--card-z) * 92px)
+        calc(var(--card-x) * 126px + var(--card-sway-x)),
+        calc(var(--card-y) * 98px + var(--card-sway-y)),
+        calc(var(--card-z) * 92px + var(--card-sway-z))
       )
       scale(var(--card-scale));
+  }
+
+  .sphere-cloud-thumb {
+    border-radius: 16px;
   }
 
   .sphere-cloud-meta {
@@ -949,26 +929,4 @@
     text-align: center;
   }
 
-  @keyframes sphere-float {
-    0%,
-    100% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 126px + var(--card-sway-x)),
-          calc(var(--card-y) * 98px + var(--card-sway-y)),
-          calc(var(--card-z) * 92px + var(--card-sway-z))
-        )
-        scale(var(--card-scale));
-    }
-
-    50% {
-      transform:
-        translate3d(
-          calc(var(--card-x) * 126px + var(--card-sway-x)),
-          calc(var(--card-y) * 98px + var(--card-sway-y) - 5px),
-          calc(var(--card-z) * 92px + var(--card-sway-z))
-        )
-        scale(calc(var(--card-scale) + 0.04));
-    }
-  }
 }

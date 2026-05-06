@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { buildSmallImageUrl } from '../utils/portfolio';
 
 function sampleCharacters(characters, maxItems) {
@@ -85,8 +85,22 @@ function preloadImage(url) {
 
 export default function SphereCardCloud({ activeStateLabel, activeTone, characters, renderImage }) {
   const sphereCharacters = useMemo(() => buildSphereLayout(characters), [characters]);
-  const [orbitAngle, setOrbitAngle] = useState(0);
   const [imagesReady, setImagesReady] = useState(false);
+  const [visible, setVisible] = useState(true);
+
+  // Drag rotation state
+  const [userAngleY, setUserAngleY] = useState(0);
+  const [userAngleX, setUserAngleX] = useState(0);
+  const [isUserDragging, setIsUserDragging] = useState(false);
+  const isDragging = useRef(false);
+  const lastPointerPos = useRef({ x: 0, y: 0 });
+  const velocityRef = useRef({ x: 0, y: 0 });
+  const currentAngleRef = useRef({ angleY: 0, angleX: 0 });
+  const autoRotateRef = useRef(true);
+  const lastDragTime = useRef(0);
+  const orbitRef = useRef(0);
+  const timeRef = useRef(0);
+  const [, forceUpdate] = useState(0);
 
   useEffect(() => {
     setImagesReady(false);
@@ -94,9 +108,10 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
     Promise.all(urls.map(preloadImage)).then(() => setImagesReady(true));
   }, [sphereCharacters]);
 
+  // Animation loop: handles auto-rotate + inertia + sway
   useEffect(() => {
-    let frameId = 0;
     let startTime = 0;
+    let rafId = 0;
 
     const loop = (time) => {
       if (!startTime) {
@@ -104,51 +119,147 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
       }
 
       const elapsed = time - startTime;
-      const angle = -((elapsed / 34000) * Math.PI * 2);
-      setOrbitAngle(angle);
-      frameId = window.requestAnimationFrame(loop);
+      const autoAngle = -((elapsed / 34000) * Math.PI * 2);
+      orbitRef.current = autoAngle;
+      timeRef.current = elapsed / 1000; // seconds
+
+      if (!autoRotateRef.current && !isDragging.current) {
+        const decay = 0.955;
+        velocityRef.current.x *= decay;
+        velocityRef.current.y *= decay;
+
+        if (Math.abs(velocityRef.current.x) > 0.0002 || Math.abs(velocityRef.current.y) > 0.0002) {
+          currentAngleRef.current.angleY += velocityRef.current.x;
+          currentAngleRef.current.angleX += velocityRef.current.y;
+
+          // Clamp X rotation
+          currentAngleRef.current.angleX = Math.max(
+            -Math.PI / 2,
+            Math.min(Math.PI / 2, currentAngleRef.current.angleX),
+          );
+
+          setUserAngleY(currentAngleRef.current.angleY);
+          setUserAngleX(currentAngleRef.current.angleX);
+        } else {
+          // Inertia stopped, resume auto-rotate
+          autoRotateRef.current = true;
+          currentAngleRef.current = { angleY: 0, angleX: 0 };
+          setUserAngleY(0);
+          setUserAngleX(0);
+        }
+      }
+
+      // Trigger re-render every frame for smooth sway animation
+      forceUpdate((n) => n + 1);
+      rafId = window.requestAnimationFrame(loop);
     };
 
-    frameId = window.requestAnimationFrame(loop);
+    rafId = window.requestAnimationFrame(loop);
 
-    return () => window.cancelAnimationFrame(frameId);
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+    };
   }, []);
 
-  const renderedCharacters = useMemo(() => {
-    return sphereCharacters.map((character, index) => {
-      const orbitalVector = rotateY(character.vector, orbitAngle);
-      const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24), -0.12);
-      const depth = (tiltedVector.z + 1) / 2;
-      const scale = character.baseScale * (0.9 + depth * 0.22);
-      const opacity = Math.max(0.28, character.baseOpacity * (0.82 + depth * 0.2));
-      const swayX = Math.sin(orbitAngle * 1.3 + index * 0.7) * 12;
-      const swayY = Math.cos(orbitAngle * 1.15 + index * 0.55) * 10;
-      const swayZ = Math.sin(orbitAngle * 0.9 + index * 0.42) * 5;
-      const rotateYDeg = Math.sin(orbitAngle * 1.1 + index * 0.5) * 15;
-      const rotateXDeg = Math.cos(orbitAngle * 0.85 + index * 0.6) * 10;
-      const rotateZDeg = Math.sin(orbitAngle * 0.95 + index * 0.45) * 6;
-      const blur = (1 - depth) * 1.6;
+  const handlePointerDown = useCallback((e) => {
+    e.preventDefault();
+    isDragging.current = true;
+    setIsUserDragging(true);
+    autoRotateRef.current = false;
 
-      return {
-        ...character,
-        style: {
-          '--float-delay': character.floatDelay,
-          '--card-x': `${tiltedVector.x.toFixed(4)}`,
-          '--card-y': `${tiltedVector.y.toFixed(4)}`,
-          '--card-z': `${tiltedVector.z.toFixed(4)}`,
-          '--card-scale': `${scale.toFixed(4)}`,
-          '--card-opacity': `${opacity.toFixed(4)}`,
-          '--card-sway-x': `${swayX.toFixed(2)}px`,
-          '--card-sway-y': `${swayY.toFixed(2)}px`,
-          '--card-sway-z': `${swayZ.toFixed(2)}px`,
-          '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
-          '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
-          '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
-          '--card-blur': `${blur.toFixed(2)}px`,
-        },
-      };
-    });
-  }, [orbitAngle, sphereCharacters]);
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    lastPointerPos.current = { x: clientX, y: clientY };
+    velocityRef.current = { x: 0, y: 0 };
+    lastDragTime.current = performance.now();
+  }, []);
+
+  const handlePointerMove = useCallback((e) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    const dx = clientX - lastPointerPos.current.x;
+    const dy = clientY - lastPointerPos.current.y;
+
+    const now = performance.now();
+    const dt = Math.max(now - lastDragTime.current, 1);
+    lastDragTime.current = now;
+
+    const sensitivity = 0.006;
+    const deltaAngleY = dx * sensitivity;
+    const deltaAngleX = -dy * sensitivity;
+
+    // Track velocity for inertia (normalized to ~60fps)
+    velocityRef.current = {
+      x: deltaAngleY * (16 / dt) * 0.8,
+      y: deltaAngleX * (16 / dt) * 0.8,
+    };
+
+    currentAngleRef.current.angleY += deltaAngleY;
+    currentAngleRef.current.angleX += deltaAngleX;
+
+    // Clamp X rotation to prevent flipping
+    currentAngleRef.current.angleX = Math.max(
+      -Math.PI / 2,
+      Math.min(Math.PI / 2, currentAngleRef.current.angleX),
+    );
+
+    setUserAngleY(currentAngleRef.current.angleY);
+    setUserAngleX(currentAngleRef.current.angleX);
+
+    lastPointerPos.current = { x: clientX, y: clientY };
+  }, []);
+
+  const handlePointerUp = useCallback(() => {
+    isDragging.current = false;
+    setIsUserDragging(false);
+  }, []);
+
+  // Compute rendered characters (runs every render frame)
+  const orbitNow = orbitRef.current;
+  const timeNow = timeRef.current;
+  const totalAngleY = autoRotateRef.current ? orbitNow : userAngleY;
+  const totalAngleX = autoRotateRef.current ? 0 : userAngleX;
+
+  const renderedCharacters = sphereCharacters.map((character, index) => {
+    const orbitalVector = rotateY(character.vector, totalAngleY);
+    const tiltedVector = rotateZ(rotateX(orbitalVector, -0.24 + totalAngleX), -0.12);
+    const depth = (tiltedVector.z + 1) / 2;
+    const scale = character.baseScale * (0.9 + depth * 0.22);
+    const opacity = Math.max(0.28, character.baseOpacity * (0.82 + depth * 0.2));
+
+    // Smooth sway driven by time (not by rotation angle), eliminates jitter
+    const floatPhase = timeNow * (0.74 + (index % 7) * 0.06) + index * 0.85;
+    const swayX = Math.sin(floatPhase) * 12;
+    const swayY = Math.cos(floatPhase * 0.87) * 10 - Math.sin(floatPhase * 0.42) * 5;
+    const swayZ = Math.sin(floatPhase * 0.65) * 5;
+    const rotateYDeg = Math.sin(timeNow * 0.7 + index * 0.5) * 15;
+    const rotateXDeg = Math.cos(timeNow * 0.55 + index * 0.6) * 10;
+    const rotateZDeg = Math.sin(timeNow * 0.62 + index * 0.45) * 6;
+    const blur = (1 - depth) * 1.6;
+
+    return {
+      ...character,
+      style: {
+        '--card-x': `${tiltedVector.x.toFixed(4)}`,
+        '--card-y': `${tiltedVector.y.toFixed(4)}`,
+        '--card-z': `${tiltedVector.z.toFixed(4)}`,
+        '--card-scale': `${scale.toFixed(4)}`,
+        '--card-opacity': `${opacity.toFixed(4)}`,
+        '--card-sway-x': `${swayX.toFixed(2)}px`,
+        '--card-sway-y': `${swayY.toFixed(2)}px`,
+        '--card-sway-z': `${swayZ.toFixed(2)}px`,
+        '--card-rotate-y': `${rotateYDeg.toFixed(2)}deg`,
+        '--card-rotate-x': `${rotateXDeg.toFixed(2)}deg`,
+        '--card-rotate-z': `${rotateZDeg.toFixed(2)}deg`,
+        '--card-blur': `${blur.toFixed(2)}px`,
+      },
+    };
+  });
 
   return (
     <div className="sphere-cloud card-panel">
@@ -157,12 +268,36 @@ export default function SphereCardCloud({ activeStateLabel, activeTone, characte
           <span className="sphere-cloud-label">速览</span>
           <h3>{activeStateLabel === '全部' ? '七国' : `${activeStateLabel}国`}</h3>
         </div>
-        {/* <p align='left'>
-          当前阵营：“{activeTone}”。
-        </p> */}
+        <button
+          type="button"
+          className="sphere-cloud-toggle"
+          onClick={() => setVisible((v) => !v)}
+          aria-label={visible ? '关闭球形卡牌云' : '开启球形卡牌云'}
+        >
+          <span className="sphere-cloud-toggle-icon">{visible ? '✕' : '◎'}</span>
+          <span>{visible ? '关闭' : '开启'}</span>
+        </button>
       </div>
 
-      <div className="sphere-cloud-stage">
+      <div
+        className="sphere-cloud-stage"
+        style={{
+          maxHeight: visible ? undefined : '0',
+          minHeight: visible ? undefined : '0',
+          padding: visible ? undefined : '0',
+          opacity: visible ? 1 : 0,
+          transition: 'max-height 0.5s ease, min-height 0.5s ease, padding 0.5s ease, opacity 0.4s ease',
+          overflow: 'hidden',
+          touchAction: 'none',
+        }}
+        onMouseDown={visible ? handlePointerDown : undefined}
+        onMouseMove={visible ? handlePointerMove : undefined}
+        onMouseUp={visible ? handlePointerUp : undefined}
+        onMouseLeave={visible ? handlePointerUp : undefined}
+        onTouchStart={visible ? handlePointerDown : undefined}
+        onTouchMove={visible ? handlePointerMove : undefined}
+        onTouchEnd={visible ? handlePointerUp : undefined}
+      >
         <div className="sphere-cloud-halo sphere-cloud-halo-left" aria-hidden="true" />
         <div className="sphere-cloud-halo sphere-cloud-halo-right" aria-hidden="true" />
         <div className="sphere-cloud-core" aria-hidden="true" />
