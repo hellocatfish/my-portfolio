@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { buildSmallImageUrl } from '../utils/portfolio';
+import { buildSmallImageUrl, isCharacterLit } from '../utils/portfolio';
 import { STATES } from '../data/portfolioData';
 
 function sampleCharacters(characters, maxItems) {
@@ -129,7 +129,10 @@ export default function SphereCardCloud({ characters, renderImage }) {
 
   useEffect(() => {
     setImagesReady(false);
-    const urls = sphereCharacters.map((c) => buildSmallImageUrl(c.code, c.name));
+    // 仅预加载已点亮人物的真实立绘；未点亮者使用本地占位 SVG，无需预载。
+    const urls = sphereCharacters
+      .filter((c) => isCharacterLit(c.name))
+      .map((c) => buildSmallImageUrl(c.code, c.name));
     Promise.all(urls.map(preloadImage)).then(() => setImagesReady(true));
   }, [sphereCharacters]);
 
@@ -203,49 +206,71 @@ export default function SphereCardCloud({ characters, renderImage }) {
 
   return (
     <div className="sphere-cloud" ref={containerRef} onContextMenu={preventContextMenu}>
-      <div className="sphere-cloud-filter-bar">
-        {STATES.map((state) => (
-          <button
-            key={state.key}
-            type="button"
-            className={`sphere-cloud-chip ${state.key === activeState ? 'active' : ''}`}
-            onClick={() => setActiveState(state.key)}
-          >
-            <span>{state.label}</span>
-          </button>
-        ))}
+      {/* 飞船舱壁的环境光与面板纹理 */}
+      <div className="cabin-ambient cabin-ambient-left" aria-hidden="true" />
+      <div className="cabin-ambient cabin-ambient-right" aria-hidden="true" />
+      <div className="cabin-panels" aria-hidden="true" />
+
+      {/* 舱壁顶部控制面板：阵营筛选 */}
+      <div className="cabin-deck">
+        <div className="sphere-cloud-filter-bar">
+          {STATES.map((state) => (
+            <button
+              key={state.key}
+              type="button"
+              className={`sphere-cloud-chip ${state.key === activeState ? 'active' : ''}`}
+              onClick={() => setActiveState(state.key)}
+            >
+              <span>{state.label}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="sphere-cloud-stage" onContextMenu={preventContextMenu}>
-        <div className="sphere-cloud-halo sphere-cloud-halo-left" aria-hidden="true" />
-        <div className="sphere-cloud-halo sphere-cloud-halo-right" aria-hidden="true" />
-        <div className="sphere-cloud-core" aria-hidden="true" />
+      {/* 宇宙舷窗：窗外即漂浮的球形卡牌云 */}
+      <div className="porthole">
+        <div className="porthole-window" onContextMenu={preventContextMenu}>
+          {/* 窗内深空与星野 */}
+          <div className="porthole-space" aria-hidden="true">
+            <div className="porthole-stars" />
+            <div className="porthole-stars porthole-stars-far" />
+          </div>
 
-        <div
-          className="sphere-cloud-scene"
-          style={{
-            opacity: imagesReady ? 1 : 0,
-            transition: 'opacity 0.6s ease',
-          }}
-        >
-          {renderedCharacters.map((character) => (
-            <article
-              key={`sphere-${character.id}`}
-              className="sphere-cloud-card"
-              style={character.style}
-              onContextMenu={preventContextMenu}
+          <div className="sphere-cloud-stage" onContextMenu={preventContextMenu}>
+            <div className="sphere-cloud-halo sphere-cloud-halo-left" aria-hidden="true" />
+            <div className="sphere-cloud-halo sphere-cloud-halo-right" aria-hidden="true" />
+            <div className="sphere-cloud-core" aria-hidden="true" />
+
+            <div
+              className="sphere-cloud-scene"
+              style={{
+                opacity: imagesReady ? 1 : 0,
+                transition: 'opacity 0.6s ease',
+              }}
             >
-              <div className="sphere-cloud-card-shell">
-                <div className="sphere-cloud-thumb">
-                  {renderImage(character, 'sphere-cloud-image select-none pointer-events-none')}
-                </div>
-                <div className="sphere-cloud-meta">
-                  <span>{character.stateLabel}</span>
-                  <strong>{character.name}</strong>
-                </div>
-              </div>
-            </article>
-          ))}
+              {renderedCharacters.map((character) => (
+                <article
+                  key={`sphere-${character.id}`}
+                  className="sphere-cloud-card"
+                  style={character.style}
+                  onContextMenu={preventContextMenu}
+                >
+                  <div className="sphere-cloud-card-shell">
+                    <div className="sphere-cloud-thumb">
+                      {renderImage(character, 'sphere-cloud-image select-none pointer-events-none')}
+                    </div>
+                    <div className="sphere-cloud-meta">
+                      <span>{character.stateLabel}</span>
+                      <strong>{character.name}</strong>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          {/* 舷窗玻璃反光 */}
+          <div className="porthole-glass" aria-hidden="true" />
         </div>
       </div>
     </div>

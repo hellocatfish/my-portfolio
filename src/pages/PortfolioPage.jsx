@@ -19,6 +19,8 @@ import {
   buildImageCandidates,
   buildMetrics,
   getStateCharacterCount,
+  isCharacterLit,
+  PLACEHOLDER_IMAGE,
 } from '../utils/portfolio';
 import { useReveal } from '../utils/useReveal';
 
@@ -78,17 +80,24 @@ function Reveal({ children, className = '', delay = 0 }) {
 }
 
 function CharacterImage({ code, name, className = '', variant = 'default' }) {
+  const lit = isCharacterLit(name);
   const [sourceIndex, setSourceIndex] = useState(0);
+
+  // 已点亮：真实立绘候选链（最终回退到占位图）；未点亮：直接占位图。
   const imageCandidates = useMemo(
-    () => buildImageCandidates(code, name, variant),
-    [code, name, variant],
+    () =>
+      lit
+        ? [...buildImageCandidates(code, name, variant), PLACEHOLDER_IMAGE]
+        : [PLACEHOLDER_IMAGE],
+    [code, name, variant, lit],
   );
 
   useEffect(() => {
     setSourceIndex(0);
-  }, [code, name, variant]);
+  }, [code, name, variant, lit]);
 
   const imageSrc = imageCandidates[sourceIndex] ?? imageCandidates[0];
+  const isPlaceholder = imageSrc === PLACEHOLDER_IMAGE;
 
   const handleError = () => {
     setSourceIndex((current) => {
@@ -106,7 +115,7 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
       onContextMenu={(event) => event.preventDefault()}
       draggable="false"
       onDragStart={(event) => event.preventDefault()}
-      className={className}
+      className={`${className}${isPlaceholder ? ' is-placeholder' : ''}`.trim()}
     />
   );
 }
@@ -138,7 +147,7 @@ export default function PortfolioPage() {
     <div className="page-shell">
       <div className="page-noise" aria-hidden="true" />
 
-      {/* ===== Main Content Area (top 3/4) ===== */}
+      {/* ===== Main Content Area (top 4/5) ===== */}
       <div className={`main-area ${activeTab !== 'home' ? 'main-area-scroll' : ''}`}>
 
         {/* Back button (visible in sub-pages) */}
