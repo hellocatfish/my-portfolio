@@ -246,7 +246,7 @@ export default function PortfolioPage() {
                     <Sparkles size={16} />
                     <span>精选陈列</span>
                   </div>
-                  <h2>君王、文臣与武将的视觉切片</h2>
+                  <h2>帝王将相的视觉切片</h2>
                 </div>
                 <p>七国人物节选。</p>
               </Reveal>

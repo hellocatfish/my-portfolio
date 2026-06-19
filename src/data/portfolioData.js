@@ -162,7 +162,7 @@ export const FEATURED_CHARACTER_NAMES = [
 export const SITE_COPY = {
   brand: '王道爵士',
   email: 'core2023@qq.com',
-  title: '王道战国志',
+  title: '『王道战国志』',
   subtitle: '王道爵士的个人博客，围绕人物设定、服饰语汇与阵营色彩展开的战国游戏宇宙。',
   summary:
     '色彩设计、道具设计、动作设计、背景设计，都遵从角色的性格与身份，呈现战国后期的七国历史人物群像。',
