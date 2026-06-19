@@ -339,10 +339,9 @@ export default function PortfolioPage() {
                           <span>{item.stateLabel}</span>
                           <span>{item.code}</span>
                         </div>
-                        <h3>{item.name}</h3>
-                        <p>{item.note}</p>
-                        <div className="gallery-meta">
-                          <span>
+                        <div className="gallery-name-row">
+                          <h3>{item.name}</h3>
+                          <span className="gallery-original-tag">
                             <Crown size={14} />
                             原创角色
                           </span>

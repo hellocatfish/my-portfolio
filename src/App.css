@@ -43,7 +43,7 @@
 
 /* Back button */
 .back-btn {
-  position: absolute;
+  position: fixed;
   top: 16px;
   left: 16px;
   z-index: 20;
@@ -746,6 +746,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  margin-top: 28px;
   margin-bottom: 38px;
   max-width: 1240px;
   margin-left: auto;
@@ -955,6 +956,30 @@
   display: grid;
   gap: 12px;
   padding: 18px 18px 20px;
+}
+
+.gallery-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.gallery-name-row h3 {
+  margin: 0;
+}
+
+.gallery-original-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(246, 241, 232, 0.78);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .gallery-topline {
@@ -1206,8 +1231,8 @@
   }
 
   .info-row {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 10px 16px 12px;
   }
