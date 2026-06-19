@@ -4,7 +4,9 @@ import {
   Bot,
   Crown,
   GalleryVerticalEnd,
+  Info,
   Mail,
+  Printer,
   Sparkles,
   SwatchBook,
   Image,
@@ -13,6 +15,7 @@ import {
   Swords,
 } from 'lucide-react';
 import SphereCardCloud from '../components/SphereCardCloud';
+import { buildCharacterResumes, getStatKeys } from '../utils/characterResume';
 import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioData';
 import {
   buildCharacters,
@@ -25,6 +28,8 @@ import {
 import { useReveal } from '../utils/useReveal';
 
 const CHARACTERS = buildCharacters(STATES);
+const CHARACTER_RESUMES = buildCharacterResumes();
+const STAT_KEYS = getStatKeys();
 
 const NAV_TABS = [
   { key: 'art', label: '立绘赏析', icon: Image },
@@ -61,6 +66,44 @@ function BilibiliIcon() {
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path fill="none" d="M0 0h24v24H0z" />
       <path fill="currentColor" d="M18.223 3.086a1.25 1.25 0 0 1 0 1.768L17.08 5.996h1.17A3.75 3.75 0 0 1 22 9.747v7.5a3.75 3.75 0 0 1-3.75 3.75H5.75A3.75 3.75 0 0 1 2 17.247v-7.5a3.75 3.75 0 0 1 3.75-3.75h1.166L5.775 4.855a1.25 1.25 0 1 1 1.767-1.768l2.652 2.652c.079.079.145.165.198.257h3.213c.053-.092.12-.18.199-.258l2.651-2.652a1.25 1.25 0 0 1 1.768 0zm.027 5.42H5.75a1.25 1.25 0 0 0-1.247 1.157l-.003.094v7.5c0 .659.51 1.199 1.157 1.246l.093.004h12.5a1.25 1.25 0 0 0 1.247-1.157l.003-.093v-7.5c0-.69-.56-1.25-1.25-1.25zm-10 2.5c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25zm7.5 0c.69 0 1.25.56 1.25 1.25v1.25a1.25 1.25 0 1 1-2.5 0v-1.25c0-.69.56-1.25 1.25-1.25z" />
+    </svg>
+  );
+}
+
+function ThemeToggleIcon({ theme }) {
+  const isLight = theme === 'light';
+
+  return (
+    <svg viewBox="0 0 56 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect
+        x={isLight ? '4' : '30'}
+        y="4"
+        width="22"
+        height="20"
+        rx="10"
+        fill="currentColor"
+        className="theme-toggle-pill"
+      />
+      <circle
+        cx="15"
+        cy="14"
+        r="4.2"
+        className="theme-toggle-sun"
+      />
+      <g className="theme-toggle-rays" strokeLinecap="round">
+        <path d="M15 6.5v2" />
+        <path d="M15 19.5v2" />
+        <path d="M7.5 14h2" />
+        <path d="M20.5 14h2" />
+        <path d="M9.7 8.7l1.4 1.4" />
+        <path d="M18.9 17.9l1.4 1.4" />
+        <path d="M20.3 8.7l-1.4 1.4" />
+        <path d="M11.1 17.9l-1.4 1.4" />
+      </g>
+      <path
+        d="M42.7 8.3a6.4 6.4 0 1 0 5.1 10.2 7.4 7.4 0 1 1-5.1-10.2Z"
+        className="theme-toggle-moon"
+      />
     </svg>
   );
 }
@@ -120,9 +163,167 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
   );
 }
 
+function RadarChart({ stats, color }) {
+  const size = 240;
+  const center = size / 2;
+  const maxRadius = 86;
+  const levels = [0.25, 0.5, 0.75, 1];
+
+  const pointFor = (index, value = 100) => {
+    const angle = (-90 + index * 72) * (Math.PI / 180);
+    const radius = maxRadius * (value / 100);
+    return {
+      x: center + Math.cos(angle) * radius,
+      y: center + Math.sin(angle) * radius,
+    };
+  };
+
+  const polygonPoints = stats
+    ? STAT_KEYS.map((item, index) => {
+        const point = pointFor(index, stats[item.key]);
+        return `${point.x},${point.y}`;
+      }).join(' ')
+    : '';
+
+  return (
+    <div className={`radar-card${stats ? '' : ' radar-card-locked'}`}>
+      <svg className="radar-chart" viewBox={`0 0 ${size} ${size}`} role="img" aria-label="人物五维雷达图">
+        {levels.map((level) => (
+          <polygon
+            key={level}
+            points={STAT_KEYS.map((_, index) => {
+              const point = pointFor(index, level * 100);
+              return `${point.x},${point.y}`;
+            }).join(' ')}
+            className="radar-grid"
+          />
+        ))}
+        {STAT_KEYS.map((_, index) => {
+          const point = pointFor(index, 100);
+          return <line key={index} x1={center} y1={center} x2={point.x} y2={point.y} className="radar-axis" />;
+        })}
+        {stats && (
+          <polygon
+            points={polygonPoints}
+            className="radar-shape"
+            style={{ '--radar-color': color }}
+          />
+        )}
+        {stats &&
+          STAT_KEYS.map((item, index) => {
+            const point = pointFor(index, stats[item.key]);
+            return (
+              <circle
+                key={`${item.key}-point`}
+                cx={point.x}
+                cy={point.y}
+                r="4"
+                className="radar-point"
+              />
+            );
+          })}
+        {STAT_KEYS.map((item, index) => {
+          const point = pointFor(index, 116);
+          return (
+            <text key={item.key} x={point.x} y={point.y} textAnchor="middle" dominantBaseline="middle">
+              {item.label}
+            </text>
+          );
+        })}
+      </svg>
+      <div className="radar-values">
+        {STAT_KEYS.map((item) => (
+          <span key={item.key}>
+            {item.label}
+            <strong>{stats ? stats[item.key] : '?'}</strong>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CharacterResumeDetail({ resume, onBack }) {
+  const handlePrint = () => {
+    window.print();
+  };
+
+  return (
+    <div className="tab-content resume-detail-view">
+      <section className="resume-detail-shell">
+        <div className="resume-detail-actions">
+          <button type="button" className="detail-back-btn" onClick={onBack}>
+            <ArrowLeft size={18} />
+            返回角色画廊
+          </button>
+          <button type="button" className="detail-print-btn" onClick={handlePrint} aria-label="导出PDF" title="导出PDF">
+            <Printer size={18} />
+          </button>
+        </div>
+
+        <header className="resume-detail-hero card-panel">
+          <div className="resume-title-block">
+            <span className="gallery-summary-label">{resume.stateLabel} / {resume.code}</span>
+            <h1>{resume.name}</h1>
+            <p>{resume.title}</p>
+          </div>
+          <div className="resume-portrait-wrap">
+            <img
+              src={resume.portraitUrl}
+              alt={resume.name}
+              loading="lazy"
+              onContextMenu={(event) => event.preventDefault()}
+              draggable="false"
+              onDragStart={(event) => event.preventDefault()}
+            />
+          </div>
+        </header>
+
+        <section className="resume-section card-panel">
+          <h2>人物简介</h2>
+          <p className="resume-bio">{resume.bio}</p>
+        </section>
+
+        <section className="resume-section card-panel">
+          <h2>人物能力</h2>
+          <div className="resume-ability-grid">
+            <RadarChart stats={resume.stats} color={resume.stateColor} />
+            <div className="stat-reasons">
+              {resume.statsReason ? (
+                STAT_KEYS.map((item) => (
+                  <p key={item.key}>
+                    <strong>{item.label}</strong>
+                    {resume.statsReason[item.key]}
+                  </p>
+                ))
+              ) : (
+                <div className="stat-reasons-empty" aria-label="未点亮角色能力说明为空" />
+              )}
+            </div>
+          </div>
+        </section>
+
+        <section className="resume-section card-panel">
+          <h2>人物履历</h2>
+          <ol className="resume-timeline">
+            {resume.timeline.map((item, index) => (
+              <li key={`${item.year}-${index}`}>
+                <span>{item.year}</span>
+                <p>{item.event}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </section>
+    </div>
+  );
+}
+
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('home');
   const [activeState, setActiveState] = useState('all');
+  const [selectedResumeId, setSelectedResumeId] = useState(null);
+  const [theme, setTheme] = useState('dark');
 
   const featuredCharacters = useMemo(
     () => FEATURED_CHARACTER_NAMES.map((name) => CHARACTERS.find((item) => item.name === name)).filter(Boolean),
@@ -133,9 +334,9 @@ export default function PortfolioPage() {
 
   const galleryCharacters = useMemo(() => {
     if (activeState === 'all') {
-      return CHARACTERS;
+      return CHARACTER_RESUMES;
     }
-    return CHARACTERS.filter((item) => item.stateKey === activeState);
+    return CHARACTER_RESUMES.filter((item) => item.stateKey === activeState);
   }, [activeState]);
 
   const activeStateMeta = useMemo(
@@ -143,8 +344,27 @@ export default function PortfolioPage() {
     [activeState],
   );
 
+  const selectedResume = useMemo(
+    () => CHARACTER_RESUMES.find((item) => item.id === selectedResumeId) ?? null,
+    [selectedResumeId],
+  );
+
+  const openTab = (tabKey) => {
+    setActiveTab(tabKey);
+    setSelectedResumeId(null);
+  };
+
+  const goHome = () => {
+    setActiveTab('home');
+    setSelectedResumeId(null);
+  };
+
+  const toggleTheme = () => {
+    setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
+  };
+
   return (
-    <div className="page-shell">
+    <div className={`page-shell theme-${theme}`}>
       <div className="page-noise" aria-hidden="true" />
 
       {/* ===== Main Content Area (top 4/5) ===== */}
@@ -155,7 +375,7 @@ export default function PortfolioPage() {
           <button
             type="button"
             className="back-btn"
-            onClick={() => setActiveTab('home')}
+            onClick={goHome}
             aria-label="返回首页"
           >
             <ArrowLeft size={20} />
@@ -264,7 +484,6 @@ export default function PortfolioPage() {
                       <div className="featured-copy">
                         <span>{item.stateLabel}</span>
                         <h3>{item.name}</h3>
-                        <p>{item.note}</p>
                       </div>
                     </article>
                   </Reveal>
@@ -275,7 +494,11 @@ export default function PortfolioPage() {
         )}
 
         {/* RESUME: 角色简历 */}
-        {activeTab === 'resume' && (
+        {activeTab === 'resume' && selectedResume && (
+          <CharacterResumeDetail resume={selectedResume} onBack={() => setSelectedResumeId(null)} />
+        )}
+
+        {activeTab === 'resume' && !selectedResume && (
           <div className="tab-content">
             <section className="section-block">
               <Reveal className="section-heading" delay={100}>
@@ -325,7 +548,19 @@ export default function PortfolioPage() {
               <div className="gallery-grid">
                 {galleryCharacters.map((item, index) => (
                   <Reveal key={`${activeState}-${item.id}`} delay={80 + (index % 12) * 35}>
-                    <article className="gallery-card">
+                    <article
+                      className="gallery-card gallery-card-clickable"
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setSelectedResumeId(item.id)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setSelectedResumeId(item.id);
+                        }
+                      }}
+                      aria-label={`查看${item.name}角色简历`}
+                    >
                       <div className="gallery-image-wrap">
                         <CharacterImage
                           code={item.code}
@@ -342,8 +577,8 @@ export default function PortfolioPage() {
                         <div className="gallery-name-row">
                           <h3>{item.name}</h3>
                           <span className="gallery-original-tag">
-                            <Crown size={14} />
-                            原创角色
+                            {item.lit ? <Crown size={14} /> : <Info size={14} />}
+                            {item.lit ? '已点亮' : '待点亮'}
                           </span>
                         </div>
                       </div>
@@ -379,7 +614,7 @@ export default function PortfolioPage() {
                 key={tab.key}
                 type="button"
                 className={`nav-btn ${isActive ? 'active' : ''}`}
-                onClick={() => setActiveTab(tab.key)}
+                onClick={() => openTab(tab.key)}
               >
                 <Icon size={16} className="nav-btn-icon" />
                 <span>{tab.label}</span>
@@ -393,6 +628,15 @@ export default function PortfolioPage() {
             <strong>{SITE_COPY.brand}</strong>
             <span>{SITE_COPY.email}</span>
           </div>
+          <button
+            type="button"
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? '切换浅色主题' : '切换深色主题'}
+            title={theme === 'dark' ? '切换浅色主题' : '切换深色主题'}
+          >
+            <ThemeToggleIcon theme={theme} />
+          </button>
           <div className="social-links">
             <a
               className="social-link"
