@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
   Bot,
@@ -385,6 +385,9 @@ export default function PortfolioPage() {
   const [activeState, setActiveState] = useState('all');
   const [theme, setTheme] = useState('dark');
   const { tab: activeTab, selectedResumeId, printMode } = routeState;
+  const mainAreaRef = useRef(null);
+  const savedListScrollRef = useRef(0);
+  const prevRouteRef = useRef({ tab: activeTab, selectedResumeId, printMode });
 
   const featuredCharacters = useMemo(
     () => FEATURED_CHARACTER_NAMES.map((name) => CHARACTERS.find((item) => item.name === name)).filter(Boolean),
@@ -414,6 +417,42 @@ export default function PortfolioPage() {
     loadImagePriorityConfig();
   }, []);
 
+  // 切换页面时管理主滚动容器的滚动位置：
+  // - 进入角色详情 / 切换 tab / 进入打印页：重置到顶部
+  // - 从角色详情返回简历列表：恢复进入详情前保存的滚动位置（存档点）
+  useEffect(() => {
+    const el = mainAreaRef.current;
+    if (!el) return;
+
+    const prev = prevRouteRef.current;
+    const isReturnToList =
+      prev.selectedResumeId !== null &&
+      selectedResumeId === null &&
+      activeTab === 'resume' &&
+      !printMode;
+
+    const prevBehavior = el.style.scrollBehavior;
+    el.style.scrollBehavior = 'auto';
+
+    if (isReturnToList) {
+      // 列表内容较多，等待一帧布局完成后再恢复，避免 scrollHeight 不足导致位置被截断
+      const target = savedListScrollRef.current;
+      requestAnimationFrame(() => {
+        const node = mainAreaRef.current;
+        if (!node) return;
+        const b = node.style.scrollBehavior;
+        node.style.scrollBehavior = 'auto';
+        node.scrollTop = target;
+        node.style.scrollBehavior = b;
+      });
+    } else {
+      el.scrollTop = 0;
+    }
+
+    el.style.scrollBehavior = prevBehavior;
+    prevRouteRef.current = { tab: activeTab, selectedResumeId, printMode };
+  }, [activeTab, selectedResumeId, printMode]);
+
   useEffect(() => {
     const syncRoute = () => {
       setRouteState(resolveRoute(window.location.pathname, RESUME_ROUTE_MAPS.slugToId));
@@ -439,6 +478,10 @@ export default function PortfolioPage() {
   };
 
   const openResume = (resume) => {
+    // 进入详情页前，保存列表页当前滚动位置作为存档点，供返回时恢复
+    if (mainAreaRef.current) {
+      savedListScrollRef.current = mainAreaRef.current.scrollTop;
+    }
     navigateTo(getResumePath(resume, RESUME_ROUTE_MAPS.idToSlug));
   };
 
@@ -455,7 +498,7 @@ export default function PortfolioPage() {
       <div className="page-noise" aria-hidden="true" />
 
       {/* ===== Main Content Area (top 4/5) ===== */}
-      <div className={`main-area ${activeTab !== 'home' ? 'main-area-scroll' : ''}`}>
+      <div ref={mainAreaRef} className={`main-area ${activeTab !== 'home' ? 'main-area-scroll' : ''}`}>
 
         {/* Back button (visible in sub-pages) */}
         {activeTab !== 'home' && (

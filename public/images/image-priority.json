@@ -1,5 +1,5 @@
 {
-  "priority": "local",
+  "priority": "cdn",
   "_comment": "图片加载优先级开关。修改后刷新浏览器即可生效，无需重新构建。",
   "_options": {
     "local": "优先加载前端包本地图片，失败后回退到腾讯云 CDN",
