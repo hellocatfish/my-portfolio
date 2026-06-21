@@ -6,7 +6,6 @@ import {
   GalleryVerticalEnd,
   Info,
   Mail,
-  Printer,
   Sparkles,
   SwatchBook,
   Image,
@@ -15,7 +14,8 @@ import {
   Swords,
 } from 'lucide-react';
 import SphereCardCloud from '../components/SphereCardCloud';
-import { buildCharacterResumes, getStatKeys } from '../utils/characterResume';
+import { buildCharacterResumes, buildPortraitCandidates, getStatKeys } from '../utils/characterResume';
+import { loadImagePriorityConfig, useImagePriority } from '../utils/imagePriority';
 import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioData';
 import {
   buildCharacters,
@@ -25,11 +25,13 @@ import {
   isCharacterLit,
   PLACEHOLDER_IMAGE,
 } from '../utils/portfolio';
+import { buildResumeRouteMaps, getResumePath, getTabPath, resolveRoute } from '../utils/routes';
 import { useReveal } from '../utils/useReveal';
 
 const CHARACTERS = buildCharacters(STATES);
 const CHARACTER_RESUMES = buildCharacterResumes();
 const STAT_KEYS = getStatKeys();
+const RESUME_ROUTE_MAPS = buildResumeRouteMaps(CHARACTER_RESUMES);
 
 const NAV_TABS = [
   { key: 'art', label: '立绘赏析', icon: Image },
@@ -124,20 +126,21 @@ function Reveal({ children, className = '', delay = 0 }) {
 
 function CharacterImage({ code, name, className = '', variant = 'default' }) {
   const lit = isCharacterLit(name);
+  const priority = useImagePriority();
   const [sourceIndex, setSourceIndex] = useState(0);
 
-  // 已点亮：真实立绘候选链（最终回退到占位图）；未点亮：直接占位图。
+  // 已点亮：真实立绘候选链（按优先级排列，最终回退到占位图）；未点亮：直接占位图。
   const imageCandidates = useMemo(
     () =>
       lit
-        ? [...buildImageCandidates(code, name, variant), PLACEHOLDER_IMAGE]
+        ? buildImageCandidates(code, name, variant, priority)
         : [PLACEHOLDER_IMAGE],
-    [code, name, variant, lit],
+    [code, name, variant, lit, priority],
   );
 
   useEffect(() => {
     setSourceIndex(0);
-  }, [code, name, variant, lit]);
+  }, [code, name, variant, lit, priority]);
 
   const imageSrc = imageCandidates[sourceIndex] ?? imageCandidates[0];
   const isPlaceholder = imageSrc === PLACEHOLDER_IMAGE;
@@ -165,8 +168,8 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
 
 function RadarChart({ stats, color }) {
   const size = 240;
-  const center = size / 2;
-  const maxRadius = 86;
+  const center = 120.5;
+  const maxRadius = 85.5;
   const levels = [0.25, 0.5, 0.75, 1];
 
   const pointFor = (index, value = 100) => {
@@ -243,11 +246,99 @@ function RadarChart({ stats, color }) {
   );
 }
 
-function CharacterResumeDetail({ resume, onBack }) {
-  const handlePrint = () => {
-    window.print();
+function PortraitImage({ portrait, alt, loading = 'lazy' }) {
+  const priority = useImagePriority();
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  const candidates = useMemo(
+    () => buildPortraitCandidates(portrait, priority),
+    [portrait, priority],
+  );
+
+  useEffect(() => {
+    setSourceIndex(0);
+  }, [candidates]);
+
+  const imageSrc = candidates[sourceIndex] ?? candidates[0];
+
+  const handleError = () => {
+    setSourceIndex((current) => {
+      const nextIndex = current + 1;
+      return nextIndex < candidates.length ? nextIndex : current;
+    });
   };
 
+  return (
+    <img
+      src={imageSrc}
+      alt={alt}
+      loading={loading}
+      onError={handleError}
+      onContextMenu={(event) => event.preventDefault()}
+      draggable="false"
+      onDragStart={(event) => event.preventDefault()}
+    />
+  );
+}
+
+function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
+  return (
+    <>
+      <header className="resume-detail-hero card-panel">
+        <div className="resume-title-block">
+          <span className="gallery-summary-label">{resume.stateLabel} / {resume.code}</span>
+          <h1>{resume.name}</h1>
+          <p>{resume.title}</p>
+        </div>
+        <div className="resume-portrait-wrap">
+          <PortraitImage
+            portrait={resume.portrait}
+            alt={resume.name}
+            loading={imageLoading}
+          />
+        </div>
+      </header>
+
+      <section className="resume-section card-panel">
+        <h2>人物简介</h2>
+        <p className="resume-bio">{resume.bio}</p>
+      </section>
+
+      <section className="resume-section card-panel">
+        <h2>人物能力</h2>
+        <div className="resume-ability-grid">
+          <RadarChart stats={resume.stats} color={resume.stateColor} />
+          <div className="stat-reasons">
+            {resume.statsReason ? (
+              STAT_KEYS.map((item) => (
+                <p key={item.key}>
+                  <strong>{item.label}</strong>
+                  {resume.statsReason[item.key]}
+                </p>
+              ))
+            ) : (
+              <div className="stat-reasons-empty" aria-label="未点亮角色能力说明为空" />
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="resume-section card-panel">
+        <h2>人物履历</h2>
+        <ol className="resume-timeline">
+          {resume.timeline.map((item, index) => (
+            <li key={`${item.year}-${index}`}>
+              <span>{item.year}</span>
+              <p>{item.event}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </>
+  );
+}
+
+function CharacterResumeDetail({ resume, onBack }) {
   return (
     <div className="tab-content resume-detail-view">
       <section className="resume-detail-shell">
@@ -256,74 +347,44 @@ function CharacterResumeDetail({ resume, onBack }) {
             <ArrowLeft size={18} />
             返回角色画廊
           </button>
-          <button type="button" className="detail-print-btn" onClick={handlePrint} aria-label="导出PDF" title="导出PDF">
-            <Printer size={18} />
-          </button>
         </div>
 
-        <header className="resume-detail-hero card-panel">
-          <div className="resume-title-block">
-            <span className="gallery-summary-label">{resume.stateLabel} / {resume.code}</span>
-            <h1>{resume.name}</h1>
-            <p>{resume.title}</p>
-          </div>
-          <div className="resume-portrait-wrap">
-            <img
-              src={resume.portraitUrl}
-              alt={resume.name}
-              loading="lazy"
-              onContextMenu={(event) => event.preventDefault()}
-              draggable="false"
-              onDragStart={(event) => event.preventDefault()}
-            />
-          </div>
-        </header>
+        <CharacterResumeContent resume={resume} />
+      </section>
+    </div>
+  );
+}
 
-        <section className="resume-section card-panel">
-          <h2>人物简介</h2>
-          <p className="resume-bio">{resume.bio}</p>
-        </section>
-
-        <section className="resume-section card-panel">
-          <h2>人物能力</h2>
-          <div className="resume-ability-grid">
-            <RadarChart stats={resume.stats} color={resume.stateColor} />
-            <div className="stat-reasons">
-              {resume.statsReason ? (
-                STAT_KEYS.map((item) => (
-                  <p key={item.key}>
-                    <strong>{item.label}</strong>
-                    {resume.statsReason[item.key]}
-                  </p>
-                ))
-              ) : (
-                <div className="stat-reasons-empty" aria-label="未点亮角色能力说明为空" />
-              )}
-            </div>
-          </div>
-        </section>
-
-        <section className="resume-section card-panel">
-          <h2>人物履历</h2>
-          <ol className="resume-timeline">
-            {resume.timeline.map((item, index) => (
-              <li key={`${item.year}-${index}`}>
-                <span>{item.year}</span>
-                <p>{item.event}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+function CharacterResumePrintPage({ resumes, theme, onToggleTheme }) {
+  return (
+    <div className="tab-content resume-print-view">
+      <button
+        type="button"
+        className="resume-print-theme-toggle"
+        onClick={onToggleTheme}
+        aria-label={theme === 'dark' ? '切换浅色打印预览' : '切换深色打印预览'}
+        title={theme === 'dark' ? '切换浅色打印预览' : '切换深色打印预览'}
+      >
+        <ThemeToggleIcon theme={theme} />
+      </button>
+      <section className="resume-print-shell">
+        {resumes.map((resume) => (
+          <article key={resume.id} className="resume-print-page resume-detail-shell">
+            <CharacterResumeContent resume={resume} imageLoading="eager" />
+          </article>
+        ))}
       </section>
     </div>
   );
 }
 
 export default function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState('home');
+  const [routeState, setRouteState] = useState(() =>
+    resolveRoute(window.location.pathname, RESUME_ROUTE_MAPS.slugToId),
+  );
   const [activeState, setActiveState] = useState('all');
-  const [selectedResumeId, setSelectedResumeId] = useState(null);
   const [theme, setTheme] = useState('dark');
+  const { tab: activeTab, selectedResumeId, printMode } = routeState;
 
   const featuredCharacters = useMemo(
     () => FEATURED_CHARACTER_NAMES.map((name) => CHARACTERS.find((item) => item.name === name)).filter(Boolean),
@@ -349,14 +410,40 @@ export default function PortfolioPage() {
     [selectedResumeId],
   );
 
+  useEffect(() => {
+    loadImagePriorityConfig();
+  }, []);
+
+  useEffect(() => {
+    const syncRoute = () => {
+      setRouteState(resolveRoute(window.location.pathname, RESUME_ROUTE_MAPS.slugToId));
+    };
+
+    window.addEventListener('popstate', syncRoute);
+    return () => window.removeEventListener('popstate', syncRoute);
+  }, []);
+
+  const navigateTo = (path) => {
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+    setRouteState(resolveRoute(path, RESUME_ROUTE_MAPS.slugToId));
+  };
+
   const openTab = (tabKey) => {
-    setActiveTab(tabKey);
-    setSelectedResumeId(null);
+    navigateTo(getTabPath(tabKey));
   };
 
   const goHome = () => {
-    setActiveTab('home');
-    setSelectedResumeId(null);
+    navigateTo(getTabPath('home'));
+  };
+
+  const openResume = (resume) => {
+    navigateTo(getResumePath(resume, RESUME_ROUTE_MAPS.idToSlug));
+  };
+
+  const backToResumeList = () => {
+    navigateTo(getTabPath('resume'));
   };
 
   const toggleTheme = () => {
@@ -364,7 +451,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className={`page-shell theme-${theme}`}>
+    <div className={`page-shell theme-${theme} ${printMode ? 'resume-print-mode' : ''}`}>
       <div className="page-noise" aria-hidden="true" />
 
       {/* ===== Main Content Area (top 4/5) ===== */}
@@ -494,11 +581,15 @@ export default function PortfolioPage() {
         )}
 
         {/* RESUME: 角色简历 */}
-        {activeTab === 'resume' && selectedResume && (
-          <CharacterResumeDetail resume={selectedResume} onBack={() => setSelectedResumeId(null)} />
+        {activeTab === 'resume' && printMode && (
+          <CharacterResumePrintPage resumes={CHARACTER_RESUMES} theme={theme} onToggleTheme={toggleTheme} />
         )}
 
-        {activeTab === 'resume' && !selectedResume && (
+        {activeTab === 'resume' && !printMode && selectedResume && (
+          <CharacterResumeDetail resume={selectedResume} onBack={backToResumeList} />
+        )}
+
+        {activeTab === 'resume' && !printMode && !selectedResume && (
           <div className="tab-content">
             <section className="section-block">
               <Reveal className="section-heading" delay={100}>
@@ -552,11 +643,11 @@ export default function PortfolioPage() {
                       className="gallery-card gallery-card-clickable"
                       role="button"
                       tabIndex={0}
-                      onClick={() => setSelectedResumeId(item.id)}
+                      onClick={() => openResume(item)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault();
-                          setSelectedResumeId(item.id);
+                          openResume(item);
                         }
                       }}
                       aria-label={`查看${item.name}角色简历`}

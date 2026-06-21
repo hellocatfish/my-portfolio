@@ -1,6 +1,9 @@
 import whitelist from '../data/whitelist.json';
 
-const BASE_IMAGE_URL = 'https://zhanguo-imgs-1379320306.cos.accelerate.myqcloud.com/zhanguo_imgs/';
+// 本地前端包内的全身立绘目录（通过 vite.config.js 的 localStaticImages 插件在 dev/build 时服务）
+const LOCAL_BASE_IMAGE_URL = `${import.meta.env.BASE_URL}images/heroes/`;
+// 腾讯云 COS 兜底地址
+const CDN_BASE_IMAGE_URL = 'https://zhanguo-imgs-1379320306.cos.accelerate.myqcloud.com/zhanguo_imgs/';
 const IMAGE_EXTENSIONS = ['webp', 'png'];
 
 /** 缺省占位形象（金色线描武将 webp），随构建发布于 public/ 下，首屏后即缓存复用。 */
@@ -22,24 +25,48 @@ export function getImageExtensions() {
   return IMAGE_EXTENSIONS;
 }
 
-export function buildImageUrl(code, name, extension = IMAGE_EXTENSIONS[0]) {
-  return `${BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}.${extension}`;
+/** 构造本地全身立绘 URL（主路径）。 */
+export function buildImageUrl(code, name, extension = 'webp') {
+  return `${LOCAL_BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}.${extension}`;
 }
 
+/** 构造本地缩略图 URL（主路径，用于球形卡牌云）。 */
 export function buildSmallImageUrl(code, name) {
-  return `${BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}-small.webp`;
+  return `${LOCAL_BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}-small.webp`;
 }
 
-export function buildImageCandidates(code, name, variant = 'default') {
+/** 构造 COS CDN 全身立绘 URL（兜底路径）。 */
+function buildCdnImageUrl(code, name, extension = 'webp') {
+  return `${CDN_BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}.${extension}`;
+}
+
+/** 构造 COS CDN 缩略图 URL（兜底路径）。 */
+function buildCdnSmallImageUrl(code, name) {
+  return `${CDN_BASE_IMAGE_URL}${code}_${encodeURIComponent(name)}-small.webp`;
+}
+
+/**
+ * 构造图片候选链：根据 priority 排列本地 / CDN 顺序，最终回退到占位图。
+ * 本地只有 webp 格式，png 仅走 CDN。
+ *
+ * @param {'local'|'cdn'} priority - 'local' 本地优先（默认），'cdn' CDN 优先
+ */
+export function buildImageCandidates(code, name, variant = 'default', priority = 'local') {
+  const localSmall = buildSmallImageUrl(code, name);
+  const cdnSmall = buildCdnSmallImageUrl(code, name);
+  const localWebp = buildImageUrl(code, name, 'webp');
+  const cdnWebp = buildCdnImageUrl(code, name, 'webp');
+  const cdnPng = buildCdnImageUrl(code, name, 'png');
+
   if (variant === 'sphere') {
-    return [
-      buildSmallImageUrl(code, name),
-      buildImageUrl(code, name, 'webp'),
-      buildImageUrl(code, name, 'png'),
-    ];
+    return priority === 'cdn'
+      ? [cdnSmall, localSmall, cdnWebp, localWebp, cdnPng, PLACEHOLDER_IMAGE]
+      : [localSmall, cdnSmall, localWebp, cdnWebp, cdnPng, PLACEHOLDER_IMAGE];
   }
 
-  return IMAGE_EXTENSIONS.map((extension) => buildImageUrl(code, name, extension));
+  return priority === 'cdn'
+    ? [cdnWebp, localWebp, cdnPng, PLACEHOLDER_IMAGE]
+    : [localWebp, cdnWebp, cdnPng, PLACEHOLDER_IMAGE];
 }
 
 export function buildCharacters(states) {
