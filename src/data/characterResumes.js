@@ -1,6 +1,7 @@
 // 266 character resume records for manual correction.
 // Fields used by the UI: name, portrait, bio, stats, statsReason, timeline.
-// Non-lit characters intentionally keep portrait as default_general-portrait.webp and stats as null.
+// Non-lit characters intentionally keep stats as null.
+// Legacy default_general-portrait.webp values are mapped to default_general-head.webp at runtime.
 export const CHARACTER_RESUMES = [
   {
     "id": "001_楚怀王",

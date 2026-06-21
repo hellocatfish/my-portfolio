@@ -20,10 +20,14 @@ import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioDa
 import {
   buildCharacters,
   buildImageCandidates,
+  buildPlaceholderImageCandidates,
   buildMetrics,
   getStateCharacterCount,
   isCharacterLit,
+  CDN_PLACEHOLDER_IMAGE,
+  CDN_PLACEHOLDER_SMALL_IMAGE,
   PLACEHOLDER_IMAGE,
+  PLACEHOLDER_SMALL_IMAGE,
 } from '../utils/portfolio';
 import { buildResumeRouteMaps, getResumePath, getTabPath, resolveRoute } from '../utils/routes';
 import { useReveal } from '../utils/useReveal';
@@ -129,12 +133,12 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
   const priority = useImagePriority();
   const [sourceIndex, setSourceIndex] = useState(0);
 
-  // 已点亮：真实立绘候选链（按优先级排列，最终回退到占位图）；未点亮：直接占位图。
+  // 已点亮：真实立绘候选链（按优先级排列，最终回退到占位图）；未点亮：按优先级使用占位图。
   const imageCandidates = useMemo(
     () =>
       lit
         ? buildImageCandidates(code, name, variant, priority)
-        : [PLACEHOLDER_IMAGE],
+        : buildPlaceholderImageCandidates(variant, priority),
     [code, name, variant, lit, priority],
   );
 
@@ -143,7 +147,12 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
   }, [code, name, variant, lit, priority]);
 
   const imageSrc = imageCandidates[sourceIndex] ?? imageCandidates[0];
-  const isPlaceholder = imageSrc === PLACEHOLDER_IMAGE;
+  const isPlaceholder = [
+    PLACEHOLDER_IMAGE,
+    PLACEHOLDER_SMALL_IMAGE,
+    CDN_PLACEHOLDER_IMAGE,
+    CDN_PLACEHOLDER_SMALL_IMAGE,
+  ].includes(imageSrc);
 
   const handleError = () => {
     setSourceIndex((current) => {
