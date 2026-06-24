@@ -290,7 +290,15 @@ function PortraitImage({ portrait, alt, loading = 'lazy' }) {
   );
 }
 
+// 未点亮角色的人物履历占位：隐藏真实履历，统一显示中性默认时间线
+const UNLIT_PLACEHOLDER_TIMELINE = [
+  { year: '前xxx年', event: '出生。' },
+  { year: '前xxx年', event: '史书留名' },
+  { year: '前xxx年', event: '死亡' },
+];
+
 function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
+  const displayTimeline = resume.lit ? resume.timeline : UNLIT_PLACEHOLDER_TIMELINE;
   return (
     <>
       <header className="resume-detail-hero card-panel">
@@ -335,7 +343,7 @@ function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
       <section className="resume-section card-panel">
         <h2>人物履历</h2>
         <ol className="resume-timeline">
-          {resume.timeline.map((item, index) => (
+          {displayTimeline.map((item, index) => (
             <li key={`${item.year}-${index}`}>
               <span>{item.year}</span>
               <p>{item.event}</p>

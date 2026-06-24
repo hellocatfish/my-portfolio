@@ -1,4 +1,5 @@
-import whitelist from '../data/whitelist.json';
+import { parse as parseToml } from 'smol-toml';
+import whitelistRaw from '../data/whitelist.toml?raw';
 
 // 本地前端包内的全身立绘目录（通过 vite.config.js 的 localStaticImages 插件在 dev/build 时服务）
 const LOCAL_BASE_IMAGE_URL = `${import.meta.env.BASE_URL}images/heroes/`;
@@ -17,7 +18,12 @@ export const PLACEHOLDER_SMALL_IMAGE = `${LOCAL_PUBLIC_BASE_URL}${PLACEHOLDER_SM
 export const CDN_PLACEHOLDER_IMAGE = `${CDN_PLACEHOLDER_BASE_URL}${PLACEHOLDER_FILE}`;
 export const CDN_PLACEHOLDER_SMALL_IMAGE = `${CDN_PLACEHOLDER_BASE_URL}${PLACEHOLDER_SMALL_FILE}`;
 
-/** 由 whitelist.json 汇总出的「已点亮」人名集合（忽略以 _ 开头的注释字段）。 */
+/**
+ * 由 whitelist.toml 汇总出的「已点亮」人名集合。
+ * whitelist.toml 使用 TOML 格式以支持 # 注释：未点亮角色以 # 注释形式保留，
+ * 取消注释即可点亮。smol-toml 的 parse 会自动忽略注释行，这里直接扁平化所有数组值。
+ */
+const whitelist = parseToml(whitelistRaw);
 const LIT_NAMES = new Set(
   Object.entries(whitelist)
     .filter(([key]) => !key.startsWith('_'))

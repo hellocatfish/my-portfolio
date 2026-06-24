@@ -33,11 +33,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前355",
+        "year": "前355年",
         "event": "楚怀王约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前355",
+        "year": "前355年",
         "event": "楚怀王：战国最悲剧的君主"
       },
       {
@@ -49,7 +49,7 @@ export const CHARACTER_RESUMES = [
         "event": "楚怀王客死于秦"
       },
       {
-        "year": "前296",
+        "year": "前296年",
         "event": "楚怀王约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -72,11 +72,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前263",
+        "year": "前263年",
         "event": "楚顷襄王约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前263",
+        "year": "前263年",
         "event": "楚顷襄王：楚怀王之子"
       },
       {
@@ -127,11 +127,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "楚考烈王约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "楚考烈王：楚顷襄王之子"
       },
       {
@@ -151,7 +151,7 @@ export const CHARACTER_RESUMES = [
         "event": "楚考烈王领导了最后一次合纵伐秦"
       },
       {
-        "year": "前238",
+        "year": "前238年",
         "event": "楚考烈王约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -174,11 +174,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前268",
+        "year": "前268年",
         "event": "楚幽王约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前268",
+        "year": "前268年",
         "event": "楚幽王：考烈王之子（一说春申君与李园之妹私生）"
       },
       {
@@ -194,7 +194,7 @@ export const CHARACTER_RESUMES = [
         "event": "楚幽王楚国国势日颓"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "楚幽王约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -217,11 +217,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "楚哀王约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "楚哀王：幽王同母弟"
       },
       {
@@ -248,11 +248,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "楚王负刍约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "楚王负刍：楚考烈王庶子"
       },
       {
@@ -377,11 +377,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前301",
+        "year": "前301年",
         "event": "唐昧约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前301",
+        "year": "前301年",
         "event": "唐昧：楚怀王时将领"
       },
       {
@@ -420,11 +420,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前395",
+        "year": "前395年",
         "event": "慎到约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前395",
+        "year": "前395年",
         "event": "慎到：楚襄王傅"
       },
       {
@@ -444,7 +444,7 @@ export const CHARACTER_RESUMES = [
         "event": "慎到主张势治"
       },
       {
-        "year": "前315",
+        "year": "前315年",
         "event": "慎到约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -479,11 +479,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前340",
+        "year": "前340年",
         "event": "屈原约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前340",
+        "year": "前340年",
         "event": "屈原：楚顷襄王时代三闾大夫"
       },
       {
@@ -503,7 +503,7 @@ export const CHARACTER_RESUMES = [
         "event": "屈原闻郢都被攻破"
       },
       {
-        "year": "前278",
+        "year": "前278年",
         "event": "屈原约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -608,11 +608,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "子兰约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "子兰：楚怀王幼子"
       },
       {
@@ -647,11 +647,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前311",
+        "year": "前311年",
         "event": "靳尚约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前311",
+        "year": "前311年",
         "event": "靳尚：上官大夫"
       },
       {
@@ -830,11 +830,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前283",
+        "year": "前283年",
         "event": "淖齿约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前283",
+        "year": "前283年",
         "event": "淖齿：楚顷襄王麾下武将"
       },
       {
@@ -916,11 +916,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "黄歇约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "黄歇：战国四公子之一"
       },
       {
@@ -940,7 +940,7 @@ export const CHARACTER_RESUMES = [
         "event": "黄歇晚年因立嗣问题被李园灭门"
       },
       {
-        "year": "前238",
+        "year": "前238年",
         "event": "黄歇约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -963,11 +963,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "李园约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "李园：赵人仕楚"
       },
       {
@@ -1080,11 +1080,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "项燕约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "项燕：楚国名将"
       },
       {
@@ -1123,11 +1123,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "项梁约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "项梁：项燕之子"
       },
       {
@@ -1158,11 +1158,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前277",
+        "year": "前277年",
         "event": "范增约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前277",
+        "year": "前277年",
         "event": "范增：居鄛奇人"
       },
       {
@@ -1174,7 +1174,7 @@ export const CHARACTER_RESUMES = [
         "event": "范增日后项羽的亚父"
       },
       {
-        "year": "前204",
+        "year": "前204年",
         "event": "范增约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -1228,11 +1228,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "庄蹻约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "庄蹻：楚庄王后裔"
       },
       {
@@ -1279,11 +1279,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前298",
+        "year": "前298年",
         "event": "宋玉约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前298",
+        "year": "前298年",
         "event": "宋玉：楚国大辞赋家"
       },
       {
@@ -1299,7 +1299,7 @@ export const CHARACTER_RESUMES = [
         "event": "宋玉留下了阳春白雪、下里巴人的典故"
       },
       {
-        "year": "前222",
+        "year": "前222年",
         "event": "宋玉约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -1322,11 +1322,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "景差约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "景差：楚国辞赋家"
       },
       {
@@ -1338,7 +1338,7 @@ export const CHARACTER_RESUMES = [
         "event": "景差承袭屈原、宋玉文风"
       },
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "景差约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -1361,11 +1361,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "唐勒约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前290",
+        "year": "前290年",
         "event": "唐勒：与宋玉同时期"
       },
       {
@@ -1373,7 +1373,7 @@ export const CHARACTER_RESUMES = [
         "event": "唐勒以瑰丽著称"
       },
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "唐勒约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -1396,11 +1396,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前271",
+        "year": "前271年",
         "event": "熊启约生于此年前后，出身与早年事迹归入楚国人物谱系。"
       },
       {
-        "year": "前271",
+        "year": "前271年",
         "event": "熊启：楚考烈王之子"
       },
       {
@@ -1420,7 +1420,7 @@ export const CHARACTER_RESUMES = [
         "event": "熊启在楚亡之际反秦自立楚王"
       },
       {
-        "year": "前223",
+        "year": "前223年",
         "event": "熊启约卒于此年前后，其事迹成为楚国档案中的重要一环。"
       }
     ]
@@ -1443,11 +1443,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前312",
+        "year": "前312年",
         "event": "韩威侯约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前312",
+        "year": "前312年",
         "event": "韩威侯：韩昭侯之子"
       },
       {
@@ -1494,11 +1494,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前296",
+        "year": "前296年",
         "event": "韩襄王约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前296",
+        "year": "前296年",
         "event": "韩襄王：韩威侯之子"
       },
       {
@@ -1533,11 +1533,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前273",
+        "year": "前273年",
         "event": "韩釐王约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前273",
+        "year": "前273年",
         "event": "韩釐王：又称韩僖王、韩厘王"
       },
       {
@@ -1568,11 +1568,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前293",
+        "year": "前293年",
         "event": "韩桓惠王约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前293",
+        "year": "前293年",
         "event": "韩桓惠王：在位34年"
       },
       {
@@ -1584,7 +1584,7 @@ export const CHARACTER_RESUMES = [
         "event": "韩桓惠王一生困于割地与苟延"
       },
       {
-        "year": "前239",
+        "year": "前239年",
         "event": "韩桓惠王约卒于此年前后，其事迹成为韩国档案中的重要一环。"
       }
     ]
@@ -1619,11 +1619,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "韩王安约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "韩王安：韩国末代君主"
       },
       {
@@ -2141,11 +2141,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前260",
+        "year": "前260年",
         "event": "冯亭约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前260",
+        "year": "前260年",
         "event": "冯亭：韩国上党郡守"
       },
       {
@@ -2184,11 +2184,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "张平约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "张平：张良之父"
       },
       {
@@ -2301,11 +2301,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "韩非约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "韩非：战国法家集大成者"
       },
       {
@@ -2325,7 +2325,7 @@ export const CHARACTER_RESUMES = [
         "event": "韩非后死于李斯之手"
       },
       {
-        "year": "前233",
+        "year": "前233年",
         "event": "韩非约卒于此年前后，其事迹成为韩国档案中的重要一环。"
       }
     ]
@@ -2399,11 +2399,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "张良约生于此年前后，出身与早年事迹归入韩国人物谱系。"
       },
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "张良：父祖皆宰相"
       },
       {
@@ -2423,7 +2423,7 @@ export const CHARACTER_RESUMES = [
         "event": "张良秦末起义后辅佐韩王、汉王"
       },
       {
-        "year": "前186",
+        "year": "前186年",
         "event": "张良约卒于此年前后，其事迹成为韩国档案中的重要一环。"
       }
     ]
@@ -2590,11 +2590,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前350",
+        "year": "前350年",
         "event": "齐宣王约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前350",
+        "year": "前350年",
         "event": "齐宣王：扩建稷下学宫"
       },
       {
@@ -2614,7 +2614,7 @@ export const CHARACTER_RESUMES = [
         "event": "齐宣王攻破燕国国都"
       },
       {
-        "year": "前301",
+        "year": "前301年",
         "event": "齐宣王约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -2637,11 +2637,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前323",
+        "year": "前323年",
         "event": "齐湣王约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前323",
+        "year": "前323年",
         "event": "齐湣王：文有孟尝"
       },
       {
@@ -2661,7 +2661,7 @@ export const CHARACTER_RESUMES = [
         "event": "齐湣王后废孟尝"
       },
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "齐湣王约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -2684,11 +2684,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "齐襄王约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "齐襄王：在莒城即位"
       },
       {
@@ -2700,7 +2700,7 @@ export const CHARACTER_RESUMES = [
         "event": "齐襄王齐国最后的有为之君"
       },
       {
-        "year": "前265",
+        "year": "前265年",
         "event": "齐襄王约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -2723,11 +2723,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "齐王建约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "齐王建：齐国末代君主"
       },
       {
@@ -2747,7 +2747,7 @@ export const CHARACTER_RESUMES = [
         "event": "齐王建饿死松柏林"
       },
       {
-        "year": "前221",
+        "year": "前221年",
         "event": "齐王建约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -2782,11 +2782,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前249",
+        "year": "前249年",
         "event": "君王后约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前249",
+        "year": "前249年",
         "event": "君王后：齐襄王之王后"
       },
       {
@@ -2938,11 +2938,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前279",
+        "year": "前279年",
         "event": "田文约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前279",
+        "year": "前279年",
         "event": "田文：战国四公子之一"
       },
       {
@@ -3063,11 +3063,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "达子约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "达子：齐湣王时武将"
       },
       {
@@ -3118,11 +3118,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前291",
+        "year": "前291年",
         "event": "田骈约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前291",
+        "year": "前291年",
         "event": "田骈：人称天口骈"
       },
       {
@@ -3153,11 +3153,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前360",
+        "year": "前360年",
         "event": "尹文约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前360",
+        "year": "前360年",
         "event": "尹文：稷下名家学者"
       },
       {
@@ -3165,7 +3165,7 @@ export const CHARACTER_RESUMES = [
         "event": "尹文主张形名之学"
       },
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "尹文约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -3289,11 +3289,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "王蠋约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "王蠋：齐国官员"
       },
       {
@@ -3492,11 +3492,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "苏秦约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前284",
+        "year": "前284年",
         "event": "苏秦：身佩六国相印"
       },
       {
@@ -3590,11 +3590,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前221",
+        "year": "前221年",
         "event": "后胜约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前221",
+        "year": "前221年",
         "event": "后胜：齐国国相"
       },
       {
@@ -3699,11 +3699,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "谭拾子约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "谭拾子：齐国大夫"
       },
       {
@@ -3789,11 +3789,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "鲁仲连约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "鲁仲连：义不帝秦"
       },
       {
@@ -3809,7 +3809,7 @@ export const CHARACTER_RESUMES = [
         "event": "鲁仲连终身不仕"
       },
       {
-        "year": "前245",
+        "year": "前245年",
         "event": "鲁仲连约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -3832,11 +3832,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前324",
+        "year": "前324年",
         "event": "邹衍约生于此年前后，出身与早年事迹归入齐国人物谱系。"
       },
       {
-        "year": "前324",
+        "year": "前324年",
         "event": "邹衍：阴阳家代表人物"
       },
       {
@@ -3848,7 +3848,7 @@ export const CHARACTER_RESUMES = [
         "event": "邹衍名扬列国"
       },
       {
-        "year": "前240",
+        "year": "前240年",
         "event": "邹衍约卒于此年前后，其事迹成为齐国档案中的重要一环。"
       }
     ]
@@ -3871,11 +3871,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前356",
+        "year": "前356年",
         "event": "秦惠文王约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前356",
+        "year": "前356年",
         "event": "秦惠文王：车裂商鞅但沿用其法"
       },
       {
@@ -3891,7 +3891,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦惠文王北收义渠"
       },
       {
-        "year": "前311",
+        "year": "前311年",
         "event": "秦惠文王约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -3914,11 +3914,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前329",
+        "year": "前329年",
         "event": "秦武王约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前329",
+        "year": "前329年",
         "event": "秦武王：孔武有力"
       },
       {
@@ -3938,7 +3938,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦武王因举九鼎绝胫而死"
       },
       {
-        "year": "前307",
+        "year": "前307年",
         "event": "秦武王约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -3973,11 +3973,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前325",
+        "year": "前325年",
         "event": "秦昭襄王约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前325",
+        "year": "前325年",
         "event": "秦昭襄王：在位五十六年"
       },
       {
@@ -3985,7 +3985,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦昭襄王秦国霸业的真正奠基者"
       },
       {
-        "year": "前251",
+        "year": "前251年",
         "event": "秦昭襄王约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -4008,11 +4008,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前302",
+        "year": "前302年",
         "event": "秦孝文王约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前302",
+        "year": "前302年",
         "event": "秦孝文王：多年太子"
       },
       {
@@ -4024,7 +4024,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦孝文王但确立了子楚的继承权"
       },
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "秦孝文王约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -4059,11 +4059,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前281",
+        "year": "前281年",
         "event": "秦庄襄王约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前281",
+        "year": "前281年",
         "event": "秦庄襄王：后改名嬴子楚"
       },
       {
@@ -4083,7 +4083,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦庄襄王承上启下"
       },
       {
-        "year": "前247",
+        "year": "前247年",
         "event": "秦庄襄王约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -4106,11 +4106,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前259",
+        "year": "前259年",
         "event": "秦王政约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前259",
+        "year": "前259年",
         "event": "秦王政：千古一帝"
       },
       {
@@ -4122,7 +4122,7 @@ export const CHARACTER_RESUMES = [
         "event": "秦王政振长策而御宇内"
       },
       {
-        "year": "前210",
+        "year": "前210年",
         "event": "秦王政约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -4145,11 +4145,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前309",
+        "year": "前309年",
         "event": "张仪约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前309",
+        "year": "前309年",
         "event": "张仪：魏国安邑人"
       },
       {
@@ -4192,11 +4192,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前265",
+        "year": "前265年",
         "event": "芈八子约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前265",
+        "year": "前265年",
         "event": "芈八子：秦昭襄王生母"
       },
       {
@@ -4231,11 +4231,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "司马错约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前280",
+        "year": "前280年",
         "event": "司马错：秦国少梁人"
       },
       {
@@ -4278,11 +4278,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前300",
+        "year": "前300年",
         "event": "樗里疾约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前300",
+        "year": "前300年",
         "event": "樗里疾：秦孝公庶子"
       },
       {
@@ -4321,11 +4321,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前270",
+        "year": "前270年",
         "event": "魏冉约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前270",
+        "year": "前270年",
         "event": "魏冉：秦昭王之舅"
       },
       {
@@ -4387,11 +4387,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前270",
+        "year": "前270年",
         "event": "嬴悝约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前270",
+        "year": "前270年",
         "event": "嬴悝：秦昭王胞弟"
       },
       {
@@ -4469,11 +4469,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "甘茂约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前305",
+        "year": "前305年",
         "event": "甘茂：甘罗祖父"
       },
       {
@@ -4512,11 +4512,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前307",
+        "year": "前307年",
         "event": "乌获约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前307",
+        "year": "前307年",
         "event": "乌获：秦国大力士"
       },
       {
@@ -4559,11 +4559,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前307",
+        "year": "前307年",
         "event": "孟贲约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前307",
+        "year": "前307年",
         "event": "孟贲：或名孟说"
       },
       {
@@ -4602,11 +4602,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前288",
+        "year": "前288年",
         "event": "任鄙约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前288",
+        "year": "前288年",
         "event": "任鄙：秦国大力士"
       },
       {
@@ -4761,11 +4761,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "范雎约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "范雎：秦国应侯"
       },
       {
@@ -4874,11 +4874,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前292",
+        "year": "前292年",
         "event": "吕不韦约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前292",
+        "year": "前292年",
         "event": "吕不韦：卫国商人"
       },
       {
@@ -4894,7 +4894,7 @@ export const CHARACTER_RESUMES = [
         "event": "吕不韦权倾朝野"
       },
       {
-        "year": "前235",
+        "year": "前235年",
         "event": "吕不韦约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -4917,11 +4917,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "甘罗约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "甘罗：甘茂之孙"
       },
       {
@@ -5100,11 +5100,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "李斯约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "李斯：楚国下蔡人"
       },
       {
@@ -5135,11 +5135,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前207",
+        "year": "前207年",
         "event": "赵高约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前207",
+        "year": "前207年",
         "event": "赵高：中车府令"
       },
       {
@@ -5263,11 +5263,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "冯去疾约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "冯去疾：秦国重臣"
       },
       {
@@ -5294,11 +5294,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "冯劫约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前208",
+        "year": "前208年",
         "event": "冯劫：御史大夫"
       },
       {
@@ -5329,11 +5329,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前210",
+        "year": "前210年",
         "event": "蒙毅约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前210",
+        "year": "前210年",
         "event": "蒙毅：蒙恬之弟"
       },
       {
@@ -5384,11 +5384,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前262",
+        "year": "前262年",
         "event": "喜约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前262",
+        "year": "前262年",
         "event": "喜：云梦秦简主人"
       },
       {
@@ -5400,7 +5400,7 @@ export const CHARACTER_RESUMES = [
         "event": "喜一生记录秦法"
       },
       {
-        "year": "前217",
+        "year": "前217年",
         "event": "喜约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -5435,11 +5435,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "白起约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "白起：秦国武安君"
       },
       {
@@ -5478,11 +5478,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "司马靳约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "司马靳：司马错之孙"
       },
       {
@@ -5548,11 +5548,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前244",
+        "year": "前244年",
         "event": "王龁约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前244",
+        "year": "前244年",
         "event": "王龁：历三代秦王宿将"
       },
       {
@@ -5583,11 +5583,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "郑安平约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "郑安平：曾助范雎入秦"
       },
       {
@@ -5778,11 +5778,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前240",
+        "year": "前240年",
         "event": "蒙骜约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前240",
+        "year": "前240年",
         "event": "蒙骜：齐人仕秦"
       },
       {
@@ -5868,11 +5868,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "桓齮约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "桓齮：秦国大将"
       },
       {
@@ -5911,11 +5911,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "樊於期约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "樊於期：获罪逃往燕国"
       },
       {
@@ -6133,11 +6133,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "蒙恬约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前250",
+        "year": "前250年",
         "event": "蒙恬：六国统一后"
       },
       {
@@ -6157,7 +6157,7 @@ export const CHARACTER_RESUMES = [
         "event": "蒙恬改良毛笔"
       },
       {
-        "year": "前210",
+        "year": "前210年",
         "event": "蒙恬约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -6227,11 +6227,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前205",
+        "year": "前205年",
         "event": "章邯约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前205",
+        "year": "前205年",
         "event": "章邯：秦末最后的名将"
       },
       {
@@ -6258,11 +6258,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前204",
+        "year": "前204年",
         "event": "司马欣约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前204",
+        "year": "前204年",
         "event": "司马欣：曾救项梁"
       },
       {
@@ -6289,11 +6289,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前204",
+        "year": "前204年",
         "event": "董翳约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前204",
+        "year": "前204年",
         "event": "董翳：随章邯降楚"
       }
     ]
@@ -6316,11 +6316,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前238",
+        "year": "前238年",
         "event": "嫪毐约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前238",
+        "year": "前238年",
         "event": "嫪毐：秦国长信侯"
       },
       {
@@ -6351,11 +6351,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "成蟜约生于此年前后，出身与早年事迹归入秦国人物谱系。"
       },
       {
-        "year": "前256",
+        "year": "前256年",
         "event": "成蟜：秦国长安君"
       },
       {
@@ -6375,7 +6375,7 @@ export const CHARACTER_RESUMES = [
         "event": "成蟜兵败自杀（一说奔赵）"
       },
       {
-        "year": "前239",
+        "year": "前239年",
         "event": "成蟜约卒于此年前后，其事迹成为秦国档案中的重要一环。"
       }
     ]
@@ -6410,11 +6410,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前296",
+        "year": "前296年",
         "event": "魏襄王约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前296",
+        "year": "前296年",
         "event": "魏襄王：亦称梁襄王"
       },
       {
@@ -6449,11 +6449,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前277",
+        "year": "前277年",
         "event": "魏昭王约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前277",
+        "year": "前277年",
         "event": "魏昭王：魏襄王之子"
       },
       {
@@ -6488,11 +6488,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "魏安釐王约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "魏安釐王：畏秦如虎"
       },
       {
@@ -6523,11 +6523,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "魏景湣王约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "魏景湣王：魏圉之子"
       },
       {
@@ -6566,11 +6566,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前225",
+        "year": "前225年",
         "event": "魏王假约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前225",
+        "year": "前225年",
         "event": "魏王假：魏国末代君主"
       },
       {
@@ -6652,11 +6652,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前370",
+        "year": "前370年",
         "event": "惠施约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前370",
+        "year": "前370年",
         "event": "惠施：名家代表"
       },
       {
@@ -6676,7 +6676,7 @@ export const CHARACTER_RESUMES = [
         "event": "惠施主张合同异"
       },
       {
-        "year": "前310",
+        "year": "前310年",
         "event": "惠施约卒于此年前后，其事迹成为魏国档案中的重要一环。"
       }
     ]
@@ -6699,11 +6699,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前310",
+        "year": "前310年",
         "event": "田需约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前310",
+        "year": "前310年",
         "event": "田需：魏惠王相邦"
       },
       {
@@ -6765,11 +6765,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前265",
+        "year": "前265年",
         "event": "魏齐约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前265",
+        "year": "前265年",
         "event": "魏齐：魏安釐王相邦"
       },
       {
@@ -6820,11 +6820,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "魏无忌约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "魏无忌：战国四公子之首"
       },
       {
@@ -6914,11 +6914,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "晋鄙约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "晋鄙：魏国宿将"
       },
       {
@@ -7164,11 +7164,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前247",
+        "year": "前247年",
         "event": "缩高约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前247",
+        "year": "前247年",
         "event": "缩高：安陵君之臣"
       },
       {
@@ -7234,11 +7234,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "侯嬴约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前257",
+        "year": "前257年",
         "event": "侯嬴：信陵君门客"
       },
       {
@@ -7304,11 +7304,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前264",
+        "year": "前264年",
         "event": "张耳约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前264",
+        "year": "前264年",
         "event": "张耳：信陵君门客"
       },
       {
@@ -7324,7 +7324,7 @@ export const CHARACTER_RESUMES = [
         "event": "张耳汉初被封赵王"
       },
       {
-        "year": "前202",
+        "year": "前202年",
         "event": "张耳约卒于此年前后，其事迹成为魏国档案中的重要一环。"
       }
     ]
@@ -7359,11 +7359,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前205",
+        "year": "前205年",
         "event": "陈余约生于此年前后，出身与早年事迹归入魏国人物谱系。"
       },
       {
-        "year": "前205",
+        "year": "前205年",
         "event": "陈余：与张耳为刎颈之交"
       },
       {
@@ -7503,11 +7503,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "燕王哙约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "燕王哙：燕国昏主"
       },
       {
@@ -7542,11 +7542,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "子之约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "子之：燕王哙的相国"
       },
       {
@@ -7589,11 +7589,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前335",
+        "year": "前335年",
         "event": "燕昭王约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前335",
+        "year": "前335年",
         "event": "燕昭王：姬平庶弟"
       },
       {
@@ -7613,7 +7613,7 @@ export const CHARACTER_RESUMES = [
         "event": "燕昭王筑黄金台"
       },
       {
-        "year": "前279",
+        "year": "前279年",
         "event": "燕昭王约卒于此年前后，其事迹成为燕国档案中的重要一环。"
       }
     ]
@@ -7636,11 +7636,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前271",
+        "year": "前271年",
         "event": "燕惠王约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前271",
+        "year": "前271年",
         "event": "燕惠王：一说姬乐资"
       },
       {
@@ -7691,11 +7691,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前258",
+        "year": "前258年",
         "event": "燕武成王约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前258",
+        "year": "前258年",
         "event": "燕武成王：燕惠王之子"
       },
       {
@@ -7730,11 +7730,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "燕孝王约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前255",
+        "year": "前255年",
         "event": "燕孝王：在位3年"
       },
       {
@@ -7761,11 +7761,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前222",
+        "year": "前222年",
         "event": "燕王喜约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前222",
+        "year": "前222年",
         "event": "燕王喜：燕国末代君主"
       },
       {
@@ -7812,11 +7812,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "太子丹约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前226",
+        "year": "前226年",
         "event": "太子丹：燕国太子"
       },
       {
@@ -7855,11 +7855,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "市被约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "市被：燕国将军"
       },
       {
@@ -7937,11 +7937,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "太子平约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前314",
+        "year": "前314年",
         "event": "太子平：燕王哙太子"
       },
       {
@@ -8070,11 +8070,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前351",
+        "year": "前351年",
         "event": "郭隗约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前351",
+        "year": "前351年",
         "event": "郭隗：燕昭王太傅"
       },
       {
@@ -8086,7 +8086,7 @@ export const CHARACTER_RESUMES = [
         "event": "郭隗成功招揽乐毅、邹衍等天下贤才"
       },
       {
-        "year": "前297",
+        "year": "前297年",
         "event": "郭隗约卒于此年前后，其事迹成为燕国档案中的重要一环。"
       }
     ]
@@ -8160,11 +8160,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前279",
+        "year": "前279年",
         "event": "骑劫约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前279",
+        "year": "前279年",
         "event": "骑劫：燕国将领"
       },
       {
@@ -8269,11 +8269,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "剧辛约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "剧辛：赵人投燕"
       },
       {
@@ -8390,11 +8390,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前251",
+        "year": "前251年",
         "event": "栗腹约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前251",
+        "year": "前251年",
         "event": "栗腹：燕国相邦"
       },
       {
@@ -8589,11 +8589,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "田光约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "田光：燕国侠士"
       },
       {
@@ -8640,11 +8640,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前221",
+        "year": "前221年",
         "event": "高渐离约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前221",
+        "year": "前221年",
         "event": "高渐离：燕国乐师"
       },
       {
@@ -8691,11 +8691,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "荆轲约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "荆轲：战国末期第一刺客"
       },
       {
@@ -8734,11 +8734,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "秦舞阳约生于此年前后，出身与早年事迹归入燕国人物谱系。"
       },
       {
-        "year": "前227",
+        "year": "前227年",
         "event": "秦舞阳：燕国勇士"
       },
       {
@@ -8824,11 +8824,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前340",
+        "year": "前340年",
         "event": "赵武灵王约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前340",
+        "year": "前340年",
         "event": "赵武灵王：雄才大略"
       },
       {
@@ -8848,7 +8848,7 @@ export const CHARACTER_RESUMES = [
         "event": "赵武灵王晚年因沙丘宫变而被饿死"
       },
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "赵武灵王约卒于此年前后，其事迹成为赵国档案中的重要一环。"
       }
     ]
@@ -8871,11 +8871,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前266",
+        "year": "前266年",
         "event": "赵惠文王约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前266",
+        "year": "前266年",
         "event": "赵惠文王：任用廉颇、蔺相如、赵胜、赵奢等贤才"
       },
       {
@@ -8906,11 +8906,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前245",
+        "year": "前245年",
         "event": "赵孝成王约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前245",
+        "year": "前245年",
         "event": "赵孝成王：在位期间发生长平之战"
       },
       {
@@ -8941,11 +8941,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前236",
+        "year": "前236年",
         "event": "赵悼襄王约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前236",
+        "year": "前236年",
         "event": "赵悼襄王：赵孝成王之子"
       },
       {
@@ -8984,11 +8984,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "赵幽缪王约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "赵幽缪王：赵国末代国君"
       },
       {
@@ -9035,11 +9035,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前259",
+        "year": "前259年",
         "event": "代王嘉约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前259",
+        "year": "前259年",
         "event": "代王嘉：赵悼襄王嫡长子"
       },
       {
@@ -9051,7 +9051,7 @@ export const CHARACTER_RESUMES = [
         "event": "代王嘉联合燕国太子丹抗秦"
       },
       {
-        "year": "前222",
+        "year": "前222年",
         "event": "代王嘉约卒于此年前后，其事迹成为赵国档案中的重要一环。"
       }
     ]
@@ -9074,11 +9074,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "肥义约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "肥义：赵国相邦"
       },
       {
@@ -9113,11 +9113,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "赵章约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "赵章：赵武灵王长子"
       },
       {
@@ -9148,11 +9148,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "田不礼约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前295",
+        "year": "前295年",
         "event": "田不礼：辅佐安阳君赵章作乱"
       },
       {
@@ -9284,11 +9284,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前264",
+        "year": "前264年",
         "event": "赵威后约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前264",
+        "year": "前264年",
         "event": "赵威后：赵惠文王后"
       },
       {
@@ -9401,11 +9401,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前269",
+        "year": "前269年",
         "event": "赵奢约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前269",
+        "year": "前269年",
         "event": "赵奢：赵国名将"
       },
       {
@@ -9471,11 +9471,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前327",
+        "year": "前327年",
         "event": "廉颇约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前327",
+        "year": "前327年",
         "event": "廉颇：战国四大名将之一"
       },
       {
@@ -9495,7 +9495,7 @@ export const CHARACTER_RESUMES = [
         "event": "廉颇后受排挤流亡魏、楚"
       },
       {
-        "year": "前243",
+        "year": "前243年",
         "event": "廉颇约卒于此年前后，其事迹成为赵国档案中的重要一环。"
       }
     ]
@@ -9565,11 +9565,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前260",
+        "year": "前260年",
         "event": "赵括约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前260",
+        "year": "前260年",
         "event": "赵括：熟读兵书"
       },
       {
@@ -9647,11 +9647,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前229",
+        "year": "前229年",
         "event": "李牧约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前229",
+        "year": "前229年",
         "event": "李牧：赵国武安君"
       },
       {
@@ -9737,11 +9737,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前251",
+        "year": "前251年",
         "event": "赵胜约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前251",
+        "year": "前251年",
         "event": "赵胜：赵惠文王和赵豹之弟"
       },
       {
@@ -9815,11 +9815,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前329",
+        "year": "前329年",
         "event": "蔺相如约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前329",
+        "year": "前329年",
         "event": "蔺相如：赵国上卿"
       },
       {
@@ -9839,7 +9839,7 @@ export const CHARACTER_RESUMES = [
         "event": "蔺相如将相和睦"
       },
       {
-        "year": "前259",
+        "year": "前259年",
         "event": "蔺相如约卒于此年前后，其事迹成为赵国档案中的重要一环。"
       }
     ]
@@ -10002,11 +10002,11 @@ export const CHARACTER_RESUMES = [
     },
     "timeline": [
       {
-        "year": "前235",
+        "year": "前235年",
         "event": "建信君约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前235",
+        "year": "前235年",
         "event": "建信君：赵悼襄王时重臣"
       },
       {
@@ -10458,11 +10458,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "赵葱约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前228",
+        "year": "前228年",
         "event": "赵葱：赵国宗室将领"
       },
       {
@@ -10532,11 +10532,11 @@ export const CHARACTER_RESUMES = [
     "statsReason": null,
     "timeline": [
       {
-        "year": "前234",
+        "year": "前234年",
         "event": "扈辄约生于此年前后，出身与早年事迹归入赵国人物谱系。"
       },
       {
-        "year": "前234",
+        "year": "前234年",
         "event": "扈辄：赵国大将"
       },
       {

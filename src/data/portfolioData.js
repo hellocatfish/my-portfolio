@@ -161,7 +161,7 @@ export const FEATURED_CHARACTER_NAMES = [
 
 export const SITE_COPY = {
   brand: '王道爵士',
-  email: 'core2023@qq.com',
+  email: 'wpf@zju.edu.cn',
   title: '『王道战国志』',
   subtitle: '王道爵士的个人博客，围绕人物设定、服饰语汇与阵营色彩，展示战国后期历史人物的游戏形象。',
   summary:
