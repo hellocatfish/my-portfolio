@@ -100,10 +100,12 @@ export function buildImageCandidates(code, name, variant = 'default', priority =
 
 export function buildCharacters(states) {
   return states.slice(1).flatMap((state) =>
-    state.names.map(({ code, name }) => ({
+    state.names.map(({ code, name, role, liege }) => ({
       id: `${code}_${name}`,
       code,
       name,
+      role,
+      liege,
       stateKey: state.key,
       stateLabel: `${state.label}国`,
       tone: state.tone,

@@ -1,4 +1,5 @@
 import { CHARACTER_RESUMES } from '../data/characterResumes.js';
+import { isCharacterLit } from './portfolio.js';
 
 // 腾讯云 COS 兜底地址
 export const PORTRAIT_BASE_URL = 'https://zhanguo-portraits-1379320306.cos.ap-shanghai.myqcloud.com/';
@@ -46,8 +47,12 @@ export function buildPortraitCandidates(portrait = DEFAULT_PORTRAIT_FILE, priori
 export function buildCharacterResumes() {
   return CHARACTER_RESUMES.map((record) => {
     const candidates = buildPortraitCandidates(record.portrait);
+    // 点亮状态以 whitelist.toml 为唯一真源：取消注释即点亮，无需同步改 characterResumes.js 的 lit。
+    // characterResumes.js 中的静态 lit 字段仅作数据记录，运行时被覆盖。
+    const lit = isCharacterLit(record.name);
     return {
       ...record,
+      lit,
       portraitCandidates: candidates,
       portraitUrl: candidates[0], // 向后兼容：首选（本地）URL
     };

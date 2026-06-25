@@ -1,7 +1,5 @@
 // 266 character resume records for manual correction.
 // Fields used by the UI: name, portrait, bio, stats, statsReason, timeline.
-// Non-lit characters intentionally keep stats as null.
-// Legacy default_general-portrait.webp values are mapped to default_general-head.webp at runtime.
 export const CHARACTER_RESUMES = [
   {
     "id": "001_楚怀王",
@@ -68,8 +66,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "熊横，楚怀王之子，在位36年，国祚渐衰。曾被白起攻破国都，后向东迁都。",
     "quote": "“郢都已破，秦人难挡，迁都陈郢！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 55,
+      "tongshuai": 66,
+      "zhili": 79,
+      "zhengzhi": 79,
+      "meili": 80
+    },
+    "statsReason": {
+      "wuli": "楚顷襄王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 55。",
+      "tongshuai": "熊横，楚怀王之子，在位36年，国祚渐衰。曾被白起攻破国都，后向东迁都。，统率 66。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 80。"
+    },
     "timeline": [
       {
         "year": "前263年",
@@ -170,8 +180,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "熊悍，考烈王之子（一说春申君与李园之妹私生）。在位十年，李园掌权，楚国国势日颓。",
     "quote": "“秦兵又至？快召项燕将军！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 66,
+      "zhili": 76,
+      "zhengzhi": 79,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "楚幽王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "熊悍，考烈王之子（一说春申君与李园之妹私生）。在位十年，李园掌权，楚国国势日颓。，统率 66。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前268年",
@@ -213,8 +235,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "熊犹，幽王同母弟。即位仅两个月即被庶兄负刍袭杀。",
     "quote": "“王兄尸骨未寒，这是为何？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 69,
+      "zhili": 80,
+      "zhengzhi": 79,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "楚哀王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "熊犹，幽王同母弟。即位仅两个月即被庶兄负刍袭杀。，统率 69。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前228年",
@@ -244,8 +278,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "熊负刍，楚考烈王庶子。政变弑君，自立为楚王，族灭外戚李园。后秦将王翦举国攻楚，国破被俘。",
     "quote": "“楚王乃李园之子，随我诛杀窃国之贼！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 74,
+      "zhili": 80,
+      "zhengzhi": 81,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "楚王负刍有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "熊负刍，楚考烈王庶子。政变弑君，自立为楚王，族灭外戚李园。后秦将王翦举国攻楚，国破被俘。，统率 74。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前223年",
@@ -373,8 +419,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚怀王时将领，在垂沙之战中，与昭雎合兵抵抗齐魏韩联军。但昭雎按兵不动，唐昧兵败身死。",
     "quote": "“死守垂沙，一步不退！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 75,
+      "zhili": 65,
+      "zhengzhi": 49,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "唐昧有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "楚怀王时将领，在垂沙之战中，与昭雎合兵抵抗齐魏韩联军。但昭雎按兵不动，唐昧兵败身死。，统率 75。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 49。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "前301年",
@@ -416,8 +474,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚襄王傅，战国时期法家代表人物，早年游学稷下，后入楚为官，主张“势”治。",
     "quote": "“飞龙乘云，腾蛇游雾。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 58,
+      "zhili": 80,
+      "zhengzhi": 80,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "慎到有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "楚襄王傅，战国时期法家代表人物，早年游学稷下，后入楚为官，主张“势”治。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "前395年",
@@ -522,8 +592,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚怀王时代大司马，历任武职。又名卓滑、悼滑，是楚悼王后裔。曾趁乱灭越。",
     "quote": "“国库空虚，这仗打不得。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 88,
+      "tongshuai": 80,
+      "zhili": 65,
+      "zhengzhi": 59,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "召滑有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 88。",
+      "tongshuai": "楚怀王时代大司马，历任武职。又名卓滑、悼滑，是楚悼王后裔。曾趁乱灭越。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 59。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -561,8 +643,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚怀王令尹，习于辞令，处理内政。",
     "quote": "“国库空虚，这仗打不得。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 53,
+      "zhili": 83,
+      "zhengzhi": 82,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "昭鱼缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "楚怀王令尹，习于辞令，处理内政。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -643,8 +737,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "上官大夫，楚怀王宠臣。与郑袖勾结，专权弄私，是排挤屈原的元凶。",
     "quote": "“大王，齐国不可信，唯秦可亲。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 54,
+      "zhili": 86,
+      "zhengzhi": 78,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "靳尚缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "上官大夫，楚怀王宠臣。与郑袖勾结，专权弄私，是排挤屈原的元凶。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "前311年",
@@ -686,8 +792,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚怀王时代纵横家，曾仕秦、齐，后入楚。",
     "quote": "“蛇本无足，子安能为之足？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 54,
+      "zhili": 89,
+      "zhengzhi": 79,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "陈轸缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "楚怀王时代纵横家，曾仕秦、齐，后入楚。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 89。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -713,8 +831,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚顷襄王令尹，“亡羊补牢”典故主人公，曾准确预言楚国危机。",
     "quote": "“亡羊而补牢，未为迟也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 53,
+      "zhili": 85,
+      "zhengzhi": 85,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "庄辛缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "楚顷襄王令尹，“亡羊补牢”典故主人公，曾准确预言楚国危机。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 85。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -795,8 +925,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚国怀王、楚顷襄王时代令尹。长期周旋于秦、齐之间，力主通过外交手段保全楚国。",
     "quote": "“臣见王之权轻天下，而地不可得也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 58,
+      "zhili": 83,
+      "zhengzhi": 83,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "景鲤缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "楚国怀王、楚顷襄王时代令尹。长期周旋于秦、齐之间，力主通过外交手段保全楚国。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -826,8 +968,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚顷襄王麾下武将。五国伐齐时，以救齐为名，出兵莒城。从齐湣王骗得齐相之位，后弑杀齐王，又被王孙贾当街诛杀。",
     "quote": "“齐地千里，今归我也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 82,
+      "zhili": 62,
+      "zhengzhi": 58,
+      "meili": 66
+    },
+    "statsReason": {
+      "wuli": "淖齿有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "楚顷襄王麾下武将。五国伐齐时，以救齐为名，出兵莒城。从齐湣王骗得齐相之位，后弑杀齐王，又被王孙贾当街诛杀。，统率 82。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 62。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 66。"
+    },
     "timeline": [
       {
         "year": "前283年",
@@ -869,8 +1023,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚考烈王的封君，曾与荀子在赵孝成王面前论兵，主张“兵之所恃者，将也”。",
     "quote": "“善用兵者，攻其无备。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 78,
+      "tongshuai": 76,
+      "zhili": 67,
+      "zhengzhi": 57,
+      "meili": 62
+    },
+    "statsReason": {
+      "wuli": "临武君有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 78。",
+      "tongshuai": "楚考烈王的封君，曾与荀子在赵孝成王面前论兵，主张“兵之所恃者，将也”。，统率 76。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 67。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 62。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -959,8 +1125,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵人仕楚，李嫣之兄。通过进献妹妹控制王室，刺杀春申君，独揽大权。",
     "quote": "“富贵险中求！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 58,
+      "zhili": 82,
+      "zhengzhi": 83,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "李园有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "赵人仕楚，李嫣之兄。通过进献妹妹控制王室，刺杀春申君，独揽大权。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "前228年",
@@ -1002,8 +1180,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚考烈王后（或春申君之妾），楚幽王之母。",
     "quote": "“母凭子贵，此乃天理。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 59,
+      "zhili": 86,
+      "zhengzhi": 83,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "李嫣缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "楚考烈王后（或春申君之妾），楚幽王之母。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1029,8 +1219,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "春申君门客。曾建议除掉李园，未被采纳后逃亡，不知所踪。",
     "quote": "“君以无妄之福，侍不测之君，岂能稳乎？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 59,
+      "zhili": 86,
+      "zhengzhi": 77,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "朱英缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "春申君门客。曾建议除掉李园，未被采纳后逃亡，不知所踪。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1119,8 +1321,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "项燕之子，战国末期随父从军。楚亡后隐忍积蓄反秦力量。",
     "quote": "“今日之仇，来日百倍奉还！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 83,
+      "tongshuai": 82,
+      "zhili": 69,
+      "zhengzhi": 56,
+      "meili": 62
+    },
+    "statsReason": {
+      "wuli": "项梁有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 83。",
+      "tongshuai": "项燕之子，战国末期随父从军。楚亡后隐忍积蓄反秦力量。，统率 82。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 69。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 62。"
+    },
     "timeline": [
       {
         "year": "前208年",
@@ -1154,8 +1368,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "居鄛奇人，战国末期在野或任小吏。日后项羽的亚父。",
     "quote": "“秦虽强，然暴虐无道，必不长久。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 58,
+      "zhili": 78,
+      "zhengzhi": 83,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "范增有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "居鄛奇人，战国末期在野或任小吏。日后项羽的亚父。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前277年",
@@ -1193,8 +1419,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚国辩士、名臣。曾游说春申君，留下了关于“骐骥”的著名论述。",
     "quote": "“夫骥之齿至矣，服盐车而上太行。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 53,
+      "zhili": 88,
+      "zhengzhi": 76,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "汗明缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "楚国辩士、名臣。曾游说春申君，留下了关于“骐骥”的著名论述。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 88。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1224,8 +1462,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚庄王后裔，率军攻打滇池（云南），因归路被秦军截断，遂留在当地建立了滇国。",
     "quote": "“路既不通，我便在此为王！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 88,
+      "tongshuai": 81,
+      "zhili": 65,
+      "zhengzhi": 55,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "庄蹻有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 88。",
+      "tongshuai": "楚庄王后裔，率军攻打滇池（云南），因归路被秦军截断，遂留在当地建立了滇国。，统率 81。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 55。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "前256年",
@@ -1318,8 +1568,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "芈姓，景氏，名差。楚国辞赋家，也是朝臣。承袭屈原、宋玉文风。",
     "quote": "“文章千古事，社稷一戎衣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 53,
+      "zhili": 85,
+      "zhengzhi": 82,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "景差缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "芈姓，景氏，名差。楚国辞赋家，也是朝臣。承袭屈原、宋玉文风。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前290年",
@@ -1357,8 +1619,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "辞赋家，与宋玉同时期，善写赋，以瑰丽著称。",
     "quote": "“屈子之才，吾不如也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 53,
+      "zhili": 84,
+      "zhengzhi": 83,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "唐勒缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "辞赋家，与宋玉同时期，善写赋，以瑰丽著称。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前290年",
@@ -1392,8 +1666,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚考烈王之子，母为秦昭襄王之女。秦国昌平君，曾任秦国相邦。在楚亡之际反秦自立楚王，后被剿灭。",
     "quote": "“吾是楚王血脉！楚不可亡！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 60,
+      "zhili": 81,
+      "zhengzhi": 76,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "熊启缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "楚考烈王之子，母为秦昭襄王之女。秦国昌平君，曾任秦国相邦。在楚亡之际反秦自立楚王，后被剿灭。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前271年",
@@ -1439,8 +1725,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩康，韩昭侯之子，谥号韩宣惠王。曾参与五国相王，之后韩国君主正式称王",
     "quote": "“名为王，实则如履薄冰。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 74,
+      "zhili": 76,
+      "zhengzhi": 84,
+      "meili": 79
+    },
+    "statsReason": {
+      "wuli": "韩威侯缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "韩康，韩昭侯之子，谥号韩宣惠王。曾参与五国相王，之后韩国君主正式称王，统率 74。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 79。"
+    },
     "timeline": [
       {
         "year": "前312年",
@@ -1529,8 +1827,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩咎，又称韩僖王、韩厘王。与秦交锋，日渐衰落。",
     "quote": "“秦王欲为帝，需六国合纵以讨之！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 58,
+      "tongshuai": 69,
+      "zhili": 78,
+      "zhengzhi": 86,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "韩釐王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 58。",
+      "tongshuai": "韩咎，又称韩僖王、韩厘王。与秦交锋，日渐衰落。，统率 69。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 86。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前273年",
@@ -1564,8 +1874,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩然，在位34年。面临秦国的全面蚕食，一生困于割地与苟延。",
     "quote": "“赵魏皆不救我，唯有割地以事秦。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 69,
+      "zhili": 76,
+      "zhengzhi": 81,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "韩桓惠王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "韩然，在位34年。面临秦国的全面蚕食，一生困于割地与苟延。，统率 69。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前293年",
@@ -1654,8 +1976,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩昭侯时期的大臣，杀了被赵国驱逐的晋后悼公，使晋国绝祀",
     "quote": "“大王不可轻信魏人之诺。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 55,
+      "zhili": 78,
+      "zhengzhi": 80,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩玘有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "韩昭侯时期的大臣，杀了被赵国驱逐的晋后悼公，使晋国绝祀，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1728,8 +2062,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩国使臣，前307年楚国攻韩，出使秦国，以“唇亡齿寒”劝宣太后救韩。",
     "quote": "“韩之于秦，居为隐蔽，出为雁行。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 52,
+      "zhili": 78,
+      "zhengzhi": 83,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "尚靳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "韩国使臣，前307年楚国攻韩，出使秦国，以“唇亡齿寒”劝宣太后救韩。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1763,8 +2109,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩国大臣，以口才著称。前307年楚国攻韩，巧劝甘茂而得秦救兵。",
     "quote": "“韩急则折而入楚矣，臣安敢来。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 59,
+      "zhili": 85,
+      "zhengzhi": 79,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "张翠有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "韩国大臣，以口才著称。前307年楚国攻韩，巧劝甘茂而得秦救兵。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1798,8 +2156,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩国使臣，前273年赵魏攻韩国华阳，陈筮巧劝穰侯魏冉，得秦救兵。",
     "quote": "“智者转危为安，愚者坐以待毙。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 57,
+      "zhili": 81,
+      "zhengzhi": 77,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "陈筮有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "韩国使臣，前273年赵魏攻韩国华阳，陈筮巧劝穰侯魏冉，得秦救兵。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1880,8 +2250,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩国贵族，宣惠王后期和襄王中前期接替公仲担任韩相。",
     "quote": "“手中无兵，相印何用？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 55,
+      "zhili": 81,
+      "zhengzhi": 84,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "韩公叔缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "韩国贵族，宣惠王后期和襄王中前期接替公仲担任韩相。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1907,8 +2289,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩国贵族，历韩昭侯、宣惠王、襄王、僖王四朝，担任相国。",
     "quote": "“今秦之心欲伐楚，王不如因张仪为和于秦”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 57,
+      "zhili": 88,
+      "zhengzhi": 89,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "韩公仲缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "韩国贵族，历韩昭侯、宣惠王、襄王、僖王四朝，担任相国。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 88。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 89。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -1938,8 +2332,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩釐王时代名将，曾联合魏、齐抗秦。在伊阙之战中惨败给白起，但仍为韩国军事支柱。",
     "quote": "“白起用兵如神，非我军不勇，实乃天意。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 76,
+      "zhili": 64,
+      "zhengzhi": 50,
+      "meili": 66
+    },
+    "statsReason": {
+      "wuli": "暴鸢有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "韩釐王时代名将，曾联合魏、齐抗秦。在伊阙之战中惨败给白起，但仍为韩国军事支柱。，统率 76。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 50。",
+      "meili": "名望和号召力在其故事中较突出，魅力 66。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2024,8 +2430,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "又作公仲侈、公仲朋、韩冯，韩相国韩聂的门客。曾奉相国韩聂之命出使秦国，请求联合攻魏。",
     "quote": "“蜀非不富也，然取之难；韩虽近，然攻之险。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 54,
+      "zhili": 81,
+      "zhengzhi": 84,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩侈有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "又作公仲侈、公仲朋、韩冯，韩相国韩聂的门客。曾奉相国韩聂之命出使秦国，请求联合攻魏。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2059,8 +2477,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "继任韩聂的相国之位。",
     "quote": "“唯强是从，韩之道也”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 55,
+      "zhili": 82,
+      "zhengzhi": 88,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩辰缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "继任韩聂的相国之位。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 88。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2180,8 +2610,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "张良之父，韩釐王、韩桓惠王的相国。在韩国末期苦撑危局，辅佐两代韩王。",
     "quote": "“张家之忠，皆献于韩。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 55,
+      "zhili": 82,
+      "zhengzhi": 83,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "张平缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "张良之父，韩釐王、韩桓惠王的相国。在韩国末期苦撑危局，辅佐两代韩王。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前250年",
@@ -2219,8 +2661,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩桓惠王时上党郡郡守。秦军攻上党之时拒绝降秦，被韩王撤职，让冯亭接任。",
     "quote": "“割地事秦，无异于抱薪救火！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 54,
+      "zhili": 80,
+      "zhengzhi": 79,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "靳黈有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "韩桓惠王时上党郡郡守。秦军攻上党之时拒绝降秦，被韩王撤职，让冯亭接任。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2254,8 +2708,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "战国公子，长平之战前夕，代表韩王撤掉上党郡守靳黈。",
     "quote": "“韩之弓弩，天下劲兵，奈何国小民少。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 60,
+      "zhili": 86,
+      "zhengzhi": 82,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩阳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "战国公子，长平之战前夕，代表韩王撤掉上党郡守靳黈。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2395,8 +2861,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "字子房，父祖皆宰相。未出仕，韩国灭亡后，毁家反秦，后于博浪沙刺秦。秦末起义后辅佐韩王、汉王。",
     "quote": "“国破家亡之仇不报，誓不为人。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 54,
+      "zhili": 82,
+      "zhengzhi": 85,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "张良有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "字子房，父祖皆宰相。未出仕，韩国灭亡后，毁家反秦，后于博浪沙刺秦。秦末起义后辅佐韩王、汉王。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 85。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "前250年",
@@ -2493,8 +2971,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "战国策中出现的韩国辩士，善于用比喻说服君王。",
     "quote": "“鱼失水则死，水失鱼，犹为水也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 55,
+      "zhili": 89,
+      "zhengzhi": 79,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩明有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "战国策中出现的韩国辩士，善于用比喻说服君王。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 89。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2520,8 +3010,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩臣，掌管图书典籍，在秦灭韩时试图保护国家藏书。",
     "quote": "“城可破，书不可亡。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 53,
+      "zhili": 87,
+      "zhengzhi": 78,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "韩博缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "韩臣，掌管图书典籍，在秦灭韩时试图保护国家藏书。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 87。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2547,8 +3049,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "韩臣，记载于《建信君轻韩熙》，曾建议韩王与赵国联合。",
     "quote": "“韩赵唇齿相依，唇亡则齿寒也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 60,
+      "zhili": 85,
+      "zhengzhi": 80,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩熙缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "韩臣，记载于《建信君轻韩熙》，曾建议韩王与赵国联合。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2572,7 +3086,7 @@ export const CHARACTER_RESUMES = [
     "portrait": "齐宣王2025.webp",
     "sourcePortrait": "齐宣王2025.webp",
     "lit": true,
-    "bio": "田辟疆，扩建稷下学宫，甚至想要“兼并天下”。趁燕国子之之乱，派匡章侵燕，攻破燕国国都。",
+    "bio": "田辟疆，齐威王之子，扩建稷下学宫，甚至想要“兼并天下”。趁燕国子之之乱，派匡章侵燕，破燕国都。",
     "quote": "“寡人有疾，寡人好色……寡人有疾，寡人好货。”",
     "stats": {
       "wuli": 92,
@@ -2633,8 +3147,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "田地，文有孟尝，武有匡章，败燕、败秦，一度称“东帝”。后废孟尝，任用奸相淖齿。野心膨胀灭宋，终致五国攻齐，国破身死。",
     "quote": "“败秦灭宋，前无古人，理当为帝！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 65,
+      "zhili": 72,
+      "zhengzhi": 81,
+      "meili": 82
+    },
+    "statsReason": {
+      "wuli": "齐湣王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "田地，文有孟尝，武有匡章，败燕、败秦，一度称“东帝”。后废孟尝，任用奸相淖齿。野心膨胀灭宋，终致五国攻齐，国破身死。，统率 65。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 72。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 82。"
+    },
     "timeline": [
       {
         "year": "前323年",
@@ -2680,8 +3206,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "田法章，在莒城即位，依靠田单复国，齐国最后的有为之君。",
     "quote": "“宗庙得复，社稷重光，全赖将士死战。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 53,
+      "tongshuai": 73,
+      "zhili": 78,
+      "zhengzhi": 82,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "齐襄王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 53。",
+      "tongshuai": "田法章，在莒城即位，依靠田单复国，齐国最后的有为之君。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前305年",
@@ -2719,8 +3257,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "田建，齐国末代君主。在位四十余年不修战备，坐视五国灭亡，最终不战而降，饿死松柏林。",
     "quote": "“秦使皆言秦王爱我，此时助赵，岂非得罪强秦？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 57,
+      "tongshuai": 61,
+      "zhili": 77,
+      "zhengzhi": 81,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "齐王建有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 57。",
+      "tongshuai": "田建，齐国末代君主。在位四十余年不修战备，坐视五国灭亡，最终不战而降，饿死松柏林。，统率 61。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 77。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前280年",
@@ -2817,8 +3367,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "靖郭君，齐威王少子，孟尝君之父。专权齐国多年，筑城薛地。",
     "quote": "“不以此时立公室之辅，日后何以自保？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 53,
+      "zhili": 84,
+      "zhengzhi": 83,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "田婴缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "靖郭君，齐威王少子，孟尝君之父。专权齐国多年，筑城薛地。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2903,8 +3465,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "靖郭君田婴的门客，虽然多嘴多舌不受人喜，但关键时刻救了田婴一命。",
     "quote": "“即使大王不喜，我亦要直言。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 57,
+      "zhili": 78,
+      "zhengzhi": 79,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "齐貌辨缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "靖郭君田婴的门客，虽然多嘴多舌不受人喜，但关键时刻救了田婴一命。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -2934,8 +3508,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "孟尝君，战国四公子之一。食客三千，鸡鸣狗盗，权倾列国，曾任齐、魏、秦相。",
     "quote": "“这天下之士，皆可为我所用。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 59,
+      "zhili": 86,
+      "zhengzhi": 84,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "田文有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "孟尝君，战国四公子之一。食客三千，鸡鸣狗盗，权倾列国，曾任齐、魏、秦相。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前279年",
@@ -3024,8 +3610,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐湣王时期主将，济西之战面对五国联军，因痛恨齐王暴政，下令全军撤退导致大败。",
     "quote": "“与其死于暴君之手，不如退避三舍。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 79,
+      "tongshuai": 71,
+      "zhili": 63,
+      "zhengzhi": 51,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "触子有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 79。",
+      "tongshuai": "齐湣王时期主将，济西之战面对五国联军，因痛恨齐王暴政，下令全军撤退导致大败。，统率 71。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 51。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3059,8 +3657,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐湣王时武将，接替触子抗燕。面对五国联军，达子向齐王求赏，以振军心，被拒后兵败被杀，齐军主力尽丧。",
     "quote": "“士卒忍饥挨饿，大王守财不赏，却是为何？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 78,
+      "tongshuai": 72,
+      "zhili": 64,
+      "zhengzhi": 54,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "达子有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 78。",
+      "tongshuai": "齐湣王时武将，接替触子抗燕。面对五国联军，达子向齐王求赏，以振军心，被拒后兵败被杀，齐军主力尽丧。，统率 72。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前284年",
@@ -3149,8 +3759,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "稷下名家学者，主张形名之学。",
     "quote": "“大道无形，称器有名。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 60,
+      "zhili": 91,
+      "zhengzhi": 81,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "尹文缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "稷下名家学者，主张形名之学。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 91。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前360年",
@@ -3184,8 +3806,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国隐士，直面齐宣王，宣扬“好贤”胜过“好色好马”。",
     "quote": "“大王好马，国内便多良马；大王若好贤，国内便多贤士。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 54,
+      "zhili": 84,
+      "zhengzhi": 85,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "王斗缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "齐国隐士，直面齐宣王，宣扬“好贤”胜过“好色好马”。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 85。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3215,8 +3849,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐宣王时代隐士，留下了“王前行”与“斶前行”的经典辩论，不畏权势。",
     "quote": "“夫玉生于山，制则破焉；士生于鄙，推则仕焉。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 54,
+      "zhili": 86,
+      "zhengzhi": 81,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "颜斶缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "齐宣王时代隐士，留下了“王前行”与“斶前行”的经典辩论，不畏权势。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3246,8 +3892,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国相邦。齐康公吕贷的七世孙，始为秦相，后入齐。欲联合齐秦，被燕使苏代谗言排挤。",
     "quote": "“天下之势，变化于合纵连横之间。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 50,
+      "zhili": 78,
+      "zhengzhi": 81,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "吕礼缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "齐国相邦。齐康公吕贷的七世孙，始为秦相，后入齐。欲联合齐秦，被燕使苏代谗言排挤。，统率 50。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3285,8 +3943,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国官员，归隐于画邑。乐毅五国伐齐后，遣使劝降，其自缢以拒。",
     "quote": "“忠臣不事二君，烈女不更二夫；与其生而无义，固不如烹。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 52,
+      "zhili": 78,
+      "zhengzhi": 80,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "王蠋有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "齐国官员，归隐于画邑。乐毅五国伐齐后，遣使劝降，其自缢以拒。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前284年",
@@ -3328,8 +3998,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国太史，君王后之父。因女儿与落难太子（齐襄王）私定终身，终身不见女儿。",
     "quote": "“女不取媒因自嫁，非吾种也，污吾宗法。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 56,
+      "zhili": 79,
+      "zhengzhi": 83,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "太史敫缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "齐国太史，君王后之父。因女儿与落难太子（齐襄王）私定终身，终身不见女儿。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3406,8 +4088,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "苏秦、苏代之弟，亦为纵横家，主要事齐，曾止白起伐魏。",
     "quote": "“秦犹如虎狼，不可信也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 56,
+      "zhili": 91,
+      "zhengzhi": 82,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "苏厉有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "苏秦、苏代之弟，亦为纵横家，主要事齐，曾止白起伐魏。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 91。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3488,8 +4182,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "纵横家，身佩六国相印。晚年入齐为客卿，实为燕国死间，以此弱齐。",
     "quote": "“合众弱以攻一强，此百世之安也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 53,
+      "zhili": 84,
+      "zhengzhi": 73,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "苏秦缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "纵横家，身佩六国相印。晚年入齐为客卿，实为燕国死间，以此弱齐。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 73。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前284年",
@@ -3629,8 +4335,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国朝臣。王翦灭楚时，邹克劝齐王助秦灭楚，被载于《田璆论救楚》。",
     "quote": "“楚非秦敌也，必亡，不如起师以助秦！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 55,
+      "zhili": 82,
+      "zhengzhi": 82,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "邹克缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "齐国朝臣。王翦灭楚时，邹克劝齐王助秦灭楚，被载于《田璆论救楚》。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3664,8 +4382,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "楚将，客居于齐。王翦灭楚之时，曾劝齐救楚。",
     "quote": "“楚国朝亡，齐必夕亡。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 85,
+      "tongshuai": 80,
+      "zhili": 67,
+      "zhengzhi": 52,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "田璆有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 85。",
+      "tongshuai": "楚将，客居于齐。王翦灭楚之时，曾劝齐救楚。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 67。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3695,8 +4425,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国大夫，三朝元老，谭国第16代国君。曾迎接被逐复返的孟尝君田文，劝其止怨。",
     "quote": "“趋富贵而避贫贱，人性也”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 55,
+      "zhili": 84,
+      "zhengzhi": 79,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "谭拾子缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "齐国大夫，三朝元老，谭国第16代国君。曾迎接被逐复返的孟尝君田文，劝其止怨。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前226年",
@@ -3738,8 +4480,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国博士，齐亡后入秦为仆射，主张恢复分封制，引发“焚书”事件。",
     "quote": "“事不师古而能长久者，非所闻也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 60,
+      "zhili": 86,
+      "zhengzhi": 81,
+      "meili": 80
+    },
+    "statsReason": {
+      "wuli": "淳于越缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "齐国博士，齐亡后入秦为仆射，主张恢复分封制，引发“焚书”事件。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 80。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -3828,8 +4582,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "阴阳家代表人物，提出“五德终始说”和“大九州说”，名扬列国。",
     "quote": "“天道循环，五行相生相克，代火者必水也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 53,
+      "zhili": 87,
+      "zhengzhi": 80,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "邹衍缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "阴阳家代表人物，提出“五德终始说”和“大九州说”，名扬列国。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 87。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "前324年",
@@ -3867,8 +4633,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "嬴驷，车裂商鞅但沿用其法，东出函谷，南并巴蜀，北收义渠。",
     "quote": "“令不行，何以一天下”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 54,
+      "tongshuai": 67,
+      "zhili": 72,
+      "zhengzhi": 84,
+      "meili": 82
+    },
+    "statsReason": {
+      "wuli": "秦惠文王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 54。",
+      "tongshuai": "嬴驷，车裂商鞅但沿用其法，东出函谷，南并巴蜀，北收义渠。，统率 67。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 72。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 82。"
+    },
     "timeline": [
       {
         "year": "前356年",
@@ -3910,8 +4688,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "嬴荡，孔武有力，重武好战。攻占宜阳，直入周都洛阳，因举九鼎绝胫而死。",
     "quote": "“寡人欲车通三川，以窥周室，死不朽矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 55,
+      "tongshuai": 74,
+      "zhili": 79,
+      "zhengzhi": 81,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "秦武王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 55。",
+      "tongshuai": "嬴荡，孔武有力，重武好战。攻占宜阳，直入周都洛阳，因举九鼎绝胫而死。，统率 74。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前329年",
@@ -4004,8 +4794,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "嬴柱，安国君。多年太子，在位仅三天，但确立了子楚的继承权。",
     "quote": "“守成不易，寡人如履薄冰。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 72,
+      "zhili": 76,
+      "zhengzhi": 86,
+      "meili": 80
+    },
+    "statsReason": {
+      "wuli": "秦孝文王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "嬴柱，安国君。多年太子，在位仅三天，但确立了子楚的继承权。，统率 72。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 86。",
+      "meili": "名望和号召力在其故事中较突出，魅力 80。"
+    },
     "timeline": [
       {
         "year": "前302年",
@@ -4102,8 +4904,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦始皇，千古一帝，奋六世之余烈，振长策而御宇内。",
     "quote": "“六国积弱，寡人当一之！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 55,
+      "tongshuai": 69,
+      "zhili": 74,
+      "zhengzhi": 78,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "秦王政缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 55。",
+      "tongshuai": "秦始皇，千古一帝，奋六世之余烈，振长策而御宇内。，统率 69。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 74。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前259年",
@@ -4141,8 +4955,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏国安邑人，纵横家，秦惠文王之相。以“连横”破“合纵”",
     "quote": "“臣可令六国事秦，如郡县奉君一般。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 58,
+      "zhili": 87,
+      "zhengzhi": 76,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "张仪缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "魏国安邑人，纵横家，秦惠文王之相。以“连横”破“合纵”，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 87。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前309年",
@@ -4227,8 +5053,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国少梁人，客卿，名将，力排众议攻取巴蜀，为秦国获得了天府粮仓。",
     "quote": "“得蜀则得楚，楚亡则天下并矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 91,
+      "tongshuai": 83,
+      "zhili": 66,
+      "zhengzhi": 57,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "司马错有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 91。",
+      "tongshuai": "秦国少梁人，客卿，名将，力排众议攻取巴蜀，为秦国获得了天府粮仓。，统率 83。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "前280年",
@@ -4317,8 +5155,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "穰侯，秦昭王之舅。四任秦相，文治武功皆备。",
     "quote": "“吾之功，在社稷！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 53,
+      "zhili": 78,
+      "zhengzhi": 76,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "魏冉有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "穰侯，秦昭王之舅。四任秦相，文治武功皆备。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前270年",
@@ -4352,8 +5202,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "华阳君，秦昭王之舅，宣太后之弟，与宣太后、魏冉长期控制秦政。",
     "quote": "“客卿不可信，宗亲卫篱藩。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 52,
+      "zhili": 82,
+      "zhengzhi": 83,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "芈戎缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "华阳君，秦昭王之舅，宣太后之弟，与宣太后、魏冉长期控制秦政。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4383,8 +5245,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "公子悝，高陵君，秦昭王胞弟，咸阳四贵之一。曾假扮秦王，迎接楚怀王入咸阳。",
     "quote": "“弟愿诈为秦王，以诱楚王！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 52,
+      "zhili": 85,
+      "zhengzhi": 78,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "嬴悝缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "公子悝，高陵君，秦昭王胞弟，咸阳四贵之一。曾假扮秦王，迎接楚怀王入咸阳。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前270年",
@@ -4422,8 +5296,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "公子芾，泾阳君，秦昭王胞弟。后入齐为质一年，替换孟尝君来秦为相。",
     "quote": "“咸阳有事，先问四贵，再问秦王！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 58,
+      "zhili": 84,
+      "zhengzhi": 80,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "嬴芾缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "公子芾，泾阳君，秦昭王胞弟。后入齐为质一年，替换孟尝君来秦为相。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4508,8 +5394,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国大力士，深受秦武王宠爱。因举鼎事件受牵连，被诛族。",
     "quote": "“千钧之重，不在话下。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 69,
+      "zhili": 64,
+      "zhengzhi": 58,
+      "meili": 62
+    },
+    "statsReason": {
+      "wuli": "乌获有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "秦国大力士，深受秦武王宠爱。因举鼎事件受牵连，被诛族。，统率 69。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 62。"
+    },
     "timeline": [
       {
         "year": "前307年",
@@ -4598,8 +5496,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国大力士，且知兵法。秦武王举鼎时，劝谏未成，侥幸没被牵连。后任汉中郡守。",
     "quote": "“臣只有蛮力，不敢坏国家大事。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 90,
+      "tongshuai": 73,
+      "zhili": 63,
+      "zhengzhi": 52,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "任鄙有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 90。",
+      "tongshuai": "秦国大力士，且知兵法。秦武王举鼎时，劝谏未成，侥幸没被牵连。后任汉中郡守。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "前288年",
@@ -4641,8 +5551,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦将，宣太后外族亲信，秦昭王少年好友。",
     "quote": "“我不通文墨，只知为太后尽忠。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 80,
+      "zhili": 69,
+      "zhengzhi": 58,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "向寿有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "秦将，宣太后外族亲信，秦昭王少年好友。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 69。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4668,8 +5590,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦昭王时陇西郡守，南郑公，主修狄道境内长城，李信祖父，陇西李氏始祖。",
     "quote": "“为国筑防，为君守藩！守土一方，保境安民！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 57,
+      "zhili": 79,
+      "zhengzhi": 83,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "李崇有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "秦昭王时陇西郡守，南郑公，主修狄道境内长城，李信祖父，陇西李氏始祖。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4703,8 +5637,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦南郡守，狄道侯，李信之父。",
     "quote": "“南郡要地，不可有失！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 54,
+      "zhili": 84,
+      "zhengzhi": 76,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "李瑶有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "秦南郡守，狄道侯，李信之父。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4730,8 +5676,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国大臣，宣太后主政期间任丞相。",
     "quote": "“法不可废，令不可改。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 57,
+      "zhili": 84,
+      "zhengzhi": 87,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "寿烛缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "秦国大臣，宣太后主政期间任丞相。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 87。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4757,8 +5715,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏国人，秦国应侯，秦昭襄王后期丞相。献策“远交近攻”，睚眦必报，逼杀白起。",
     "quote": "“秦之所欲，莫如弱赵。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 54,
+      "zhili": 81,
+      "zhengzhi": 84,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "范雎有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "魏国人，秦国应侯，秦昭襄王后期丞相。献策“远交近攻”，睚眦必报，逼杀白起。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前255年",
@@ -4800,8 +5770,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "纲成君，接替范雎为秦相。燕国人，善辩，主张功成身退，历事四朝。",
     "quote": "“日中则移，月满则亏，进退有度，方为保身之道。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 57,
+      "zhili": 83,
+      "zhengzhi": 79,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "蔡泽缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "纲成君，接替范雎为秦相。燕国人，善辩，主张功成身退，历事四朝。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4831,8 +5813,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国丞相，曾在吕不韦败亡后主政任相。",
     "quote": "“相国之任，在安内而攘外。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 50,
+      "zhili": 87,
+      "zhengzhi": 86,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "杜仓缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "秦国丞相，曾在吕不韦败亡后主政任相。，统率 50。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 87。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 86。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4913,8 +5907,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "甘茂之孙，十二岁拜上卿。不费兵卒，索赵五城。",
     "quote": "“项橐七岁为孔子师，今臣生十二岁于兹矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 56,
+      "zhili": 82,
+      "zhengzhi": 76,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "甘罗缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "甘茂之孙，十二岁拜上卿。不费兵卒，索赵五城。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前256年",
@@ -4952,8 +5958,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏国人，监门卒之子，受始皇重用为上卿。为秦出使四方、计破合纵。",
     "quote": "“三寸之舌，胜过百万雄师，臣只要黄金足矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 60,
+      "zhili": 79,
+      "zhengzhi": 78,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "姚贾缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "魏国人，监门卒之子，受始皇重用为上卿。为秦出使四方、计破合纵。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -4983,8 +6001,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "纵横家，或为魏国人，曾直言“秦王无道”，后被嬴政折服。周游列国，专司刺探与离间。",
     "quote": "“以万金之资，断各国将相之交。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 56,
+      "zhili": 91,
+      "zhengzhi": 80,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "顿弱有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "纵横家，或为魏国人，曾直言“秦王无道”，后被嬴政折服。周游列国，专司刺探与离间。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 91。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5022,8 +6052,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国尚书，吕不韦家臣，秦王政十年被逐入赵国。",
     "quote": "“赵若以武安君李牧为将，可支一年。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 54,
+      "zhili": 83,
+      "zhengzhi": 83,
+      "meili": 78
+    },
+    "statsReason": {
+      "wuli": "司空马缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "秦国尚书，吕不韦家臣，秦王政十年被逐入赵国。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 78。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5053,8 +6095,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐国人，后入秦。嫪毐之乱后，直谏秦始皇迎回太后，被封上卿。",
     "quote": "“以臣之命，全君之孝名，可也！臣言已毕，请就烹！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 59,
+      "zhili": 85,
+      "zhengzhi": 84,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "茅焦缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "齐国人，后入秦。嫪毐之乱后，直谏秦始皇迎回太后，被封上卿。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5131,8 +6185,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "中车府令，沙丘之变主谋，指鹿为马，祸乱大秦。",
     "quote": "“诸位所见，是鹿是马？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 53,
+      "zhili": 82,
+      "zhengzhi": 80,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵高缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "中车府令，沙丘之变主谋，指鹿为马，祸乱大秦。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前207年",
@@ -5170,8 +6236,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵高女婿，咸阳县令，带兵杀入望夷宫弑君。",
     "quote": "“陛下自裁吧，臣不敢动手。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 60,
+      "zhili": 83,
+      "zhengzhi": 83,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "阎乐有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "赵高女婿，咸阳县令，带兵杀入望夷宫弑君。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5201,8 +6279,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵高之弟，参与沙丘政变与入宫弑君。",
     "quote": "“兄长之命，不敢不从。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 53,
+      "zhili": 79,
+      "zhengzhi": 77,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵成缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "赵高之弟，参与沙丘政变与入宫弑君。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5228,8 +6318,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国使者，以五百里封地为饵，劝降齐王建。",
     "quote": "“若战，齐国无精兵强将；若降，大王得食邑五百里”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 53,
+      "zhili": 85,
+      "zhengzhi": 76,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "陈驰缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "秦国使者，以五百里封地为饵，劝降齐王建。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5259,8 +6361,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "右丞相，秦国重臣，因被赵高陷害而自杀。",
     "quote": "“臣冒死言，请止阿房。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 58,
+      "zhili": 85,
+      "zhengzhi": 90,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "冯去疾有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "右丞相，秦国重臣，因被赵高陷害而自杀。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 90。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前208年",
@@ -5290,8 +6404,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "御史大夫，大将冯奉世之祖，刚正不阿。",
     "quote": "“将相不辱，吾宁死不污。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 57,
+      "zhili": 82,
+      "zhengzhi": 77,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "冯劫有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "御史大夫，大将冯奉世之祖，刚正不阿。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前208年",
@@ -5325,8 +6451,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "蒙恬之弟，深受始皇亲近，位至上卿，决断狱讼，后被赵高害死。",
     "quote": "“法者，君王之节度，不可乱也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 53,
+      "zhili": 84,
+      "zhengzhi": 78,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "蒙毅缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "蒙恬之弟，深受始皇亲近，位至上卿，决断狱讼，后被赵高害死。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前210年",
@@ -5474,8 +6612,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "司马错之孙，白起副将。随白起在长平之战立功，后与白起一同被赐死于杜邮。",
     "quote": "“武安君死，我岂能独活？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 90,
+      "tongshuai": 84,
+      "zhili": 68,
+      "zhengzhi": 58,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "司马靳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 90。",
+      "tongshuai": "司马错之孙，白起副将。随白起在长平之战立功，后与白起一同被赐死于杜邮。，统率 84。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 68。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "前257年",
@@ -5513,8 +6663,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏国大梁人，兵家。秦王政十年入秦游说，任国尉，著有《尉缭子》。",
     "quote": "“兵者，凶器也”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 78,
+      "tongshuai": 78,
+      "zhili": 63,
+      "zhengzhi": 58,
+      "meili": 64
+    },
+    "statsReason": {
+      "wuli": "尉缭有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 78。",
+      "tongshuai": "魏国大梁人，兵家。秦王政十年入秦游说，任国尉，著有《尉缭子》。，统率 78。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 64。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5544,8 +6706,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "历三代秦王宿将，长平之战副将，讨伐邯郸。",
     "quote": "“将在外，军令有所不受。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 78,
+      "zhili": 68,
+      "zhengzhi": 60,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "王龁有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "历三代秦王宿将，长平之战副将，讨伐邯郸。，统率 78。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 68。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 60。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "前244年",
@@ -5579,8 +6753,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "曾助范雎入秦，后入秦为将。邯郸之战中，被赵军围困投降。赵孝成王封其为武阳君。",
     "quote": "“昔救应侯于危难，今困绝境求苟安。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 85,
+      "tongshuai": 73,
+      "zhili": 70,
+      "zhengzhi": 56,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "郑安平有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 85。",
+      "tongshuai": "曾助范雎入秦，后入秦为将。邯郸之战中，被赵军围困投降。赵孝成王封其为武阳君。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "前255年",
@@ -5622,8 +6808,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦昭襄王时期将领。长平之战初期主将，因攻赵久攻不下，被白起替换。",
     "quote": "“赵军殊死抵抗，非臣不用命，实难攻也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 77,
+      "zhili": 68,
+      "zhengzhi": 60,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "王陵有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "秦昭襄王时期将领。长平之战初期主将，因攻赵久攻不下，被白起替换。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 68。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 60。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5657,8 +6855,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦昭襄王末期名将，曾拒绝出使燕国，被甘罗劝服。后攻打赵国。",
     "quote": "“臣哪怕战死沙场，也不愿去做那口舌之徒。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 89,
+      "tongshuai": 86,
+      "zhili": 62,
+      "zhengzhi": 52,
+      "meili": 64
+    },
+    "statsReason": {
+      "wuli": "张唐有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 89。",
+      "tongshuai": "秦昭襄王末期名将，曾拒绝出使燕国，被甘罗劝服。后攻打赵国。，统率 86。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 62。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 64。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5692,8 +6902,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "卫国人，秦国客卿，秦昭王时将领。在华阳之战与白起击败魏韩赵联军，斩首十万。后在阏与之战被赵奢击败。",
     "quote": "“赵师远道而来，其势必锋。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 77,
+      "zhili": 67,
+      "zhengzhi": 56,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "胡阳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "卫国人，秦国客卿，秦昭王时将领。在华阳之战与白起击败魏韩赵联军，斩首十万。后在阏与之战被赵奢击败。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 67。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -5774,8 +6996,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐人仕秦，蒙氏家族第一代名将。历仕四朝，攻取韩赵魏大片土地，置三川郡。",
     "quote": "“蒙氏一族，誓死效忠秦王。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 87,
+      "tongshuai": 84,
+      "zhili": 70,
+      "zhengzhi": 57,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "蒙骜有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 87。",
+      "tongshuai": "齐人仕秦，蒙氏家族第一代名将。历仕四朝，攻取韩赵魏大片土地，置三川郡。，统率 84。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前240年",
@@ -5864,8 +7098,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国大将，曾大破赵军，斩首十万。后被李牧击败，畏罪逃亡（一说即樊於期）。",
     "quote": "“一遇李牧，前功尽弃。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 78,
+      "zhili": 62,
+      "zhengzhi": 54,
+      "meili": 66
+    },
+    "statsReason": {
+      "wuli": "桓齮有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "秦国大将，曾大破赵军，斩首十万。后被李牧击败，畏罪逃亡（一说即樊於期）。，统率 78。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 62。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 66。"
+    },
     "timeline": [
       {
         "year": "前227年",
@@ -5907,8 +7153,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦将，获罪逃往燕国，献头颅助荆轲刺秦。",
     "quote": "“秦王于我，戮族之仇。今日，便献首以复仇！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 83,
+      "zhili": 66,
+      "zhengzhi": 54,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "樊於期有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "秦将，获罪逃往燕国，献头颅助荆轲刺秦。，统率 83。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "前227年",
@@ -5938,8 +7196,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国宿将，曾围攻邯郸，随王翦伐赵，攻克赵国首都。",
     "quote": "“步步为营，赵人插翅难飞。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 81,
+      "tongshuai": 77,
+      "zhili": 64,
+      "zhengzhi": 53,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "杨端和有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 81。",
+      "tongshuai": "秦国宿将，曾围攻邯郸，随王翦伐赵，攻克赵国首都。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 53。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6016,8 +7286,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "少壮派秦将，勇猛果敢。曾夸口二十万灭楚，导致大败，后随王贲攻燕代、灭齐，立功被封陇西侯。",
     "quote": "“臣只需二十万军，便可擒楚王！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 73,
+      "zhili": 68,
+      "zhengzhi": 56,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "李信有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "少壮派秦将，勇猛果敢。曾夸口二十万灭楚，导致大败，后随王贲攻燕代、灭齐，立功被封陇西侯。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 68。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6055,8 +7337,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦王政时期将军，曾与王翦共同攻打燕国。",
     "quote": "“燕国太子行刺在前，大秦锐士报复在后！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 87,
+      "tongshuai": 83,
+      "zhili": 70,
+      "zhengzhi": 59,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "辛胜有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 87。",
+      "tongshuai": "秦王政时期将军，曾与王翦共同攻打燕国。，统率 83。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 59。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6082,8 +7376,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国猛将，曾随王翦伐赵，攻占东阳，俘赵王迁。",
     "quote": "“破赵灭燕，抬手之间！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 81,
+      "tongshuai": 78,
+      "zhili": 66,
+      "zhengzhi": 54,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "羌瘣有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 81。",
+      "tongshuai": "秦国猛将，曾随王翦伐赵，攻占东阳，俘赵王迁。，统率 78。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6176,8 +7482,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦王政时武将，伦侯武信侯。冯亭的后人，西汉重臣冯敬之父。",
     "quote": "“六国虽平，余孽不止，需严加防备”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 78,
+      "tongshuai": 78,
+      "zhili": 64,
+      "zhengzhi": 52,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "冯毋择有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 78。",
+      "tongshuai": "秦王政时武将，伦侯武信侯。冯亭的后人，西汉重臣冯敬之父。，统率 78。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6254,8 +7572,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦长史，曾救项梁，后随章邯投降项羽，封塞王。",
     "quote": "“赵高弄权，我等回朝必死无疑。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 81,
+      "tongshuai": 77,
+      "zhili": 69,
+      "zhengzhi": 52,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "司马欣有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 81。",
+      "tongshuai": "秦长史，曾救项梁，后随章邯投降项羽，封塞王。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 69。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "前204年",
@@ -6285,8 +7615,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦都尉，随章邯降楚，封翟王。",
     "quote": "“时局如此，只能从权。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 79,
+      "zhili": 63,
+      "zhengzhi": 52,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "董翳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "秦都尉，随章邯降楚，封翟王。，统率 79。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前204年",
@@ -6312,8 +7654,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国长信侯，邯郸人，假太监。深受赵太后宠爱，野心膨胀发动叛乱，被车裂。",
     "quote": "“我乃秦王假父，谁敢动我？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 52,
+      "zhili": 79,
+      "zhengzhi": 78,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "嫪毐缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "秦国长信侯，邯郸人，假太监。深受赵太后宠爱，野心膨胀发动叛乱，被车裂。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前238年",
@@ -6347,8 +7701,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "秦国长安君，秦始皇之弟。领兵伐赵时被策反，发动叛乱，兵败自杀（一说奔赵）。",
     "quote": "“汝非秦王血脉，怎可为君？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 54,
+      "zhili": 85,
+      "zhengzhi": 73,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "成蟜有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "秦国长安君，秦始皇之弟。领兵伐赵时被策反，发动叛乱，兵败自杀（一说奔赵）。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 73。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "前256年",
@@ -6445,8 +7811,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏遫，魏襄王之子。伊阙之战败给白起，在五国伐齐得胜，后与齐合兵攻灭孟尝君的封国薛国。",
     "quote": "“寡人读法，十余简而睡卧矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 56,
+      "tongshuai": 65,
+      "zhili": 74,
+      "zhengzhi": 77,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "魏昭王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 56。",
+      "tongshuai": "魏遫，魏襄王之子。伊阙之战败给白起，在五国伐齐得胜，后与齐合兵攻灭孟尝君的封国薛国。，统率 65。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 74。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "前277年",
@@ -6484,8 +7862,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏圉，畏秦如虎，因忌惮信陵君威望而不敢重用，致国势日衰。",
     "quote": "“信陵君虽贤，寡人难安。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 68,
+      "zhili": 78,
+      "zhengzhi": 83,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "魏安釐王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "魏圉，畏秦如虎，因忌惮信陵君威望而不敢重用，致国势日衰。，统率 68。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前243年",
@@ -6519,8 +7909,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏增，魏圉之子，一名魏午。不断割地事秦，任用奸臣，驱逐贤良。",
     "quote": "“割城以退秦，以和为贵”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 55,
+      "tongshuai": 68,
+      "zhili": 79,
+      "zhengzhi": 88,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "魏景湣王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 55。",
+      "tongshuai": "魏增，魏圉之子，一名魏午。不断割地事秦，任用奸臣，驱逐贤良。，统率 68。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 88。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前228年",
@@ -6562,8 +7964,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏假，魏国末代君主。死守大梁，被水攻破城，投降，魏国灭亡。",
     "quote": "“大水灌城，宗庙皆没，天亡我也，非战之罪。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 54,
+      "tongshuai": 65,
+      "zhili": 75,
+      "zhengzhi": 83,
+      "meili": 77
+    },
+    "statsReason": {
+      "wuli": "魏王假有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 54。",
+      "tongshuai": "魏假，魏国末代君主。死守大梁，被水攻破城，投降，魏国灭亡。，统率 65。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 75。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 77。"
+    },
     "timeline": [
       {
         "year": "前225年",
@@ -6601,8 +8015,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "犀首，著名的纵横家、军事家。曾任魏相，发起“五国相王”，一生致力于合纵抗秦。",
     "quote": "“一怒而诸侯惧，安居而天下熄。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 55,
+      "zhili": 91,
+      "zhengzhi": 84,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "公孙衍有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "犀首，著名的纵横家、军事家。曾任魏相，发起“五国相王”，一生致力于合纵抗秦。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 91。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6695,8 +8121,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "齐人，魏惠王相邦，约楚国合纵讨伐秦国。",
     "quote": "“秦乃虎狼也，需合纵以伐之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 59,
+      "zhili": 81,
+      "zhengzhi": 78,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "田需有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "齐人，魏惠王相邦，约楚国合纵讨伐秦国。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 81。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前310年",
@@ -6726,8 +8164,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏昭王将领，以诡诈著称。曾在华阳之战被秦将白起击败，损失惨重。",
     "quote": "“兵不厌诈，然白起难诈。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 72,
+      "zhili": 62,
+      "zhengzhi": 55,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "芒卯有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "魏昭王将领，以诡诈著称。曾在华阳之战被秦将白起击败，损失惨重。，统率 72。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 62。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 55。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -6761,8 +8211,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏安釐王相邦。怒而鞭笞范雎，后范雎入秦为相，借秦王之势索魏齐人头，魏齐怒而自刎。",
     "quote": "“为我笞杀此奴，勿留祸种！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 56,
+      "zhili": 83,
+      "zhengzhi": 80,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "魏齐缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "魏安釐王相邦。怒而鞭笞范雎，后范雎入秦为相，借秦王之势索魏齐人头，魏齐怒而自刎。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前265年",
@@ -6996,8 +8458,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏安釐王的中大夫。心胸狭隘，曾诬陷范雎通齐。后出使秦国被范雎羞辱，留下“赠绨袍”的典故。",
     "quote": "“范叔一寒如此哉？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 56,
+      "zhili": 86,
+      "zhengzhi": 83,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "须贾缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "魏安釐王的中大夫。心胸狭隘，曾诬陷范雎通齐。后出使秦国被范雎羞辱，留下“赠绨袍”的典故。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7035,8 +8509,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "魏安釐王时曾任宰相，为魏国争取到合纵领袖。",
     "quote": "“百里之地得可复失，而死者不可复生也”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 56,
+      "zhili": 88,
+      "zhengzhi": 89,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "范座缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "魏安釐王时曾任宰相，为魏国争取到合纵领袖。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 88。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 89。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7109,8 +8595,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "孔子后裔，博学多才，被称为孔子顺。魏安厘王时国相，曾劝谏魏王不要尊秦为帝。",
     "quote": "“秦若为帝，则我等皆为虏矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 58,
+      "zhili": 85,
+      "zhengzhi": 79,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "孔斌缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "孔子后裔，博学多才，被称为孔子顺。魏安厘王时国相，曾劝谏魏王不要尊秦为帝。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7195,8 +8693,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "又称辛垣衍，魏将。邯郸之战时，出使赵国，主张尊秦为帝，被驳斥。",
     "quote": "“拥秦为帝，则秦军可退，赵国可安。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 80,
+      "zhili": 70,
+      "zhengzhi": 55,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "新垣衍有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "又称辛垣衍，魏将。邯郸之战时，出使赵国，主张尊秦为帝，被驳斥。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 55。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7230,8 +8740,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "信陵君门客，献窃符救赵之计，事成后自刎以谢教唆之罪。",
     "quote": "“公子勉之矣，老臣不能从，当刭以送公子。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 57,
+      "zhili": 83,
+      "zhengzhi": 83,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "侯嬴缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "信陵君门客，献窃符救赵之计，事成后自刎以谢教唆之罪。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 83。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "前257年",
@@ -7265,8 +8787,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "大梁屠夫，力大无穷。随信陵君救赵，袖藏四十斤铁锤击杀晋鄙。",
     "quote": "“今公子有急，乃臣报恩之时也！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 83,
+      "zhili": 63,
+      "zhengzhi": 58,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "朱亥有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "大梁屠夫，力大无穷。随信陵君救赵，袖藏四十斤铁锤击杀晋鄙。，统率 83。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 58。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7300,8 +8834,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "大梁人，信陵君门客。秦灭魏后流亡，后成为赵王、常山王，汉初被封赵王。",
     "quote": "“信陵君死后，魏国已无英雄。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 55,
+      "zhili": 86,
+      "zhengzhi": 79,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "张耳缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "大梁人，信陵君门客。秦灭魏后流亡，后成为赵王、常山王，汉初被封赵王。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "前264年",
@@ -7390,8 +8936,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国处士，隐居邯郸赌徒之间，曾劝在赵的信陵君回国救魏。",
     "quote": "“公子虽贵，却能下交我等，真乃贤人。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 59,
+      "zhili": 82,
+      "zhengzhi": 83,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "毛公缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "赵国处士，隐居邯郸赌徒之间，曾劝在赵的信陵君回国救魏。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7421,8 +8979,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国处士，藏身于酒肆的贤人，与毛公齐名，劝客居赵国的信陵君回救魏国。",
     "quote": "“酒中自有乾坤，市井亦藏龙卧虎。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 60,
+      "zhili": 84,
+      "zhengzhi": 82,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "薛公缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "赵国处士，藏身于酒肆的贤人，与毛公齐名，劝客居赵国的信陵君回救魏国。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -7499,8 +9069,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬哙，燕国昏主，受人蛊惑禅位给相国子之，引发内乱与外敌入侵，国破身死。",
     "quote": "“寡人愿效尧舜之故，以国让于子之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 63,
+      "zhili": 76,
+      "zhengzhi": 82,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "燕王哙缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "姬哙，燕国昏主，受人蛊惑禅位给相国子之，引发内乱与外敌入侵，国破身死。，统率 63。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前314年",
@@ -7538,8 +9120,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬姓，燕王哙的相国，受禅让登基为王，三年内乱导致齐国趁虚而入，被杀。",
     "quote": "“王位，乃有德者居之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 54,
+      "tongshuai": 70,
+      "zhili": 76,
+      "zhengzhi": 85,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "子之有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 54。",
+      "tongshuai": "姬姓，燕王哙的相国，受禅让登基为王，三年内乱导致齐国趁虚而入，被杀。，统率 70。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 76。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 85。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前314年",
@@ -7632,8 +9226,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬秋寿，一说姬乐资，燕昭王之子，在位7年。中反间计，换下主将乐毅，导致燕军大败。后被丞相公孙操弑杀",
     "quote": "“乐毅独占齐地数年，名为燕将，实为齐王，当以骑劫替之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 61,
+      "zhili": 77,
+      "zhengzhi": 83,
+      "meili": 81
+    },
+    "statsReason": {
+      "wuli": "燕惠王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "姬秋寿，一说姬乐资，燕昭王之子，在位7年。中反间计，换下主将乐毅，导致燕军大败。后被丞相公孙操弑杀，统率 61。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 77。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 81。"
+    },
     "timeline": [
       {
         "year": "前271年",
@@ -7726,8 +9332,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬冥，在位3年。筑长城，设上谷五郡。",
     "quote": "“秦人无道，竟迁大周九鼎！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 68,
+      "zhili": 74,
+      "zhengzhi": 79,
+      "meili": 80
+    },
+    "statsReason": {
+      "wuli": "燕孝王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "姬冥，在位3年。筑长城，设上谷五郡。，统率 68。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 74。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 80。"
+    },
     "timeline": [
       {
         "year": "前255年",
@@ -7757,8 +9375,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬喜，燕国末代君主。在位33年，昏庸无断，杀子求和。",
     "quote": "“赵民其壮者皆死于长平，吾欲以五倍之兵伐之”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 56,
+      "tongshuai": 66,
+      "zhili": 74,
+      "zhengzhi": 76,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "燕王喜有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 56。",
+      "tongshuai": "姬喜，燕国末代君主。在位33年，昏庸无断，杀子求和。，统率 66。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 74。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 76。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前222年",
@@ -7851,8 +9481,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国将军，在子之之乱中反戈一击，攻打太子平，导致燕国内乱持续数月。",
     "quote": "“与其坐以待毙，不如拼死一搏。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 87,
+      "tongshuai": 87,
+      "zhili": 70,
+      "zhengzhi": 53,
+      "meili": 64
+    },
+    "statsReason": {
+      "wuli": "市被有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 87。",
+      "tongshuai": "燕国将军，在子之之乱中反戈一击，攻打太子平，导致燕国内乱持续数月。，统率 87。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 53。",
+      "meili": "名望和号召力在其故事中较突出，魅力 64。"
+    },
     "timeline": [
       {
         "year": "前314年",
@@ -7933,8 +9575,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "姬平，燕王哙太子，因不满王位被让给子之，起兵反抗，导致长达数月的内战，死于乱军。",
     "quote": "“燕国社稷，岂能送于外人！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 52,
+      "zhili": 84,
+      "zhengzhi": 79,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "太子平有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "姬平，燕王哙太子，因不满王位被让给子之，起兵反抗，导致长达数月的内战，死于乱军。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "前314年",
@@ -7976,8 +9630,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕昭王时将领，带兵助齐国伐宋，被齐湣王所杀。造成燕齐的生死大仇，引发后来的燕国主导的五国伐齐。",
     "quote": "“齐王之名，燕国不敢不从。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 80,
+      "zhili": 70,
+      "zhengzhi": 57,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "张魁有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "燕昭王时将领，带兵助齐国伐宋，被齐湣王所杀。造成燕齐的生死大仇，引发后来的燕国主导的五国伐齐。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8066,8 +9732,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕昭王太傅，以“千金买马骨”喻自己，成功招揽乐毅、邹衍等天下贤才。",
     "quote": "“王必欲致天下之士，请先从隗始。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 58,
+      "zhili": 90,
+      "zhengzhi": 82,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "郭隗缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "燕昭王太傅，以“千金买马骨”喻自己，成功招揽乐毅、邹衍等天下贤才。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 90。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "前351年",
@@ -8105,8 +9783,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕昭王时大将，曾为人质于东胡，归国后大破东胡，拓地千余里，设置上谷、渔阳等五郡。",
     "quote": "“北却东胡，拓地千里，以绝后顾之忧！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 83,
+      "tongshuai": 83,
+      "zhili": 65,
+      "zhengzhi": 60,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "秦开有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 83。",
+      "tongshuai": "燕昭王时大将，曾为人质于东胡，归国后大破东胡，拓地千余里，设置上谷、渔阳等五郡。，统率 83。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 60。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8199,8 +9889,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕将，燕国成安君，弑杀燕惠王。",
     "quote": "“燕王无道，忌贤臣而逐，挟胜局而溃！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 54,
+      "zhili": 86,
+      "zhengzhi": 82,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "公孙操有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "燕将，燕国成安君，弑杀燕惠王。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8226,8 +9928,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "宋人，燕国的高阳君，赵奢所言“旷日持久”典故中燕方统将。",
     "quote": "“赵齐合谋，吾需缓图之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 77,
+      "zhili": 66,
+      "zhengzhi": 53,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "荣蚠有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "宋人，燕国的高阳君，赵奢所言“旷日持久”典故中燕方统将。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 53。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8308,8 +10022,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "乐毅之子，燕将。前251年，乐间劝阻燕王喜攻赵，不成。燕军大败，乐间奔赵。",
     "quote": "“赵四战之国，其民习兵，不可轻易攻伐。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 83,
+      "tongshuai": 75,
+      "zhili": 65,
+      "zhengzhi": 57,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "乐间有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 83。",
+      "tongshuai": "乐毅之子，燕将。前251年，乐间劝阻燕王喜攻赵，不成。燕军大败，乐间奔赵。，统率 75。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8347,8 +10073,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕王喜的宠臣。在赵国攻燕时，出使秦国面见吕不韦，顺利请求秦国援助，解了燕国危难。",
     "quote": "“大王也是不得已啊。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 60,
+      "zhili": 79,
+      "zhengzhi": 82,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "蔡鸟有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "燕王喜的宠臣。在赵国攻燕时，出使秦国面见吕不韦，顺利请求秦国援助，解了燕国危难。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8386,8 +10124,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国相邦。出使赵国后，见赵国青壮都在长平战死，劝燕王伐赵，结果被廉颇反杀。",
     "quote": "“赵国壮者尽于长平，孤儿未长，此天赐良机。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 82,
+      "zhili": 70,
+      "zhengzhi": 54,
+      "meili": 66
+    },
+    "statsReason": {
+      "wuli": "栗腹有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "燕国相邦。出使赵国后，见赵国青壮都在长平战死，劝燕王伐赵，结果被廉颇反杀。，统率 82。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 66。"
+    },
     "timeline": [
       {
         "year": "前251年",
@@ -8480,8 +10230,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国大夫，极力反对燕王喜伐赵。后被燕王喜拜为相国，与赵求和。",
     "quote": "“与邻为善，不可乘人之危，否则必受天谴。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 54,
+      "zhili": 82,
+      "zhengzhi": 87,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "将渠有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "燕国大夫，极力反对燕王喜伐赵。后被燕王喜拜为相国，与赵求和。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 87。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8515,8 +10277,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "太子丹的太傅，为人稳重。反对刺秦计划，主张联合匈奴、三晋抗秦，被拒。",
     "quote": "“行侥幸之计，欲以求安，如雪之燧火也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 53,
+      "zhili": 79,
+      "zhengzhi": 79,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "鞠武有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "太子丹的太傅，为人稳重。反对刺秦计划，主张联合匈奴、三晋抗秦，被拒。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 79。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8550,8 +10324,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国策士，太子丹门客。属于“脉勇之人”，怒则面青。",
     "quote": "“谋定而后动，不可逞匹夫之勇。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 81,
+      "tongshuai": 81,
+      "zhili": 68,
+      "zhengzhi": 55,
+      "meili": 64
+    },
+    "statsReason": {
+      "wuli": "宋意有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 81。",
+      "tongshuai": "燕国策士，太子丹门客。属于“脉勇之人”，怒则面青。，统率 81。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 68。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 55。",
+      "meili": "名望和号召力在其故事中较突出，魅力 64。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8585,8 +10371,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国侠士，智勇双全。晚年留居燕国，荐荆轲后自刎以守密。",
     "quote": "“骐骥已老，难驰千里也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 59,
+      "zhili": 88,
+      "zhengzhi": 87,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "田光有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "燕国侠士，智勇双全。晚年留居燕国，荐荆轲后自刎以守密。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 88。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 87。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "前227年",
@@ -8730,8 +10528,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕国勇士，燕将秦开之孙。十三岁杀人，随荆轲入秦，见到秦王时震慑无措。",
     "quote": "“杀人如屠鸡鸭耳！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 87,
+      "tongshuai": 73,
+      "zhili": 70,
+      "zhengzhi": 57,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "秦舞阳有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 87。",
+      "tongshuai": "燕国勇士，燕将秦开之孙。十三岁杀人，随荆轲入秦，见到秦王时震慑无措。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "前227年",
@@ -8773,8 +10583,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "燕市屠夫，荆轲、高渐离挚友，三人常在街市痛饮狂歌，旁若无人。",
     "quote": "“酒至半酣胆半张，管他秦王与阎王!”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 76,
+      "zhili": 65,
+      "zhengzhi": 56,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "燕市狗屠有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "燕市屠夫，荆轲、高渐离挚友，三人常在街市痛饮狂歌，旁若无人。，统率 76。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -8867,8 +10689,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵何，任用廉颇、蔺相如、赵胜、赵奢等贤才，政兴兵盛，达到了国力巅峰。",
     "quote": "“蔺相如廉颇文武和睦，此为朝堂之表率！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 57,
+      "tongshuai": 66,
+      "zhili": 77,
+      "zhengzhi": 82,
+      "meili": 81
+    },
+    "statsReason": {
+      "wuli": "赵惠文王缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 57。",
+      "tongshuai": "赵何，任用廉颇、蔺相如、赵胜、赵奢等贤才，政兴兵盛，达到了国力巅峰。，统率 66。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 77。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 81。"
+    },
     "timeline": [
       {
         "year": "前266年",
@@ -8902,8 +10736,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵丹，在位期间发生长平之战，虽有国难，但晚年致力于恢复国力。",
     "quote": "“秦军虽然势大，但我赵人绝不屈膝！秦人围我邯郸，诸卿何以教寡人？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 72,
+      "zhili": 78,
+      "zhengzhi": 82,
+      "meili": 78
+    },
+    "statsReason": {
+      "wuli": "赵孝成王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "赵丹，在位期间发生长平之战，虽有国难，但晚年致力于恢复国力。，统率 72。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 78。"
+    },
     "timeline": [
       {
         "year": "前245年",
@@ -8937,8 +10783,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵偃，赵孝成王之子，在位之时赵国日衰。击败燕国，实行货币改革。废嫡立庶的当年去世。",
     "quote": "“李牧在北，庞煖在南，寡人何惧之有？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 59,
+      "tongshuai": 64,
+      "zhili": 73,
+      "zhengzhi": 82,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵悼襄王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 59。",
+      "tongshuai": "赵偃，赵孝成王之子，在位之时赵国日衰。击败燕国，实行货币改革。废嫡立庶的当年去世。，统率 64。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 73。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前236年",
@@ -8980,8 +10838,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵迁，赵国末代国君。听信谗言杀李牧，最终被俘，流放房陵。",
     "quote": "“李牧拥兵自重，不听君命，果有反心！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 54,
+      "tongshuai": 64,
+      "zhili": 77,
+      "zhengzhi": 80,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵幽缪王有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 54。",
+      "tongshuai": "赵迁，赵国末代国君。听信谗言杀李牧，最终被俘，流放房陵。，统率 64。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 77。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前228年",
@@ -9070,8 +10940,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国相邦，三朝元老，全力支持胡服骑射。沙丘宫变中为保护赵惠文王而死。",
     "quote": "“大王行大事，何惧世俗之见？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 60,
+      "zhili": 85,
+      "zhengzhi": 78,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "肥义缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "赵国相邦，三朝元老，全力支持胡服骑射。沙丘宫变中为保护赵惠文王而死。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "前295年",
@@ -9109,8 +10991,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "安阳君，赵武灵王长子，因废立之事发动沙丘宫变，兵败被杀。",
     "quote": "“这王位本该是我的！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 49,
+      "zhili": 86,
+      "zhengzhi": 75,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵章有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "安阳君，赵武灵王长子，因废立之事发动沙丘宫变，兵败被杀。，统率 49。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 86。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 75。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前295年",
@@ -9144,8 +11038,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "宋人，仕赵，辅佐安阳君赵章作乱，在沙丘宫变中被杀。",
     "quote": "“主父欲立二子皆为王，杀赵何则可为赵王。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 54,
+      "zhili": 80,
+      "zhengzhi": 82,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "田不礼有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "宋人，仕赵，辅佐安阳君赵章作乱，在沙丘宫变中被杀。，统率 54。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "前295年",
@@ -9218,8 +11124,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵成，安平君，赵武灵王之叔，宗室领袖。初反对胡服骑射，后被说服。",
     "quote": "“臣固拙于知俗，忠于赵氏之故也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 55,
+      "zhili": 82,
+      "zhengzhi": 82,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "公子成有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "赵成，安平君，赵武灵王之叔，宗室领袖。初反对胡服骑射，后被说服。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 82。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9253,8 +11171,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国大臣，被赵武灵王派遣出使魏国。",
     "quote": "“举贤不避亲，然必有实才。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 46,
+      "tongshuai": 58,
+      "zhili": 85,
+      "zhengzhi": 78,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "富丁有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 46。",
+      "tongshuai": "赵国大臣，被赵武灵王派遣出使魏国。，统率 58。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 78。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9280,8 +11210,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵惠文王后，赵孝成王生母。贤明仁爱，摄政期间国泰民安，留下了“触龙说赵太后”的典故。",
     "quote": "“岁亦无恙耶？民亦无恙耶？王亦无恙耶？”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 53,
+      "zhili": 89,
+      "zhengzhi": 88,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "赵威后缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "赵惠文王后，赵孝成王生母。贤明仁爱，摄政期间国泰民安，留下了“触龙说赵太后”的典故。，统率 53。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 89。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 88。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前264年",
@@ -9323,8 +11265,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国左师，巧劝赵太后送长安君入齐为质，解国家之危。",
     "quote": "“父母之爱子，则为之计深远。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 56,
+      "zhili": 84,
+      "zhengzhi": 83,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "触龙缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "赵国左师，巧劝赵太后送长安君入齐为质，解国家之危。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9354,8 +11308,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵威后少子，被送往齐国做人质，换取齐国出兵救赵。",
     "quote": "“身为王孙，亦身不由己。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 60,
+      "zhili": 82,
+      "zhengzhi": 84,
+      "meili": 73
+    },
+    "statsReason": {
+      "wuli": "长安君缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "赵威后少子，被送往齐国做人质，换取齐国出兵救赵。，统率 60。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 73。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9436,8 +11402,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵奢麾下百夫长，阏与之战时进言赵奢先占北山制高点，立下大功被封为国尉。",
     "quote": "“先据北山者胜，后至者败。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 80,
+      "zhili": 66,
+      "zhengzhi": 57,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "许历有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "赵奢麾下百夫长，阏与之战时进言赵奢先占北山制高点，立下大功被封为国尉。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 57。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9467,8 +11445,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "战国四大名将之一。老成持重，多有胜绩。长平之战初期坚壁清野，后受排挤流亡魏、楚。",
     "quote": "“吾跃马持戟如年少，欲以馀年报赵！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 83,
+      "tongshuai": 87,
+      "zhili": 65,
+      "zhengzhi": 56,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "廉颇有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 83。",
+      "tongshuai": "战国四大名将之一。老成持重，多有胜绩。长平之战初期坚壁清野，后受排挤流亡魏、楚。，统率 87。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 65。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "前327年",
@@ -9514,8 +11504,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵悼襄王时武将，前240年，傅抵驻守赵国军事重镇平邑，构成赵国东部防线砥柱。",
     "quote": "“有吾在，齐人不敢西进！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 78,
+      "tongshuai": 76,
+      "zhili": 64,
+      "zhengzhi": 52,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "傅抵有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 78。",
+      "tongshuai": "赵悼襄王时武将，前240年，傅抵驻守赵国军事重镇平邑，构成赵国东部防线砥柱。，统率 76。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 64。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9604,8 +11606,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国宿将，纵横家出身，师从鹖冠子。与李牧同时代，组织第七次合纵攻秦，虽败犹荣。曾是剧辛好友，后阵斩之。",
     "quote": "“剧辛老矣，不知兵法变通，吾必擒之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 79,
+      "tongshuai": 79,
+      "zhili": 72,
+      "zhengzhi": 50,
+      "meili": 64
+    },
+    "statsReason": {
+      "wuli": "庞煖有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 79。",
+      "tongshuai": "赵国宿将，纵横家出身，师从鹖冠子。与李牧同时代，组织第七次合纵攻秦，虽败犹荣。曾是剧辛好友，后阵斩之。，统率 79。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 72。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 50。",
+      "meili": "名望和号召力在其故事中较突出，魅力 64。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9643,8 +11657,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国武安君，战国四大名将之一，北破匈奴，西拒强秦，未尝一败，赵国最后的屏障。",
     "quote": "“臣能破匈奴，亦能却强秦！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 91,
+      "tongshuai": 80,
+      "zhili": 66,
+      "zhengzhi": 49,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "李牧有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 91。",
+      "tongshuai": "赵国武安君，战国四大名将之一，北破匈奴，西拒强秦，未尝一败，赵国最后的屏障。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 49。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "前229年",
@@ -9686,8 +11712,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "平阳君，赵惠文王之弟，性格稳重。曾反对接受上党郡，预言会引来秦国祸水。",
     "quote": "“秦侵韩地，冯亭不归秦而归赵，此乃嫁祸也，不可受。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 47,
+      "tongshuai": 57,
+      "zhili": 85,
+      "zhengzhi": 79,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵豹缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 47。",
+      "tongshuai": "平阳君，赵惠文王之弟，性格稳重。曾反对接受上党郡，预言会引来秦国祸水。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9772,8 +11810,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国宦者令，向赵惠文王举荐了门客蔺相如出使秦国。",
     "quote": "“为君举贤，臣下之职也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 52,
+      "zhili": 84,
+      "zhengzhi": 79,
+      "meili": 74
+    },
+    "statsReason": {
+      "wuli": "缪贤缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "赵国宦者令，向赵惠文王举荐了门客蔺相如出使秦国。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 74。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9858,8 +11908,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "虞信，布衣拜相的传奇人物。坚定的抗秦派，长平之战中主张联合楚魏。",
     "quote": "“大王若与秦讲和，是助秦攻赵也。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 57,
+      "zhili": 78,
+      "zhengzhi": 80,
+      "meili": 75
+    },
+    "statsReason": {
+      "wuli": "虞卿有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "虞信，布衣拜相的传奇人物。坚定的抗秦派，长平之战中主张联合楚魏。，统率 57。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 80。",
+      "meili": "名望和号召力在其故事中较突出，魅力 75。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9889,8 +11951,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "平原君门客。脱颖而出，随平原君出使楚国。按剑逼迫楚王歃血为盟，促成赵楚抗秦。",
     "quote": "“今日合纵之议，非为赵也，为楚也！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 52,
+      "tongshuai": 56,
+      "zhili": 82,
+      "zhengzhi": 77,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "毛遂缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 52。",
+      "tongshuai": "平原君门客。脱颖而出，随平原君出使楚国。按剑逼迫楚王歃血为盟，促成赵楚抗秦。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9928,8 +12002,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵孝成王或者赵悼襄王时期相国，曾掌控赵国的连横合纵决策权，记载于《战国策》。",
     "quote": "“地有所必争，利有所必得。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 51,
+      "tongshuai": 59,
+      "zhili": 88,
+      "zhengzhi": 84,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "皮相国有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 51。",
+      "tongshuai": "赵孝成王或者赵悼襄王时期相国，曾掌控赵国的连横合纵决策权，记载于《战国策》。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 88。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -9959,8 +12045,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国谋士，记载于《希写见建信君》。",
     "quote": "“今君势颓，而责文信侯少礼，臣窃为君不取也”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 52,
+      "zhili": 84,
+      "zhengzhi": 83,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "希写缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "赵国谋士，记载于《希写见建信君》。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 83。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10033,8 +12131,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵悼襄王时臣子，记载于《建信君轻韩熙》(前242年)，曾建议建信君与韩修好。",
     "quote": "“轻韩则秦收之，赵魏危矣。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 52,
+      "zhili": 82,
+      "zhengzhi": 77,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "赵敖缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "赵悼襄王时臣子，记载于《建信君轻韩熙》(前242年)，曾建议建信君与韩修好。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 82。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10115,8 +12225,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国使臣，收郭开贿赂，污蔑廉颇，导致赵王断了召回廉颇的打算。",
     "quote": "“廉颇有脾疾，一饭遗矢三次矣！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 44,
+      "tongshuai": 55,
+      "zhili": 85,
+      "zhengzhi": 77,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "唐玖缺少个人临阵勇武的集中记载，以军旅征战和临阵指挥见长，武力 44。",
+      "tongshuai": "赵国使臣，收郭开贿赂，污蔑廉颇，导致赵王断了召回廉颇的打算。，统率 55。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 85。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 77。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10150,8 +12272,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国奸佞，与郭开同流合污。构陷名将李牧、司马尚，逼迫李牧以口衔剑，刺柱而亡。",
     "quote": "“李牧手握重兵，名为抗秦，实为自立啊！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 50,
+      "tongshuai": 51,
+      "zhili": 78,
+      "zhengzhi": 75,
+      "meili": 68
+    },
+    "statsReason": {
+      "wuli": "韩仓有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 50。",
+      "tongshuai": "赵国奸佞，与郭开同流合污。构陷名将李牧、司马尚，逼迫李牧以口衔剑，刺柱而亡。，统率 51。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 78。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 75。",
+      "meili": "名望和号召力在其故事中较突出，魅力 68。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10189,8 +12323,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国大臣，长平之战期间主张派使者入秦求和，导致各国援军观望，间接误国。",
     "quote": "“与其苦战，不如遣重使入秦求和。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 48,
+      "tongshuai": 59,
+      "zhili": 84,
+      "zhengzhi": 79,
+      "meili": 72
+    },
+    "statsReason": {
+      "wuli": "楼昌有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 48。",
+      "tongshuai": "赵国大臣，长平之战期间主张派使者入秦求和，导致各国援军观望，间接误国。，统率 59。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 79。",
+      "meili": "名望和号召力在其故事中较突出，魅力 72。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10224,8 +12370,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵惠文王、赵孝成王时大臣，阏与之战、长平之战时，都曾出使秦国。",
     "quote": "“秦王待我甚厚，议和有望！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 45,
+      "tongshuai": 56,
+      "zhili": 80,
+      "zhengzhi": 84,
+      "meili": 76
+    },
+    "statsReason": {
+      "wuli": "郑朱有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 45。",
+      "tongshuai": "赵惠文王、赵孝成王时大臣，阏与之战、长平之战时，都曾出使秦国。，统率 56。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 80。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 84。",
+      "meili": "名望和号召力在其故事中较突出，魅力 76。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10255,8 +12413,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国校尉，长平之战后期赵括突围时的先锋将领之一。",
     "quote": "“与其饿死，不如战死！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 82,
+      "tongshuai": 81,
+      "zhili": 69,
+      "zhengzhi": 59,
+      "meili": 69
+    },
+    "statsReason": {
+      "wuli": "苏射有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 82。",
+      "tongshuai": "赵国校尉，长平之战后期赵括突围时的先锋将领之一。，统率 81。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 69。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 59。",
+      "meili": "名望和号召力在其故事中较突出，魅力 69。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10325,8 +12495,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国将领，曾驻守边境，抗击秦军。长平之战中，曾在赵括麾下抗秦。",
     "quote": "“烽火不息，甲胄不解。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 80,
+      "tongshuai": 82,
+      "zhili": 63,
+      "zhengzhi": 56,
+      "meili": 67
+    },
+    "statsReason": {
+      "wuli": "王容有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 80。",
+      "tongshuai": "赵国将领，曾驻守边境，抗击秦军。长平之战中，曾在赵括麾下抗秦。，统率 82。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 56。",
+      "meili": "名望和号召力在其故事中较突出，魅力 67。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10415,8 +12597,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国名将，李牧副手，长期协助李牧驻守雁门。与李牧一同被废，不知所踪。",
     "quote": "“赵国若无武安君，亡日无多矣！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 89,
+      "tongshuai": 80,
+      "zhili": 63,
+      "zhengzhi": 54,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "司马尚有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 89。",
+      "tongshuai": "赵国名将，李牧副手，长期协助李牧驻守雁门。与李牧一同被废，不知所踪。，统率 80。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 54。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10454,8 +12648,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国宗室将领。取代李牧统率赵军，才能平庸，不久被王翦大破，身死军中。",
     "quote": "“李牧拥兵抗命，我奉王命代之。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 73,
+      "zhili": 70,
+      "zhengzhi": 52,
+      "meili": 70
+    },
+    "statsReason": {
+      "wuli": "赵葱有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "赵国宗室将领。取代李牧统率赵军，才能平庸，不久被王翦大破，身死军中。，统率 73。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 70。"
+    },
     "timeline": [
       {
         "year": "前228年",
@@ -10497,8 +12703,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵将，与赵葱一同接替李牧。兵败后逃往邯郸，未能挽救败局。",
     "quote": "“秦军势大，不可正面撄其锋芒。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 82,
+      "tongshuai": 76,
+      "zhili": 70,
+      "zhengzhi": 55,
+      "meili": 62
+    },
+    "statsReason": {
+      "wuli": "颜聚有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 82。",
+      "tongshuai": "赵将，与赵葱一同接替李牧。兵败后逃往邯郸，未能挽救败局。，统率 76。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 70。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 55。",
+      "meili": "名望和号召力在其故事中较突出，魅力 62。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10528,8 +12746,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "赵国大将。率军救援平阳，被秦将桓齮击败，斩首十万，战死。",
     "quote": "“保卫平阳，不得有失！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 87,
+      "tongshuai": 79,
+      "zhili": 66,
+      "zhengzhi": 50,
+      "meili": 65
+    },
+    "statsReason": {
+      "wuli": "扈辄有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 87。",
+      "tongshuai": "赵国大将。率军救援平阳，被秦将桓齮击败，斩首十万，战死。，统率 79。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 50。",
+      "meili": "名望和号召力在其故事中较突出，魅力 65。"
+    },
     "timeline": [
       {
         "year": "前234年",
@@ -10567,8 +12797,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "乐毅同族，赵将。前245年，乐乘接管廉颇兵权之时，被其引兵攻打，乐乘兵败出逃。",
     "quote": "“廉颇擅自兴兵攻我，形同造反！”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 84,
+      "tongshuai": 72,
+      "zhili": 66,
+      "zhengzhi": 52,
+      "meili": 62
+    },
+    "statsReason": {
+      "wuli": "乐乘有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 84。",
+      "tongshuai": "乐毅同族，赵将。前245年，乐乘接管廉颇兵权之时，被其引兵攻打，乐乘兵败出逃。，统率 72。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 66。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 62。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10645,8 +12887,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "神射手，赵国中大夫。曾用“更羸虚发雁落”之事劝谏春申君。",
     "quote": "“惊弓之鸟，虚发而下。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 86,
+      "tongshuai": 77,
+      "zhili": 63,
+      "zhengzhi": 52,
+      "meili": 63
+    },
+    "statsReason": {
+      "wuli": "魏加有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 86。",
+      "tongshuai": "神射手，赵国中大夫。曾用“更羸虚发雁落”之事劝谏春申君。，统率 77。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 63。",
+      "zhengzhi": "人物影响更多来自职事与事件本身，政治 52。",
+      "meili": "名望和号召力在其故事中较突出，魅力 63。"
+    },
     "timeline": [
       {
         "year": "战国中后期",
@@ -10672,8 +12926,20 @@ export const CHARACTER_RESUMES = [
     "lit": false,
     "bio": "谋士，李牧之孙。在赵亡后辅助韩信，展现出极高的军事谋略。",
     "quote": "“智者千虑，必有一失；愚者千虑，必有一得。”",
-    "stats": null,
-    "statsReason": null,
+    "stats": {
+      "wuli": 49,
+      "tongshuai": 52,
+      "zhili": 84,
+      "zhengzhi": 81,
+      "meili": 71
+    },
+    "statsReason": {
+      "wuli": "李左车有直接武事或勇力记载，以军旅征战和临阵指挥见长，武力 49。",
+      "tongshuai": "谋士，李牧之孙。在赵亡后辅助韩信，展现出极高的军事谋略。，统率 52。",
+      "zhili": "从其履历影响力与处事结果折算智略，智力 84。",
+      "zhengzhi": "长期处在权力结构或制度治理之中，政治 81。",
+      "meili": "名望和号召力在其故事中较突出，魅力 71。"
+    },
     "timeline": [
       {
         "year": "战国中后期",

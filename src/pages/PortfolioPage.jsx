@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
+  ArrowRight,
+  BookOpen,
   Bot,
   Crown,
   GalleryVerticalEnd,
@@ -14,7 +16,13 @@ import {
   Swords,
 } from 'lucide-react';
 import SphereCardCloud from '../components/SphereCardCloud';
-import { buildCharacterResumes, buildPortraitCandidates, getStatKeys } from '../utils/characterResume';
+import {
+  buildCharacterResumes,
+  buildPortraitCandidates,
+  CDN_DEFAULT_PORTRAIT,
+  DEFAULT_PORTRAIT_FILE,
+  getStatKeys,
+} from '../utils/characterResume';
 import { loadImagePriorityConfig, useImagePriority } from '../utils/imagePriority';
 import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioData';
 import {
@@ -29,19 +37,83 @@ import {
   PLACEHOLDER_IMAGE,
   PLACEHOLDER_SMALL_IMAGE,
 } from '../utils/portfolio';
-import { buildResumeRouteMaps, getResumePath, getTabPath, resolveRoute } from '../utils/routes';
+import { buildAppreciationCandidates, getCharacterAppreciationByCode } from '../data/characterAppreciations_preview';
+import {
+  buildResumeRouteMaps,
+  getAppreciationPath,
+  getAppreciationStatePath,
+  getResumePath,
+  getTabPath,
+  resolveRoute,
+} from '../utils/routes';
 import { useReveal } from '../utils/useReveal';
 
 const CHARACTERS = buildCharacters(STATES);
 const CHARACTER_RESUMES = buildCharacterResumes();
 const STAT_KEYS = getStatKeys();
 const RESUME_ROUTE_MAPS = buildResumeRouteMaps(CHARACTER_RESUMES);
+const RESUME_STATES = STATES.slice(1);
+const CHARACTER_META_BY_ID = new Map(CHARACTERS.map((item) => [item.id, item]));
+const CHARACTER_META_BY_NAME = new Map(CHARACTERS.map((item) => [item.name, item]));
+
+const APPRECIATION_DESIGN_FIELDS = [
+  { key: 'color', label: '色彩设计', icon: Sparkles },
+  { key: 'background', label: '背景设计', icon: GalleryVerticalEnd },
+  { key: 'action', label: '动作设计', icon: Sparkles },
+  { key: 'head', label: '头像设计', icon: Sparkles },
+  { key: 'prop', label: '道具设计', icon: Sparkles },
+  { key: 'outfit', label: '服饰盔甲设计', icon: Sparkles },
+];
+
+const APPRECIATION_VISIBLE_FIELD_COUNT = 4;
+
+function hashStringSeed(value) {
+  let hash = 2166136261;
+
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
+}
+
+function getVisibleAppreciationFields(character, appreciation) {
+  const seed = hashStringSeed(`${character?.code ?? ''}_${character?.name ?? ''}`);
+
+  return APPRECIATION_DESIGN_FIELDS
+    .filter((field) => appreciation?.appreciations_content?.[field.key])
+    .map((field, index) => ({
+      ...field,
+      sourceIndex: index,
+      weight: hashStringSeed(`${seed}_${field.key}`),
+    }))
+    .sort((first, second) => first.weight - second.weight)
+    .slice(0, APPRECIATION_VISIBLE_FIELD_COUNT)
+    .sort((first, second) => first.sourceIndex - second.sourceIndex);
+}
+
+// 未点亮角色不依赖 appreciations_content，从全部 6 个主题中按同样的稳定伪随机选 4 个，
+// 作为赏析板块的占位（仅标题 + 留空 body），呈现"即将填入内容"的效果。
+function getPlaceholderAppreciationFields(character) {
+  const seed = hashStringSeed(`${character?.code ?? ''}_${character?.name ?? ''}`);
+
+  return APPRECIATION_DESIGN_FIELDS
+    .map((field, index) => ({
+      ...field,
+      sourceIndex: index,
+      weight: hashStringSeed(`${seed}_${field.key}`),
+    }))
+    .sort((first, second) => first.weight - second.weight)
+    .slice(0, APPRECIATION_VISIBLE_FIELD_COUNT)
+    .sort((first, second) => first.sourceIndex - second.sourceIndex);
+}
 
 const NAV_TABS = [
   { key: 'art', label: '立绘赏析', icon: Image },
   { key: 'resume', label: '角色简历', icon: Users },
-  { key: 'arpg', label: 'ARPG', icon: Swords },
-  { key: 'slg', label: 'SLG', icon: Gamepad2 },
+  { key: 'slg', label: 'SLG', icon: Swords },
+  { key: 'arpg', label: 'ARPG', icon: Gamepad2 },
 ];
 
 /** 小红书 SVG Icon */
@@ -175,6 +247,42 @@ function CharacterImage({ code, name, className = '', variant = 'default' }) {
   );
 }
 
+function AppreciationImage({ fileName, alt, className = '' }) {
+  const priority = useImagePriority();
+  const [sourceIndex, setSourceIndex] = useState(0);
+
+  const imageCandidates = useMemo(
+    () => buildAppreciationCandidates(fileName, priority),
+    [fileName, priority],
+  );
+
+  useEffect(() => {
+    setSourceIndex(0);
+  }, [fileName, priority]);
+
+  const imageSrc = imageCandidates[sourceIndex] ?? imageCandidates[0];
+
+  const handleError = () => {
+    setSourceIndex((current) => {
+      const nextIndex = current + 1;
+      return nextIndex < imageCandidates.length ? nextIndex : current;
+    });
+  };
+
+  return (
+    <img
+      src={imageSrc}
+      alt={alt}
+      loading="lazy"
+      onError={handleError}
+      onContextMenu={(event) => event.preventDefault()}
+      draggable="false"
+      onDragStart={(event) => event.preventDefault()}
+      className={className}
+    />
+  );
+}
+
 function RadarChart({ stats, color }) {
   const size = 240;
   const center = 120.5;
@@ -298,7 +406,7 @@ const UNLIT_PLACEHOLDER_TIMELINE = [
 ];
 
 function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
-  const displayTimeline = resume.lit ? resume.timeline : UNLIT_PLACEHOLDER_TIMELINE;
+  const displayTimeline = resume.lit && resume.timeline?.length ? resume.timeline : UNLIT_PLACEHOLDER_TIMELINE;
   return (
     <>
       <header className="resume-detail-hero card-panel">
@@ -309,7 +417,7 @@ function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
         </div>
         <div className="resume-portrait-wrap">
           <PortraitImage
-            portrait={resume.portrait}
+            portrait={resume.lit ? (resume.sourcePortrait || resume.portrait) : DEFAULT_PORTRAIT_FILE}
             alt={resume.name}
             loading={imageLoading}
           />
@@ -324,9 +432,9 @@ function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
       <section className="resume-section card-panel">
         <h2>人物能力</h2>
         <div className="resume-ability-grid">
-          <RadarChart stats={resume.stats} color={resume.stateColor} />
+          <RadarChart stats={resume.lit ? resume.stats : null} color={resume.stateColor} />
           <div className="stat-reasons">
-            {resume.statsReason ? (
+            {resume.lit && resume.statsReason ? (
               STAT_KEYS.map((item) => (
                 <p key={item.key}>
                   <strong>{item.label}</strong>
@@ -355,17 +463,10 @@ function CharacterResumeContent({ resume, imageLoading = 'lazy' }) {
   );
 }
 
-function CharacterResumeDetail({ resume, onBack }) {
+function CharacterResumeDetail({ resume }) {
   return (
     <div className="tab-content resume-detail-view">
       <section className="resume-detail-shell">
-        <div className="resume-detail-actions">
-          <button type="button" className="detail-back-btn" onClick={onBack}>
-            <ArrowLeft size={18} />
-            返回角色画廊
-          </button>
-        </div>
-
         <CharacterResumeContent resume={resume} />
       </section>
     </div>
@@ -395,16 +496,463 @@ function CharacterResumePrintPage({ resumes, theme, onToggleTheme }) {
   );
 }
 
+function AppreciationDetailPage({ character, appreciation, previousCharacter, nextCharacter, onNavigate }) {
+  const shouldShowAppreciationContent = Boolean(appreciation?.lit);
+  const visibleDesignFields = useMemo(
+    () => (shouldShowAppreciationContent ? getVisibleAppreciationFields(character, appreciation) : []),
+    [character, appreciation, shouldShowAppreciationContent],
+  );
+  const placeholderDesignFields = useMemo(
+    () => (shouldShowAppreciationContent ? [] : getPlaceholderAppreciationFields(character)),
+    [character, shouldShowAppreciationContent],
+  );
+
+  if (!character) {
+    return (
+      <div className="tab-content appreciation-detail-view">
+        <section className="appreciation-empty card-panel">
+          <div className="eyebrow subtle">
+            <BookOpen size={16} />
+            <span>立绘赏析</span>
+          </div>
+          <h1>未找到对应人物</h1>
+          <p>请从立绘赏析画廊重新选择角色。</p>
+        </section>
+      </div>
+    );
+  }
+
+  return (
+    <div className="tab-content appreciation-detail-view">
+      <Reveal>
+        <section className="appreciation-detail-shell card-panel">
+          <div className="appreciation-detail-grid">
+            <div className="appreciation-figure">
+              <div className="appreciation-image-wrap">
+                <AppreciationImage
+                  fileName={appreciation?.lit ? appreciation.lit_Portrait : appreciation?.background}
+                  alt={character.name}
+                  className="select-none pointer-events-none"
+                />
+              </div>
+              <div className="appreciation-figure-caption">
+                <h1>{character.name}</h1>
+                <span>原创立绘</span>
+              </div>
+            </div>
+
+            <article className="appreciation-detail-info">
+              {appreciation ? (
+                <div className="inspiration-block">
+                  <div className="eyebrow subtle">
+                    <BookOpen size={16} />
+                    <span>当前立绘创作灵感</span>
+                  </div>
+
+                  {shouldShowAppreciationContent ? (
+                    <div className="inspiration-design" aria-label="画面设计映射">
+                      {visibleDesignFields.map((field, index) => {
+                        const text = appreciation.appreciations_content?.[field.key];
+                        const Icon = field.icon;
+                        if (!text) return null;
+
+                        return (
+                          <section
+                            key={field.key}
+                            className={`inspiration-design-item inspiration-design-item-${index + 1}`}
+                          >
+                            <h3>
+                              <Icon size={15} />
+                              <span>{appreciation.appreciations_tag?.[field.key] ?? field.label}</span>
+                            </h3>
+                            <p>{text}</p>
+                          </section>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="inspiration-design inspiration-design-placeholder" aria-label="画面设计占位">
+                      {placeholderDesignFields.map((field, index) => {
+                        const Icon = field.icon;
+                        return (
+                          <section
+                            key={field.key}
+                            className={`inspiration-design-item inspiration-design-item-${index + 1} inspiration-design-item-placeholder`}
+                          >
+                            <h3>
+                              <Icon size={15} />
+                              <span>{field.label}</span>
+                            </h3>
+                            <div className="inspiration-design-placeholder-body" aria-hidden="true" />
+                          </section>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="inspiration-block inspiration-empty">
+                  <div className="eyebrow subtle">
+                    <BookOpen size={16} />
+                    <span>当前立绘创作灵感</span>
+                  </div>
+                  <p className="inspiration-empty-text">该角色的创作灵感整理中，敬请期待。</p>
+                </div>
+              )}
+            </article>
+          </div>
+        </section>
+      </Reveal>
+
+      <nav className="appreciation-detail-nav" aria-label="立绘赏析上一页下一页">
+        <button
+          type="button"
+          className="appreciation-nav-btn"
+          onClick={() => previousCharacter && onNavigate(previousCharacter)}
+          disabled={!previousCharacter}
+        >
+          <ArrowLeft size={16} />
+          <span>上一页 {previousCharacter?.name ?? ''}</span>
+        </button>
+        <button
+          type="button"
+          className="appreciation-nav-btn appreciation-nav-btn-next"
+          onClick={() => nextCharacter && onNavigate(nextCharacter)}
+          disabled={!nextCharacter}
+        >
+          <span>下一页 {nextCharacter?.name ?? ''}</span>
+          <ArrowRight size={16} />
+        </button>
+      </nav>
+    </div>
+  );
+}
+
+
+function parseResumeLifeSpan(title) {
+  const lifeSpan = title?.split('，')[1] ?? title ?? '';
+  return lifeSpan.trim();
+}
+
+function parseBceYear(value) {
+  const match = String(value ?? '').match(/前(\d+)年/);
+  return match ? Number(match[1]) : 0;
+}
+
+function getResumeDeathYear(resume) {
+  const lifeSpan = parseResumeLifeSpan(resume.title);
+  const deathPart = lifeSpan.includes('-') ? lifeSpan.split('-').at(-1) : lifeSpan;
+  return parseBceYear(deathPart);
+}
+
+function enrichResumeForChart(resume) {
+  const meta = CHARACTER_META_BY_ID.get(resume.id) ?? CHARACTER_META_BY_NAME.get(resume.name) ?? {};
+  return {
+    ...resume,
+    role: meta.role ?? resume.role ?? '',
+    liege: meta.liege ?? resume.liege ?? '',
+    lifeSpan: parseResumeLifeSpan(resume.title),
+    deathYear: getResumeDeathYear(resume),
+  };
+}
+
+function sortResumeByCode(a, b) {
+  return Number(a.code) - Number(b.code);
+}
+
+function sortRulersByDeath(a, b) {
+  if (b.deathYear !== a.deathYear) {
+    return b.deathYear - a.deathYear;
+  }
+  return sortResumeByCode(a, b);
+}
+
+function buildStateDynastyChart(resumes, stateKey) {
+  const stateResumes = resumes
+    .filter((item) => item.stateKey === stateKey)
+    .map(enrichResumeForChart);
+  const rulers = stateResumes.filter((item) => item.role === '王侯').sort(sortRulersByDeath);
+  const rulerNames = new Set(rulers.map((item) => item.name));
+  const subjects = stateResumes.filter((item) => item.role !== '王侯');
+  const byLiege = new Map();
+  const orphans = [];
+
+  subjects.forEach((item) => {
+    if (rulerNames.has(item.liege)) {
+      const group = byLiege.get(item.liege) ?? { martial: [], scholar: [] };
+      if (item.role === '武人') {
+        group.martial.push(item);
+      } else {
+        group.scholar.push(item);
+      }
+      byLiege.set(item.liege, group);
+    } else {
+      orphans.push(item);
+    }
+  });
+
+  return {
+    rulers,
+    rows: rulers.map((ruler) => {
+      const group = byLiege.get(ruler.name) ?? { martial: [], scholar: [] };
+      return {
+        ruler,
+        martial: group.martial.sort(sortResumeByCode),
+        scholar: group.scholar.sort(sortResumeByCode),
+      };
+    }),
+    orphans: orphans.sort(sortResumeByCode),
+    total: stateResumes.length,
+  };
+}
+
+function ResumeCoverCard({ resume, variant = 'subject', onOpenResume }) {
+  const isRuler = variant === 'ruler';
+  // 点亮状态以 whitelist.toml 为唯一真源：未点亮角色统一显示默认占位头像
+  const portrait = resume.lit ? (resume.sourcePortrait || resume.portrait) : DEFAULT_PORTRAIT_FILE;
+
+  return (
+    <button
+      type="button"
+      className={'resume-cover-card resume-cover-card-' + variant}
+      onClick={() => onOpenResume(resume)}
+      aria-label={'查看' + resume.name + '角色简历'}
+      title={resume.name + ' ' + resume.lifeSpan}
+    >
+      <span className="resume-cover-avatar" style={{ backgroundImage: 'url(' + CDN_DEFAULT_PORTRAIT + ')' }}>
+        <PortraitImage portrait={portrait} alt={resume.name} />
+      </span>
+      <span className="resume-cover-name">{resume.name}</span>
+      <span className="resume-cover-years">{resume.lifeSpan || '生卒年不详'}</span>
+      {isRuler && <span className="resume-cover-crown" aria-hidden="true"><Crown size={13} /></span>}
+    </button>
+  );
+}
+
+function ResumeSupportColumn({ resumes, side, onOpenResume }) {
+  const label = side === 'martial' ? '武' : '文';
+  return (
+    <div className={'resume-support-column resume-support-column-' + side} aria-label={side === 'martial' ? '武将' : '文臣'}>
+      <span className="resume-support-label">{label}</span>
+      <div className="resume-support-grid">
+        {resumes.map((resume) => (
+          <ResumeCoverCard key={resume.id} resume={resume} onOpenResume={onOpenResume} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ResumeDynastyChartSection({ resumes, activeState, onStateChange, states, onOpenResume }) {
+  const selectedStateKey = activeState === 'all' ? states[0]?.key : activeState;
+  const selectedState = states.find((state) => state.key === selectedStateKey) ?? states[0];
+  const chart = useMemo(
+    () => buildStateDynastyChart(resumes, selectedStateKey),
+    [resumes, selectedStateKey],
+  );
+  const orphanMartial = chart.orphans.filter((item) => item.role === '武人');
+  const orphanScholar = chart.orphans.filter((item) => item.role !== '武人');
+
+  return (
+    <section className="section-block resume-dynasty-section">
+      <Reveal className="section-heading resume-dynasty-heading" delay={100}>
+        <div>
+          <div className="eyebrow subtle">
+            <GalleryVerticalEnd size={16} />
+            <span>角色简历</span>
+          </div>
+          <h2>战国七雄角色简历</h2>
+        </div>
+        <p>王侯居中承续，武人在左，文人在右。</p>
+      </Reveal>
+
+      <Reveal delay={140}>
+        <div className="filter-bar resume-state-tabs card-panel" aria-label="七国角色简历分栏">
+          {states.map((state) => {
+            const count = getStateCharacterCount(states, state.key);
+            return (
+              <button
+                key={state.key}
+                type="button"
+                className={state.key === selectedStateKey ? 'filter-chip active' : 'filter-chip'}
+                onClick={() => onStateChange(state.key)}
+              >
+                <span>{state.label}</span>
+                <strong>{count}</strong>
+              </button>
+            );
+          })}
+        </div>
+      </Reveal>
+
+      <Reveal delay={200}>
+        <div className="resume-chart-summary card-panel">
+          <span className="gallery-summary-label">{selectedState.label}国图谱</span>
+          <strong>{chart.total} 位角色 / {chart.rulers.length} 位王侯</strong>
+          <p>按王侯卒年自上而下排列；同一年卒者按角色编号排序。</p>
+        </div>
+      </Reveal>
+
+      <div className="resume-dynasty-canvas card-panel">
+        <div className="resume-dynasty-flow">
+          {chart.rows.map((row, index) => (
+            <Reveal key={row.ruler.id} delay={80 + (index % 8) * 45}>
+              <section className="resume-dynasty-row" aria-label={row.ruler.name + '时期'}>
+                <ResumeSupportColumn resumes={row.martial} side="martial" onOpenResume={onOpenResume} />
+                <div className="resume-ruler-node">
+                  <ResumeCoverCard resume={row.ruler} variant="ruler" onOpenResume={onOpenResume} />
+                </div>
+                <ResumeSupportColumn resumes={row.scholar} side="scholar" onOpenResume={onOpenResume} />
+              </section>
+            </Reveal>
+          ))}
+        </div>
+
+        {chart.orphans.length > 0 && (
+          <Reveal delay={240}>
+            <section className="resume-orphan-band" aria-label="旁支人物">
+              <div className="resume-orphan-title">
+                <span className="gallery-summary-label">旁支人物</span>
+                <strong>未直接对齐中心王侯</strong>
+              </div>
+              <div className="resume-orphan-grid">
+                <ResumeSupportColumn resumes={orphanMartial} side="martial" onOpenResume={onOpenResume} />
+                <ResumeSupportColumn resumes={orphanScholar} side="scholar" onOpenResume={onOpenResume} />
+              </div>
+            </section>
+          </Reveal>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// 角色画廊封面区块：标题 + 阵营筛选 + 概要 + 卡片网格。
+// 传入 onOpenCharacter 时卡片可点击进入详情；不传则为纯封面（不可点击）。
+function CharacterGallerySection({
+  characters,
+  activeState,
+  onStateChange,
+  states,
+  stateMeta,
+  siteCopy,
+  onOpenCharacter,
+}) {
+  const interactive = Boolean(onOpenCharacter);
+
+  return (
+    <section className="section-block">
+      <Reveal className="section-heading" delay={100}>
+        <div>
+          <div className="eyebrow subtle">
+            <GalleryVerticalEnd size={16} />
+            <span>立绘赏析</span>
+          </div>
+          <h2>战国七雄立绘全集</h2>
+        </div>
+        <p>{interactive ? '点击卡片查看创作灵感。' : siteCopy.galleryDescription}</p>
+      </Reveal>
+
+      <Reveal delay={140}>
+        <div className="filter-bar card-panel">
+          {states.map((state) => {
+            const count = getStateCharacterCount(states, state.key);
+            return (
+              <button
+                key={state.key}
+                type="button"
+                className={state.key === activeState ? 'filter-chip active' : 'filter-chip'}
+                onClick={() => onStateChange(state.key)}
+              >
+                <span>{state.label}</span>
+                <strong>{count}</strong>
+              </button>
+            );
+          })}
+        </div>
+      </Reveal>
+
+      <Reveal delay={220}>
+        <div className="gallery-summary card-panel">
+          <div>
+            <span className="gallery-summary-label">当前视图</span>
+            <strong>
+              {stateMeta.label === '全部' ? '全阵营总览' : `${stateMeta.label}国档案`}
+            </strong>
+          </div>
+          <p>
+            当前阵营关键词为"{stateMeta.tone}"。
+          </p>
+        </div>
+      </Reveal>
+
+      <div className="gallery-grid">
+        {characters.map((item, index) => (
+          <Reveal key={`${activeState}-${item.id}`} delay={80 + (index % 12) * 35}>
+            <article
+              className={`gallery-card${interactive ? ' gallery-card-clickable' : ''}`}
+              data-character-code={item.code}
+              {...(interactive
+                ? {
+                    role: 'button',
+                    tabIndex: 0,
+                    onClick: () => onOpenCharacter(item),
+                    onKeyDown: (event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        onOpenCharacter(item);
+                      }
+                    },
+                    'aria-label': `查看${item.name}立绘赏析`,
+                  }
+                : {})}
+            >
+              <div className="gallery-image-wrap">
+                <CharacterImage
+                  code={item.code}
+                  name={item.name}
+                  className="select-none pointer-events-none"
+                />
+                <div className="gallery-glow" aria-hidden="true" />
+              </div>
+              <div className="gallery-copy">
+                <div className="gallery-topline">
+                  <span>{item.stateLabel}</span>
+                  <span>{item.code}</span>
+                </div>
+                <div className="gallery-name-row">
+                  <h3>{item.name}</h3>
+                  <span className="gallery-original-tag">
+                    {item.lit ? <Crown size={14} /> : <Info size={14} />}
+                    {item.lit ? '已点亮' : '待点亮'}
+                  </span>
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function PortfolioPage() {
   const [routeState, setRouteState] = useState(() =>
     resolveRoute(window.location.pathname, RESUME_ROUTE_MAPS.slugToId),
   );
   const [activeState, setActiveState] = useState('all');
   const [theme, setTheme] = useState('dark');
-  const { tab: activeTab, selectedResumeId, printMode } = routeState;
+  const {
+    tab: activeTab,
+    selectedResumeId,
+    selectedAppreciationCode,
+    appreciationStateKey,
+    printMode,
+  } = routeState;
   const mainAreaRef = useRef(null);
-  const savedListScrollRef = useRef(0);
-  const prevRouteRef = useRef({ tab: activeTab, selectedResumeId, printMode });
+  const savedResumeListScrollRef = useRef(0);
+  const savedAppreciationListScrollRef = useRef(0);
+  const prevRouteRef = useRef({ tab: activeTab, selectedResumeId, selectedAppreciationCode, printMode });
 
   const featuredCharacters = useMemo(
     () => FEATURED_CHARACTER_NAMES.map((name) => CHARACTERS.find((item) => item.name === name)).filter(Boolean),
@@ -430,45 +978,101 @@ export default function PortfolioPage() {
     [selectedResumeId],
   );
 
+  const selectedAppreciationCharacter = useMemo(
+    () => CHARACTERS.find((item) => item.code === selectedAppreciationCode) ?? null,
+    [selectedAppreciationCode],
+  );
+
+  const selectedAppreciation = useMemo(
+    () => (selectedAppreciationCode ? getCharacterAppreciationByCode(selectedAppreciationCode) : null),
+    [selectedAppreciationCode],
+  );
+
+  const selectedAppreciationIndex = useMemo(
+    () => CHARACTERS.findIndex((item) => item.code === selectedAppreciationCode),
+    [selectedAppreciationCode],
+  );
+
+  const previousAppreciationCharacter =
+    selectedAppreciationIndex > 0 ? CHARACTERS[selectedAppreciationIndex - 1] : null;
+  const nextAppreciationCharacter =
+    selectedAppreciationIndex >= 0 && selectedAppreciationIndex < CHARACTERS.length - 1
+      ? CHARACTERS[selectedAppreciationIndex + 1]
+      : null;
+
   useEffect(() => {
     loadImagePriorityConfig();
   }, []);
 
+  useEffect(() => {
+    if (activeTab === 'art' && appreciationStateKey) {
+      const stateExists = STATES.some((state) => state.key === appreciationStateKey);
+      setActiveState(stateExists ? appreciationStateKey : 'all');
+    }
+  }, [activeTab, appreciationStateKey]);
+
   // 切换页面时管理主滚动容器的滚动位置：
   // - 进入角色详情 / 切换 tab / 进入打印页：重置到顶部
-  // - 从角色详情返回简历列表：恢复进入详情前保存的滚动位置（存档点）
+  // - 从详情返回列表：恢复进入详情前保存的滚动位置（存档点）
   useEffect(() => {
     const el = mainAreaRef.current;
     if (!el) return;
 
     const prev = prevRouteRef.current;
-    const isReturnToList =
+    const isReturnToResumeList =
       prev.selectedResumeId !== null &&
       selectedResumeId === null &&
       activeTab === 'resume' &&
       !printMode;
+    const isReturnToAppreciationList =
+      prev.selectedAppreciationCode !== null &&
+      selectedAppreciationCode === null &&
+      activeTab === 'art';
+    const restoreScroll = (target) => {
+      requestAnimationFrame(() => {
+        const node = mainAreaRef.current;
+        if (!node) return;
+        const value = typeof target === 'function' ? target() : target;
+        const b = node.style.scrollBehavior;
+        node.style.scrollBehavior = 'auto';
+        node.scrollTop = value;
+        node.style.scrollBehavior = b;
+      });
+    };
 
     const prevBehavior = el.style.scrollBehavior;
     el.style.scrollBehavior = 'auto';
 
-    if (isReturnToList) {
+    if (isReturnToResumeList) {
       // 列表内容较多，等待一帧布局完成后再恢复，避免 scrollHeight 不足导致位置被截断
-      const target = savedListScrollRef.current;
-      requestAnimationFrame(() => {
+      restoreScroll(savedResumeListScrollRef.current);
+    } else if (isReturnToAppreciationList) {
+      // 返回立绘赏析列表时，优先滚动到用户最后查看的角色卡片位置（例如从「楚怀王」
+      // 连续翻页到「黄歇」后返回，应定位到「黄歇」而非进入详情时的存档点）；
+      // 若该角色不在当前筛选列表中（跨阵营翻页），回退到进入详情前保存的滚动存档点。
+      const lastCode = prev.selectedAppreciationCode;
+      restoreScroll(() => {
         const node = mainAreaRef.current;
-        if (!node) return;
-        const b = node.style.scrollBehavior;
-        node.style.scrollBehavior = 'auto';
-        node.scrollTop = target;
-        node.style.scrollBehavior = b;
+        if (!node || !lastCode) return savedAppreciationListScrollRef.current;
+        const card = node.querySelector(`[data-character-code="${lastCode}"]`);
+        if (!card) return savedAppreciationListScrollRef.current;
+        // 用 offsetTop 累加定位（不受 Reveal 入场 transform 影响），得到卡片相对滚动容器的偏移
+        let offset = 0;
+        let elNode = card;
+        while (elNode && elNode !== node) {
+          offset += elNode.offsetTop;
+          elNode = elNode.offsetParent;
+        }
+        // 顶部留出间距，避免卡片被左上角返回按钮遮挡
+        return Math.max(0, offset - 80);
       });
     } else {
       el.scrollTop = 0;
     }
 
     el.style.scrollBehavior = prevBehavior;
-    prevRouteRef.current = { tab: activeTab, selectedResumeId, printMode };
-  }, [activeTab, selectedResumeId, printMode]);
+    prevRouteRef.current = { tab: activeTab, selectedResumeId, selectedAppreciationCode, printMode };
+  }, [activeTab, selectedResumeId, selectedAppreciationCode, printMode]);
 
   useEffect(() => {
     const syncRoute = () => {
@@ -497,13 +1101,29 @@ export default function PortfolioPage() {
   const openResume = (resume) => {
     // 进入详情页前，保存列表页当前滚动位置作为存档点，供返回时恢复
     if (mainAreaRef.current) {
-      savedListScrollRef.current = mainAreaRef.current.scrollTop;
+      savedResumeListScrollRef.current = mainAreaRef.current.scrollTop;
     }
     navigateTo(getResumePath(resume, RESUME_ROUTE_MAPS.idToSlug));
   };
 
+  const openAppreciation = (character) => {
+    if (!selectedAppreciationCode && mainAreaRef.current) {
+      savedAppreciationListScrollRef.current = mainAreaRef.current.scrollTop;
+    }
+    navigateTo(getAppreciationPath(character));
+  };
+
   const backToResumeList = () => {
     navigateTo(getTabPath('resume'));
+  };
+
+  const backToAppreciationList = () => {
+    navigateTo(getTabPath('art'));
+  };
+
+  const changeAppreciationState = (stateKey) => {
+    setActiveState(stateKey);
+    navigateTo(getAppreciationStatePath(stateKey));
   };
 
   const toggleTheme = () => {
@@ -522,8 +1142,20 @@ export default function PortfolioPage() {
           <button
             type="button"
             className="back-btn"
-            onClick={goHome}
-            aria-label="返回首页"
+            onClick={
+              activeTab === 'resume' && selectedResume
+                ? backToResumeList
+                : activeTab === 'art' && selectedAppreciationCode
+                  ? backToAppreciationList
+                  : goHome
+            }
+            aria-label={
+              activeTab === 'resume' && selectedResume
+                ? '返回角色画廊'
+                : activeTab === 'art' && selectedAppreciationCode
+                  ? '返回立绘赏析'
+                  : '返回首页'
+            }
           >
             <ArrowLeft size={20} />
           </button>
@@ -547,7 +1179,17 @@ export default function PortfolioPage() {
         )}
 
         {/* ART: 立绘赏析 */}
-        {activeTab === 'art' && (
+        {activeTab === 'art' && selectedAppreciationCode && (
+          <AppreciationDetailPage
+            character={selectedAppreciationCharacter}
+            appreciation={selectedAppreciation}
+            previousCharacter={previousAppreciationCharacter}
+            nextCharacter={nextAppreciationCharacter}
+            onNavigate={openAppreciation}
+          />
+        )}
+
+        {activeTab === 'art' && !selectedAppreciationCode && (
           <div className="tab-content">
             <header className="hero">
               <div className="hero-backdrop hero-backdrop-left" aria-hidden="true" />
@@ -637,6 +1279,16 @@ export default function PortfolioPage() {
                 ))}
               </div>
             </section>
+
+            <CharacterGallerySection
+              characters={galleryCharacters}
+              activeState={activeState}
+              onStateChange={changeAppreciationState}
+              states={STATES}
+              stateMeta={activeStateMeta}
+              siteCopy={SITE_COPY}
+              onOpenCharacter={openAppreciation}
+            />
           </div>
         )}
 
@@ -646,98 +1298,18 @@ export default function PortfolioPage() {
         )}
 
         {activeTab === 'resume' && !printMode && selectedResume && (
-          <CharacterResumeDetail resume={selectedResume} onBack={backToResumeList} />
+          <CharacterResumeDetail resume={selectedResume} />
         )}
 
         {activeTab === 'resume' && !printMode && !selectedResume && (
           <div className="tab-content">
-            <section className="section-block">
-              <Reveal className="section-heading" delay={100}>
-                <div>
-                  <div className="eyebrow subtle">
-                    <GalleryVerticalEnd size={16} />
-                    <span>角色画廊</span>
-                  </div>
-                  <h2>战国七雄人物档案</h2>
-                </div>
-                <p>{SITE_COPY.galleryDescription}</p>
-              </Reveal>
-
-              <Reveal delay={140}>
-                <div className="filter-bar card-panel">
-                  {STATES.map((state) => {
-                    const count = getStateCharacterCount(STATES, state.key);
-                    return (
-                      <button
-                        key={state.key}
-                        type="button"
-                        className={state.key === activeState ? 'filter-chip active' : 'filter-chip'}
-                        onClick={() => setActiveState(state.key)}
-                      >
-                        <span>{state.label}</span>
-                        <strong>{count}</strong>
-                      </button>
-                    );
-                  })}
-                </div>
-              </Reveal>
-
-              <Reveal delay={220}>
-                <div className="gallery-summary card-panel">
-                  <div>
-                    <span className="gallery-summary-label">当前视图</span>
-                    <strong>
-                      {activeStateMeta.label === '全部' ? '全阵营总览' : `${activeStateMeta.label}国档案`}
-                    </strong>
-                  </div>
-                  <p>
-                    当前阵营关键词为"{activeStateMeta.tone}"。
-                  </p>
-                </div>
-              </Reveal>
-
-              <div className="gallery-grid">
-                {galleryCharacters.map((item, index) => (
-                  <Reveal key={`${activeState}-${item.id}`} delay={80 + (index % 12) * 35}>
-                    <article
-                      className="gallery-card gallery-card-clickable"
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => openResume(item)}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                          event.preventDefault();
-                          openResume(item);
-                        }
-                      }}
-                      aria-label={`查看${item.name}角色简历`}
-                    >
-                      <div className="gallery-image-wrap">
-                        <CharacterImage
-                          code={item.code}
-                          name={item.name}
-                          className="select-none pointer-events-none"
-                        />
-                        <div className="gallery-glow" aria-hidden="true" />
-                      </div>
-                      <div className="gallery-copy">
-                        <div className="gallery-topline">
-                          <span>{item.stateLabel}</span>
-                          <span>{item.code}</span>
-                        </div>
-                        <div className="gallery-name-row">
-                          <h3>{item.name}</h3>
-                          <span className="gallery-original-tag">
-                            {item.lit ? <Crown size={14} /> : <Info size={14} />}
-                            {item.lit ? '已点亮' : '待点亮'}
-                          </span>
-                        </div>
-                      </div>
-                    </article>
-                  </Reveal>
-                ))}
-              </div>
-            </section>
+            <ResumeDynastyChartSection
+              resumes={CHARACTER_RESUMES}
+              activeState={activeState}
+              onStateChange={setActiveState}
+              states={RESUME_STATES}
+              onOpenResume={openResume}
+            />
           </div>
         )}
 
@@ -745,7 +1317,7 @@ export default function PortfolioPage() {
         {(activeTab === 'arpg' || activeTab === 'slg') && (
           <div className="tab-placeholder">
             <span className="tab-placeholder-icon">
-              {activeTab === 'arpg' ? '⚔️' : '🗺️'}
+              {activeTab === 'arpg' ? '🎮' : '⚔️'}
             </span>
             <p>该板块暂未开放，敬请期待</p>
           </div>

@@ -1,4 +1,49 @@
-﻿/* ===== Page Shell ===== */
+﻿/* ===== Scrollbar ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(243, 214, 148, 0.4) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(243, 214, 148, 0.35);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(243, 214, 148, 0.6);
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.theme-light * {
+  scrollbar-color: rgba(155, 103, 17, 0.4) transparent;
+}
+
+.theme-light *::-webkit-scrollbar-thumb {
+  background: rgba(155, 103, 17, 0.35);
+  background-clip: padding-box;
+}
+
+.theme-light *::-webkit-scrollbar-thumb:hover {
+  background: rgba(155, 103, 17, 0.55);
+  background-clip: padding-box;
+}
+
+/* ===== Page Shell ===== */
 .page-shell {
   height: 100vh;
   display: flex;
@@ -427,6 +472,67 @@
   filter: blur(17px);
 }
 
+
+.theme-light .resume-chart-summary strong,
+.theme-light .resume-cover-card {
+  color: rgba(35, 29, 23, 0.88);
+}
+
+.theme-light .resume-chart-summary p,
+.theme-light .resume-cover-years {
+  color: rgba(39, 32, 25, 0.62);
+}
+
+.theme-light .resume-dynasty-flow::before {
+  background: linear-gradient(180deg, rgba(155, 103, 17, 0), rgba(155, 103, 17, 0.4), rgba(155, 103, 17, 0));
+}
+
+.theme-light .resume-dynasty-row::before,
+.theme-light .resume-dynasty-row::after {
+  background: linear-gradient(90deg, rgba(155, 103, 17, 0), rgba(155, 103, 17, 0.28));
+}
+
+.theme-light .resume-support-label {
+  background: rgba(255, 251, 242, 0.96);
+  border-color: rgba(155, 103, 17, 0.24);
+  color: #9b6711;
+}
+
+.theme-light .resume-cover-card {
+  background: rgba(255, 251, 242, 0.9);
+  border-color: rgba(88, 66, 39, 0.14);
+  box-shadow: 0 14px 30px rgba(91, 66, 37, 0.12);
+}
+
+.theme-light .resume-cover-card:hover,
+.theme-light .resume-cover-card:focus-visible {
+  background: rgba(255, 252, 246, 0.98);
+  border-color: rgba(155, 103, 17, 0.3);
+  box-shadow: 0 18px 40px rgba(91, 66, 37, 0.16);
+}
+
+.theme-light .resume-cover-card-ruler {
+  background: linear-gradient(135deg, rgba(255, 248, 235, 0.98), rgba(229, 215, 190, 0.9));
+  border-color: rgba(155, 103, 17, 0.26);
+}
+
+.theme-light .resume-cover-avatar {
+  border-color: rgba(233, 188, 41, 0.5);
+  box-shadow: 0 0 0 1px rgba(120, 90, 50, 0.12) inset;
+}
+
+.theme-light .resume-cover-card-ruler .resume-cover-avatar {
+  border-color: rgba(233, 188, 41, 0.7);
+}
+
+.theme-light .resume-cover-card-ruler .resume-cover-name {
+  color: #8d5a10;
+}
+
+.theme-light .resume-orphan-band {
+  border-top-color: rgba(88, 66, 39, 0.12);
+}
+
 .theme-light .sphere-cloud {
   background:
     radial-gradient(120% 90% at 50% -10%, rgba(255, 253, 247, 0.92), transparent 60%),
@@ -485,6 +591,63 @@
 .theme-light .gallery-card-clickable:focus-visible {
   border-color: rgba(155, 103, 17, 0.35);
   box-shadow: 0 26px 62px rgba(91, 66, 37, 0.18);
+}
+
+.theme-light .appreciation-image-wrap {
+  background: rgba(235, 224, 205, 0.9);
+  border-color: rgba(120, 90, 40, 0.12);
+  box-shadow: 0 28px 70px rgba(91, 70, 38, 0.18);
+}
+
+.theme-light .appreciation-figure-caption h1,
+.theme-light .appreciation-empty h1 {
+  color: #3a2e1e;
+}
+
+.theme-light .appreciation-figure-caption span {
+  background: rgba(168, 106, 28, 0.12);
+  border-color: rgba(168, 106, 28, 0.2);
+  color: #a86a1c;
+}
+
+.theme-light .inspiration-design-item p,
+.theme-light .appreciation-empty p {
+  color: rgba(60, 52, 42, 0.76);
+}
+
+.theme-light .inspiration-design-item {
+  background: rgba(120, 90, 40, 0.04);
+  border-color: rgba(120, 90, 40, 0.1);
+}
+
+.theme-light .inspiration-design-item h3 {
+  color: #4a6080;
+}
+
+.theme-light .inspiration-empty-text {
+  color: rgba(80, 70, 58, 0.5);
+}
+
+.theme-light .inspiration-design-placeholder-body {
+  border-color: rgba(88, 66, 39, 0.2);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(88, 66, 39, 0.03) 0 10px,
+    rgba(88, 66, 39, 0.066) 10px 20px
+  );
+}
+
+.theme-light .appreciation-nav-btn {
+  background: rgba(255, 255, 255, 0.58);
+  border-color: rgba(120, 90, 40, 0.14);
+  color: rgba(60, 52, 42, 0.78);
+  box-shadow: 0 16px 36px rgba(91, 70, 38, 0.12);
+}
+
+.theme-light .appreciation-nav-btn:hover:not(:disabled),
+.theme-light .appreciation-nav-btn:focus-visible:not(:disabled) {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(168, 106, 28, 0.3);
 }
 
 .theme-light .radar-card {
@@ -849,6 +1012,7 @@
   flex-shrink: 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  user-select: none;
   pointer-events: none;
 }
 
@@ -1321,6 +1485,522 @@
   font-size: 0.84rem;
 }
 
+/* ===== Character Appreciation Detail ===== */
+.appreciation-detail-view {
+  --appreciation-nav-height: 42px;
+  --appreciation-nav-gap: 10px;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--appreciation-nav-gap);
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding: 12px 24px 10px;
+}
+
+.appreciation-detail-view > .reveal {
+  display: grid;
+  min-height: 0;
+}
+
+.appreciation-detail-shell,
+.appreciation-empty {
+  max-width: 1240px;
+  margin: 0 auto;
+  border-radius: 30px;
+}
+
+.appreciation-detail-shell {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: clamp(16px, 2.2vh, 24px);
+}
+
+.appreciation-empty {
+  display: grid;
+  gap: 16px;
+  padding: 34px;
+}
+
+.appreciation-empty h1,
+.appreciation-empty p {
+  margin: 0;
+}
+
+.appreciation-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, min(36vw, 430px)) minmax(0, 1fr);
+  gap: clamp(18px, 2.5vw, 32px);
+  align-items: stretch;
+  height: 100%;
+  min-height: 0;
+}
+
+.appreciation-figure {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: clamp(10px, 1.4vh, 14px);
+  min-height: 0;
+}
+
+.appreciation-image-wrap {
+  overflow: hidden;
+  aspect-ratio: 636 / 900;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 28px 78px rgba(0, 0, 0, 0.34);
+}
+
+.appreciation-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-touch-callout: none;
+}
+
+.appreciation-figure-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-width: 0;
+}
+
+.appreciation-figure-caption h1 {
+  min-width: 0;
+  margin: 0;
+  color: #f6f1e8;
+  font-size: clamp(1.6rem, 3.2vw, 2.8rem);
+  line-height: 1;
+}
+
+.appreciation-figure-caption span {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 32px;
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: rgba(243, 214, 148, 0.13);
+  border: 1px solid rgba(243, 214, 148, 0.24);
+  color: #f3d694;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.appreciation-detail-info {
+  display: grid;
+  align-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.inspiration-block {
+  display: grid;
+  gap: clamp(10px, 1.6vh, 16px);
+  align-content: center;
+  height: 100%;
+  min-height: 0;
+}
+
+.inspiration-design-item p,
+.inspiration-empty-text,
+.appreciation-empty p {
+  margin: 0;
+  color: rgba(238, 232, 223, 0.76);
+  font-size: clamp(0.78rem, 1.2vw, 0.96rem);
+  line-height: clamp(1.45, 1.3vw, 1.68);
+}
+
+.inspiration-design {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: clamp(16px, 3vh, 26px) clamp(12px, 1.6vw, 18px);
+  min-height: 0;
+}
+
+.inspiration-design-item {
+  display: grid;
+  gap: clamp(6px, 0.9vh, 9px);
+  min-width: 0;
+  padding: clamp(10px, 1.5vh, 16px) clamp(12px, 1.5vw, 18px);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.inspiration-design-item h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: #c9d4ea;
+  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+}
+
+.inspiration-empty-text {
+  color: rgba(238, 232, 223, 0.5);
+  font-style: italic;
+}
+
+/* 未点亮角色赏析板块占位：标题下方留出较大的空 body，虚线边框 + 斜纹背景，呈现即将填入内容的效果 */
+.inspiration-design-placeholder-body {
+  min-height: clamp(46px, 9vh, 82px);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.018) 0 10px,
+    rgba(255, 255, 255, 0.042) 10px 20px
+  );
+}
+
+.appreciation-detail-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: min(500px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.appreciation-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: var(--appreciation-nav-height);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: rgba(18, 21, 28, 0.72);
+  color: rgba(246, 241, 232, 0.86);
+  font-size: 0.92rem;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.appreciation-nav-btn-next {
+  justify-content: center;
+}
+
+.appreciation-nav-btn:hover:not(:disabled),
+.appreciation-nav-btn:focus-visible:not(:disabled) {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(243, 214, 148, 0.32);
+  outline: 0;
+}
+
+.appreciation-nav-btn:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+
+/* ===== Resume Dynasty Chart ===== */
+.resume-dynasty-section {
+  max-width: 1440px;
+}
+
+.resume-dynasty-heading h2 {
+  letter-spacing: 0;
+}
+
+.resume-state-tabs {
+  justify-content: center;
+}
+
+.resume-chart-summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  border-radius: 22px;
+  margin-bottom: 22px;
+}
+
+.resume-chart-summary .gallery-summary-label {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.resume-chart-summary strong {
+  font-size: 1.08rem;
+  color: rgba(246, 241, 232, 0.94);
+}
+
+.resume-chart-summary p {
+  margin: 0 0 0 auto;
+  color: rgba(246, 241, 232, 0.68);
+  line-height: 1.6;
+}
+
+.resume-dynasty-canvas {
+  position: relative;
+  overflow-x: auto;
+  padding: 30px 26px 34px;
+  border-radius: 30px;
+}
+
+.resume-dynasty-flow {
+  position: relative;
+  display: grid;
+  gap: 34px;
+  min-width: 1020px;
+}
+
+.resume-dynasty-flow::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  bottom: 42px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(243, 214, 148, 0), rgba(243, 214, 148, 0.56), rgba(243, 214, 148, 0));
+  pointer-events: none;
+}
+
+.resume-dynasty-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(330px, 1fr) 138px minmax(330px, 1fr);
+  gap: 30px;
+  align-items: center;
+  min-height: 182px;
+}
+
+.resume-dynasty-row::before,
+.resume-dynasty-row::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 108px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(243, 214, 148, 0), rgba(243, 214, 148, 0.32));
+  pointer-events: none;
+}
+
+.resume-dynasty-row::before {
+  left: 10px;
+}
+
+.resume-dynasty-row::after {
+  right: 10px;
+  transform: scaleX(-1);
+}
+
+.resume-support-column {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 120px;
+}
+
+.resume-support-column-martial {
+  justify-items: end;
+}
+
+.resume-support-column-scholar {
+  justify-items: start;
+}
+
+.resume-support-label {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(18, 21, 28, 0.92);
+  border: 1px solid rgba(243, 214, 148, 0.3);
+  color: #f3d694;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transform: translateY(-50%);
+}
+
+.resume-support-column-martial .resume-support-label {
+  right: -17px;
+}
+
+.resume-support-column-scholar .resume-support-label {
+  left: -17px;
+}
+
+.resume-support-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 370px;
+}
+
+.resume-support-column-martial .resume-support-grid {
+  justify-content: flex-end;
+}
+
+.resume-support-column-scholar .resume-support-grid {
+  justify-content: flex-start;
+}
+
+.resume-ruler-node {
+  display: grid;
+  place-items: center;
+}
+
+.resume-cover-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  width: 88px;
+  min-height: 122px;
+  padding: 10px 8px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(10, 13, 20, 0.84);
+  color: #f6f1e8;
+  cursor: pointer;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.resume-cover-card:hover,
+.resume-cover-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(243, 214, 148, 0.42);
+  background: rgba(19, 23, 32, 0.94);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.28);
+  outline: 0;
+}
+
+.resume-cover-card-ruler {
+  width: 138px;
+  min-height: 156px;
+  padding: 12px 10px 11px;
+  border-color: rgba(243, 214, 148, 0.34);
+  background: linear-gradient(135deg, rgba(36, 26, 18, 0.96), rgba(18, 21, 28, 0.94));
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(243, 214, 148, 0.06) inset;
+}
+
+.resume-cover-avatar {
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid rgba(243, 214, 148, 0.2);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.14) inset;
+}
+
+.resume-cover-card-ruler .resume-cover-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  border: 3px solid rgba(243, 214, 148, 0.32);
+}
+
+.resume-cover-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resume-cover-name,
+.resume-cover-years {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.resume-cover-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resume-cover-name {
+  align-self: end;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.resume-cover-years {
+  align-self: start;
+  display: -webkit-box;
+  color: rgba(246, 241, 232, 0.64);
+  font-size: 0.62rem;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
+
+.resume-cover-card-ruler .resume-cover-name {
+  color: #f3d694;
+  font-size: 1rem;
+}
+
+.resume-cover-crown {
+  position: absolute;
+  top: -9px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e7c672, #bb4952);
+  color: #171820;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+.resume-orphan-band {
+  min-width: 1020px;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resume-orphan-title {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
+
+.resume-orphan-title .gallery-summary-label {
+  margin: 0;
+}
+
+.resume-orphan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
 /* ===== Character Resume Detail ===== */
 .resume-detail-view {
   padding-bottom: 36px;
@@ -1772,6 +2452,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .resume-dynasty-canvas {
+    padding: 24px 18px 30px;
+  }
+
   .sphere-cloud-scene {
     height: min(420px, 48vmin);
   }
@@ -1798,6 +2482,29 @@
   .featured-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .resume-chart-summary {
+    display: grid;
+    gap: 8px;
+  }
+
+  .resume-chart-summary p {
+    margin-left: 0;
+  }
+
+  .resume-dynasty-flow,
+  .resume-orphan-band {
+    min-width: 760px;
+  }
+
+  .resume-dynasty-row {
+    grid-template-columns: minmax(230px, 1fr) 128px minmax(230px, 1fr);
+    gap: 18px;
+  }
+
+  .resume-support-grid {
+    max-width: 250px;
   }
 
   .sphere-cloud-core {
@@ -1840,6 +2547,37 @@
   .resume-portrait-wrap {
     width: 150px;
   }
+
+  .appreciation-detail-shell {
+    padding: 20px;
+    border-radius: 26px;
+  }
+
+  .appreciation-detail-view {
+    padding: 10px 16px 8px;
+  }
+
+  .appreciation-detail-grid {
+    grid-template-columns: minmax(180px, 34vw) minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .appreciation-figure {
+    width: 100%;
+  }
+
+  .appreciation-image-wrap {
+    border-radius: 22px;
+  }
+
+  .inspiration-design {
+    gap: 12px 8px;
+  }
+
+  .inspiration-design-item {
+    padding: 10px 12px;
+    border-radius: 15px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1851,6 +2589,95 @@
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .resume-state-tabs .filter-chip {
+    flex: none;
+    width: auto;
+  }
+
+  .resume-state-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: stretch;
+  }
+
+  .resume-state-tabs .filter-chip {
+    justify-content: center;
+  }
+
+  .resume-dynasty-canvas {
+    overflow-x: hidden;
+    padding: 18px 10px 24px;
+    border-radius: 24px;
+  }
+
+  .resume-dynasty-flow,
+  .resume-orphan-band {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .resume-dynasty-row {
+    grid-template-columns: minmax(0, 1fr) 104px minmax(0, 1fr);
+    gap: 8px;
+    min-height: 136px;
+  }
+
+  .resume-dynasty-row::before,
+  .resume-dynasty-row::after {
+    width: calc(50% - 60px);
+  }
+
+  .resume-cover-card {
+    width: 44px;
+    min-height: 86px;
+    padding: 6px 3px;
+    border-radius: 12px;
+  }
+
+  .resume-cover-card-ruler {
+    width: 104px;
+    min-height: 136px;
+  }
+
+  .resume-cover-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+
+  .resume-cover-card-ruler .resume-cover-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+
+  .resume-cover-name {
+    font-size: 0.62rem;
+  }
+
+  .resume-cover-card-ruler .resume-cover-name {
+    font-size: 0.84rem;
+  }
+
+  .resume-cover-years {
+    font-size: 0.48rem;
+  }
+
+  .resume-support-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 44px);
+    max-width: 96px;
+    gap: 7px;
+  }
+
+  .resume-support-column-martial .resume-support-grid {
+    justify-content: end;
+  }
+
+  .resume-support-column-scholar .resume-support-grid {
+    justify-content: start;
   }
 
   .metrics-grid {
@@ -1973,6 +2800,170 @@
     grid-template-columns: minmax(0, 1fr) 104px;
     padding: 18px;
     border-radius: 22px;
+  }
+
+  .appreciation-detail-view {
+    --appreciation-nav-height: 36px;
+    --appreciation-nav-gap: 7px;
+    gap: var(--appreciation-nav-gap);
+    padding: 13px 10px 12px;
+  }
+
+  .appreciation-detail-shell,
+  .appreciation-empty {
+    border-radius: 22px;
+  }
+
+  .appreciation-detail-shell,
+  .appreciation-empty {
+    padding: 36px 12px;
+  }
+
+  .appreciation-detail-grid {
+    grid-template-columns: minmax(136px, 44vw) minmax(0, 1fr);
+    grid-template-rows: auto repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 9px 10px;
+  }
+
+  .appreciation-figure {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    align-self: start;
+    grid-template-rows: auto auto;
+    gap: 6px;
+    min-height: 0;
+  }
+
+  .appreciation-image-wrap {
+    aspect-ratio: 636 / 900;
+    width: 100%;
+    height: auto;
+  }
+
+  .appreciation-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .appreciation-figure-caption {
+    align-items: center;
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .appreciation-figure-caption h1 {
+    flex: 1 1 auto;
+    overflow: hidden;
+    font-size: clamp(0.92rem, 4.6vw, 1.22rem);
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .appreciation-figure-caption span {
+    flex: 0 0 auto;
+    min-height: 24px;
+    padding: 4px 7px;
+    font-size: clamp(0.58rem, 2.7vw, 0.66rem);
+    white-space: nowrap;
+  }
+
+  .inspiration-block {
+    display: contents;
+  }
+
+  .appreciation-detail-info {
+    display: contents;
+  }
+
+  .inspiration-block .eyebrow {
+    display: inline-flex;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    min-width: 0;
+    white-space: nowrap;
+    gap: 6px;
+    font-size: 0.68rem;
+  }
+
+  .inspiration-block .eyebrow span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .inspiration-block .eyebrow svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .inspiration-design {
+    display: contents;
+  }
+
+  .inspiration-design-item {
+    gap: 4px;
+    align-content: center;
+    min-height: 0;
+    padding: 7px 8px;
+    border-radius: 12px;
+  }
+
+  .inspiration-design-item-1 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .inspiration-design-item-2 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .inspiration-design-item-3 {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  .inspiration-design-item-4 {
+    grid-column: 2;
+    grid-row: 4;
+  }
+
+  .inspiration-design-item h3 {
+    gap: 5px;
+    font-size: clamp(0.66rem, 2.7vw, 0.74rem);
+  }
+
+  .inspiration-design-item h3 svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .inspiration-design-item p {
+    font-size: clamp(0.62rem, 2.45vw, 0.72rem);
+    line-height: 1.34;
+  }
+
+  .inspiration-design-placeholder-body {
+    min-height: clamp(26px, 6vh, 44px);
+    border-radius: 9px;
+  }
+
+  .appreciation-detail-nav {
+    gap: 8px;
+    max-width: min(360px, calc(100% - 24px));
+  }
+
+  .appreciation-nav-btn,
+  .appreciation-nav-btn-next {
+    justify-content: center;
+    width: 100%;
+    gap: 6px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
   }
 
   .resume-title-block h1 {
@@ -2110,6 +3101,154 @@
 
   .resume-print-page .resume-timeline span {
     font-size: 0.58rem;
+  }
+}
+
+@media (max-height: 760px) {
+  .appreciation-detail-view {
+    --appreciation-nav-height: 38px;
+    --appreciation-nav-gap: 7px;
+    padding-top: 8px;
+    padding-bottom: 7px;
+  }
+
+  .appreciation-detail-shell {
+    padding: 12px;
+  }
+
+  .appreciation-detail-grid {
+    gap: 14px;
+  }
+
+  .appreciation-figure {
+    gap: 8px;
+  }
+
+  .appreciation-figure-caption h1 {
+    font-size: clamp(1.25rem, 2.8vw, 2.1rem);
+  }
+
+  .appreciation-figure-caption span {
+    min-height: 26px;
+    padding: 4px 9px;
+    font-size: 0.7rem;
+  }
+
+  .inspiration-block {
+    gap: 8px;
+  }
+
+  .inspiration-block .eyebrow {
+    font-size: 0.72rem;
+  }
+
+  .inspiration-design {
+    gap: 12px 8px;
+  }
+
+  .inspiration-design-item {
+    gap: 4px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .inspiration-design-item h3 {
+    font-size: 0.72rem;
+  }
+
+  .inspiration-design-item p {
+    font-size: 0.68rem;
+    line-height: 1.34;
+  }
+
+  .appreciation-nav-btn {
+    padding-block: 7px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 560px) and (max-height: 760px) {
+  .appreciation-figure-caption h1 {
+    font-size: clamp(0.86rem, 4.4vw, 1.12rem);
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .appreciation-figure-caption span {
+    min-height: 23px;
+    padding: 3px 6px;
+    font-size: clamp(0.56rem, 2.55vw, 0.64rem);
+    white-space: nowrap;
+  }
+
+  .appreciation-nav-btn,
+  .appreciation-nav-btn-next {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 560px) and (max-height: 720px) {
+  .appreciation-detail-view {
+    --appreciation-nav-height: 34px;
+    --appreciation-nav-gap: 6px;
+    padding: 9px 8px 9px;
+  }
+
+  .appreciation-detail-shell {
+    padding: 15px 10px;
+  }
+
+  .appreciation-detail-grid {
+    grid-template-columns: minmax(118px, 42vw) minmax(0, 1fr);
+    grid-template-rows: auto repeat(3, minmax(0, 1fr));
+    gap: 6px 7px;
+  }
+
+  .appreciation-figure {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    grid-template-rows: auto auto;
+    gap: 5px;
+  }
+
+  .appreciation-figure-caption h1 {
+    font-size: clamp(0.82rem, 4.2vw, 1.05rem);
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .appreciation-figure-caption span {
+    min-height: 22px;
+    padding: 3px 6px;
+    font-size: clamp(0.54rem, 2.5vw, 0.62rem);
+    white-space: nowrap;
+  }
+
+  .inspiration-block .eyebrow {
+    font-size: 0.62rem;
+  }
+
+  .inspiration-design {
+    display: contents;
+  }
+
+  .inspiration-design-item {
+    padding: 5px 7px;
+  }
+
+  .inspiration-design-item h3 {
+    font-size: 0.62rem;
+  }
+
+  .inspiration-design-item p {
+    font-size: 0.58rem;
+    line-height: 1.28;
+  }
+
+  .appreciation-nav-btn {
+    min-height: var(--appreciation-nav-height);
+    padding: 5px 8px;
+    font-size: 0.68rem;
   }
 }
 

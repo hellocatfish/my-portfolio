@@ -35,12 +35,12 @@ npm run deploy
 
 ```text
 /                         首页：飞船舷窗 + 太空 + 球形卡牌云
-/appreciations            立绘赏析：介绍区 + 指标 + 8 个精选立绘
-/resumes                  角色简历索引：阵营筛选 + 266 个角色卡牌
+/appreciations            立绘赏析：介绍区 + 指标 + 精选陈列 + 角色画廊封面
+/resumes                  角色简历索引：七国分栏 + 王侯居中文武两侧辅佐图谱
 /resumes/:pinyin          单个角色简历详情，例如 /resumes/baiqi
 /resumes/print            全角色 A4 打印预览
-/arpg                     占位页
 /slg                      占位页
+/arpg                     占位页
 ```
 
 路由规则：
@@ -55,7 +55,9 @@ npm run deploy
 导航行为：
 
 - 底部固定栏包含导航按钮、基础信息、社交链接和主题切换。
-- 首页没有返回按钮；普通子页有返回首页按钮；角色详情页有返回简历列表按钮。
+- 首页没有返回按钮；子页左上角统一为纯箭头返回按钮（`back-btn`）。
+- 角色详情页（`/resumes/:pinyin`）已移除内部“返回角色画廊”按钮，复用左上角统一箭头：点一次回到 `/resumes` 角色画廊并恢复存档点滚动位置，再点一次返回首页。
+- 其他子页（赏析、简历索引、`/resumes/print`、SLG/ARPG）点左上角箭头直接返回首页。
 - 单个简历详情页不提供网页端 PDF 打印按钮；批量 PDF 入口统一是 `/resumes/print`。
 
 ## 3. 关键文件地图
@@ -66,11 +68,12 @@ src/App.jsx
 
 src/pages/PortfolioPage.jsx
   主页面组件。包含 History API 同步、主题状态、CharacterImage、PortraitImage、
-  RadarChart、CharacterResumeContent、CharacterResumeDetail、CharacterResumePrintPage。
+  RadarChart、CharacterResumeContent、CharacterResumeDetail、CharacterResumePrintPage、
+  ResumeDynastyChartSection（简历索引图谱）和 CharacterGallerySection（赏析页画廊封面）。
   启动时调用 loadImagePriorityConfig()。
 
 src/App.css
-  主要样式。包含页面壳、底部导航、主题、舷窗、画廊、简历、打印预览、
+  主要样式。包含页面壳、底部导航、主题、舷窗、画廊、简历图谱、打印预览、
   @media print 和响应式断点。
 
 src/components/SphereCardCloud.jsx
@@ -132,7 +135,15 @@ print.md
 | 赵 | `zhao` | 49 |
 | 合计 | - | 266 |
 
-`buildCharacters(STATES)` 会扁平化为 `{ id, code, name, stateKey, stateLabel, tone, note }`。
+`buildCharacters(STATES)` 会扁平化为 `{ id, code, name, role, liege, stateKey, stateLabel, tone, note }`。
+
+角色身份与从属君主（`src/data/portfolioData.js` 的 `names` 数组项字段，已透传到扁平化结果）：
+
+- `role`：人物身份，取值仅 `文人` / `武人` / `王侯` 三种。
+  - 王侯：各国君主（名带“王”“侯”字）、王室公子、执政太后/王后、太子、封君贵族（如战国四公子田文/赵胜/魏无忌/黄歇，及魏冉、樗里疾、芈戎、嬴悝、嬴芾、成蟜、子兰、熊启、子之、太子丹、太子平、赵章、公子成、长安君、赵威后、君王后、李嫣、芈八子等）。
+  - 文人：相国、大夫、谋士、纵横家、学者、辩士、门客、史吏等文职。
+  - 武人：将领、力士、刺客、郡守守将等武职。
+- `liege`：从属的本国君主姓名（如 `楚怀王`、`秦昭襄王`）；君主自身填空字符串 `''`。跨君主时期的人物取其主要侍奉或归档所属的君主，作为锚点。
 
 ### 4.2 角色简历
 
@@ -150,7 +161,7 @@ print.md
   stateColor: '#db6d6d',
   portrait: '楚怀王2025.webp',
   sourcePortrait: '楚怀王2025.webp',
-  lit: true,
+  lit: true,  // 静态记录值；运行时被 whitelist.toml 覆盖，见下方说明
   bio: '...',
   quote: '...',
   stats: { wuli: 51, tongshuai: 68, zhili: 91, zhengzhi: 88, meili: 82 },
@@ -163,11 +174,17 @@ print.md
 
 - `lit: false`
 - `portrait: 'default_general-head.webp'`；旧数据里的 `default_general-portrait.webp` 仍被运行时兼容映射到新文件
-- `stats: null`
-- `statsReason: null`
+- `stats`/`statsReason`：数据源中已为全部 266 角色补全（不再为 `null`），但运行时简历详情页对未点亮角色（`lit: false`）仍显示问号雷达图和空能力理由，不展示真实数值；点亮后即显示真实数据。
 - 仍保留完整 `bio`，仍可进入详情页。
 - `timeline`：数据源中仍保留真实履历，但运行时简历详情页和 `/resumes/print` 打印页会改用占位时间线 `UNLIT_PLACEHOLDER_TIMELINE`（见 `PortfolioPage.jsx` 的 `CharacterResumeContent`），不展示真实履历。
 - `year` 字段格式：具体年份统一带"年"（如 `前355年`）；时段标签 `战国中后期` 不带"年"。
+
+**点亮状态的唯一真源是 `whitelist.toml`**：
+
+- `src/utils/characterResume.js` 的 `buildCharacterResumes()` 运行时用 `isCharacterLit(name)`（读 `whitelist.toml`）派生 `lit`，覆盖 `characterResumes.js` 中的静态 `lit` 字段。
+- 卡片"已点亮/待点亮"标签、立绘是否加载真实图、详情页能力区/履历区全部统一以 `whitelist.toml` 为准，改一处即全生效。
+- `characterResumes.js` 中的静态 `lit` 字段仅作数据记录，运行时不再作为判断依据，但保留以供离线校对，不要删除。
+- 运行时行为：未点亮角色（`lit: false`）详情页统一显示问号雷达图、空能力理由、占位履历、默认头像；`whitelist.toml` 点亮某角色后，详情页即显示该角色的真实数值/理由/履历/真实头像（`sourcePortrait || portrait`）。`timeline` 为空时回退 `UNLIT_PLACEHOLDER_TIMELINE`，不会报错。
 
 五维顺序来自 `src/utils/characterResume.js`：武力、统率、智力、政治、魅力。
 
@@ -287,6 +304,15 @@ Referer 白名单：*.pages.dev, *.cnb.run, 127.0.0.1, localhost
 - 精选角色来自 `FEATURED_CHARACTER_NAMES`。
 - 精选卡牌文字只显示国家和姓名；不要无需求恢复第三行 `item.note`。
 - 浅色主题下卡牌底部有暖光渐变，小标签和文字要保持足够对比。
+- 精选陈列（`.featured-grid`）下方追加「角色画廊」封面区块，使用 `CharacterGallerySection` 组件。赏析页画廊保留“全部 + 七国”的阵营筛选和全身立绘封面卡；不要把 `/resumes` 的头像图谱样式套到这里。
+- `/appreciations/:code` 是单个角色立绘赏析详情页；从画廊进入详情后，左上角返回定位到“用户最后查看的角色”的画廊滚动存档点（翻页/下一页后返回会停在最后查看的角色卡片，而非最初进入的角色）；若该角色不在当前筛选列表（跨阵营翻页），回退到进入详情前保存的滚动位置。
+- 赏析详情运行时数据读取 `src/data/characterAppreciations_preview.js`；`src/data/characterAppreciations.js` 只作为批量生成 266 条预览数据的工具，不再作为页面真源。
+- `characterAppreciations_preview.js` 和 `characterResumes.js` 的 `lit` 状态都必须由 `src/data/whitelist.toml` 实时覆盖，白名单仍是点亮唯一真源。
+- 赏析详情左侧只展示人物图片、姓名和“原创立绘”标签，不展示国家、编号、身份、阵营色，也不展示人物履历/地位/性格说明。
+- 已点亮角色使用 `public/images/appreciations/` 和对应 CDN 的无水印赏析图；未点亮角色使用 `placeholder-general.webp`，保留“当前立绘创作灵感”抬头，并在 4 个赏析主题板块位置渲染占位板块（仅标题 + 留空 body，标题按同样的稳定伪随机 6 选 4 确定且不依赖 `appreciations_content`），不渲染具体赏析文案内容。
+- 赏析文案只展示 4 个主题板块：从 6 个主题中按 `code + name` 做稳定伪随机 6 选 4；如后续要求色彩必显，应改成“色彩设计 + 剩余 5 选 3”。
+- 电脑端详情页需在主内容区内一屏容纳图片、4 个赏析主题和底部“上一页/下一页”按钮；右侧 4 个主题使用 2 列并上下居中，翻页按钮短宽、居中，不能被底部导航栏遮挡。
+- 手机竖屏详情页使用紧凑网格：左上展示完整立绘图片和单行姓名/原创立绘标签，右上保留“当前立绘创作灵感”抬头及 2 个主题板块，底部左右各 1 个主题板块；尽量避免页面出现纵向滚动条。
 
 ### 6.3 角色简历页
 
@@ -294,8 +320,8 @@ Referer 白名单：*.pages.dev, *.cnb.run, 127.0.0.1, localhost
 
 三个视图：
 
-- `/resumes`：阵营筛选 + 角色卡牌网格，数据来自 `CHARACTER_RESUMES`。
-- `/resumes/:pinyin`：单个角色详情。
+- `/resumes`：七国分栏 + 王侯居中、文武两侧辅佐的图谱式索引，数据来自 `CHARACTER_RESUMES` + `portfolioData.js` 的 `role`/`liege`，由 `ResumeDynastyChartSection` 渲染，头像卡可点击进入详情。
+- `/resumes/:pinyin`：单个角色详情，`CharacterResumeDetail` 内部已无返回按钮，统一使用左上角 `back-btn`。
 - `/resumes/print`：批量 A4 打印预览。
 
 详情内容复用组件是 `CharacterResumeContent`。三个板块标题不要随意改：
@@ -382,6 +408,7 @@ resume-print-mode（仅 /resumes/print）
 - 浅色覆盖必须写在 `.theme-light ...` 下，不要做全局浅色覆盖。
 - 首页舷窗内部太空不随浅色主题变亮。
 - 浅色主题下筛选 active、标签、卡牌文字要保持对比，避免浅黄字配浅黄底。
+- `/resumes` 图谱的 `.resume-cover-card`、`.resume-support-label`、时间线和连接线也有浅色覆盖，新增颜色时同步检查。
 - `/resumes/print` 深色和浅色预览都要可用。
 
 ### 6.6 样式与响应式
@@ -391,6 +418,7 @@ resume-print-mode（仅 /resumes/print）
 改 UI 后至少考虑：
 
 - 桌面宽屏、平板、中等宽度、手机。
+- `/resumes` 图谱在手机端不得横向滚动；七国筛选固定两列，最后一项自然居左；单侧文臣/武将头像卡至少两列。
 - 深色主题和浅色主题。
 - 角色详情和 `/resumes/print` 的打印样式。
 
@@ -401,6 +429,7 @@ resume-print-mode（仅 /resumes/print）
 - 不要用大段说明性文字解释功能，页面应直接展示内容。
 - 图标优先用 `lucide-react`，已有自定义 SVG（如主题切换、社交图标）可保留。
 - `/resumes/print` 屏幕预览应像逐页 PDF，而不是普通长网页。
+- `/resumes` 图谱画布是信息结构，不是装饰卡片；王侯中心时间轴、左武右文和 `liege` 对齐关系不要随意移除。
 
 ## 7. 常见任务修改清单
 
@@ -432,20 +461,26 @@ lit
 修改：
 
 ```text
-src/data/whitelist.toml
-src/data/characterResumes.js
+src/data/whitelist.toml      （必改：点亮开关，唯一真源）
+src/data/characterResumes.js （建议改：补全 portrait/stats/statsReason/timeline）
 ```
+
+点亮流程说明：
+
+- **只需改 `whitelist.toml`** 即可让卡片标签、立绘、详情页同步变为已点亮（运行时由 `buildCharacterResumes()` 派生 `lit`）。
+- `characterResumes.js` 的静态 `lit` 字段不再影响运行时点亮判断，但建议同步设为 `true` 保持数据一致。`stats`/`statsReason` 已为全部 266 角色补全；点亮角色建议同步将 `portrait` 改为真实头像文件名（未点亮角色保留默认 `default_general-head.webp` 或旧 `default_general-portrait.webp`，运行时点亮后会优先用 `sourcePortrait`）。
+- `whitelist.toml` 点亮后，详情页即显示真实数值/理由/履历/真实头像，无中间态。
 
 简历中点亮状态应为：
 
 ```js
-lit: true,
+lit: true,                        // 数据记录；运行时以 whitelist.toml 为准
 portrait: '真实文件名.webp',
 stats: { ... },
 statsReason: { ... }
 ```
 
-未点亮角色保持默认头像和 `stats: null`，不要删除简介和履历（履历虽在数据源中保留，但运行时不展示，改用占位时间线，见 4.2 / 6.3）。
+未点亮角色保留默认头像（`portrait` 字段为默认占位文件名），`stats`/`statsReason` 数据已补全但运行时不展示（见 4.2），不要删除简介和履历。
 
 点亮白名单编辑方式（`src/data/whitelist.toml`）：
 
@@ -470,6 +505,8 @@ src/data/whitelist.toml（如果已点亮）
 
 若已点亮，还要添加 heroes 和 portrait 图片。旧来源资料可同步 `assets/heroes-*.js`，但运行时主要依赖上面四处。
 
+在 `src/data/portfolioData.js` 新增角色时，必须填写 `role`（`文人`/`武人`/`王侯`）与 `liege`（从属君主名，君主自身留空 `''`）；`src/utils/portfolio.js` 的 `buildCharacters` 已透传这两个字段供下游访问。
+
 ### 7.4 修改角色 URL
 
 优先看：
@@ -485,7 +522,35 @@ src/utils/routes.js
 - slug 应稳定，不要改成运行时生成。
 - 如需兼容旧链接，在 `resolveRoute()` 增加兼容逻辑。
 
-### 7.5 修改首页球形云
+### 7.5 修改角色简历索引图谱
+
+优先看：
+
+```text
+PortfolioPage.jsx 的 ResumeDynastyChartSection / ResumeCoverCard / buildStateDynastyChart
+App.css 的 .resume-dynasty... / .resume-cover... / .resume-support...
+src/data/portfolioData.js 的 role / liege
+src/data/characterResumes.js 的 title / portrait / sourcePortrait
+```
+
+规则：
+
+- `/resumes` 顶部标题是“战国七雄角色简历”。
+- 七国筛选只显示楚、韩、齐、秦、魏、燕、赵，不显示“全部”；初始若 `activeState === 'all'`，组件内部回退到第一个国家预览。
+- 王侯来自 `role === '王侯'`，居中纵向排列；排序按 `characterResumes.js` 的 `title` 中卒年，战国 BCE 年份数值越大越早，排越上；卒年相同按 `code` 升序。
+- 文臣武将来自 `role === '文人'` / `role === '武人'`；按 `liege` 匹配王侯 `name` 对齐到同一行；左侧武人，右侧文人；组内按 `code` 升序。
+- `liege` 无法匹配当前国家中心王侯的人物进入底部“旁支人物”，不要直接丢弃。
+- 索引封面卡使用 `PortraitImage`，头像点亮状态以 `whitelist.toml`（`resume.lit`）为唯一真源：已点亮角色用 `sourcePortrait || portrait`，未点亮角色统一回退到默认占位头像（`DEFAULT_PORTRAIT_FILE`）；不要用全身立绘 `CharacterImage`。
+- 封面卡只展示头像、人名、生卒年。生卒年来自 `title` 中中文逗号后的部分，例如 `前355年-前296年`；长文本允许两行换行。
+- 手机端图谱不横向滑动，中心王侯卡中轴线要和时间线重合；单侧文臣/武将卡至少两列；七国筛选固定两列，最后一项居左。
+
+检查项：
+
+- `/resumes` 每个国家都能切换，并且点击头像卡能进入 `/resumes/:pinyin`。
+- 手机端没有横向页面滚动，王侯中心线对齐，文武卡不退化成单列。
+- 浅色主题下时间线、连接线、标签、卡片文字仍有对比。
+
+### 7.6 修改首页球形云
 
 优先看：
 
@@ -496,7 +561,7 @@ src/App.css 中 .sphere-cloud... 区块
 
 只改采样、布局、视觉层；不要回退到 CSS 3D 球体方案。
 
-### 7.6 修改主题
+### 7.7 修改主题
 
 优先看：
 
@@ -514,7 +579,7 @@ App.css 中 .theme-light 区块
 - 赏析页和简历卡牌底部光照是否自然。
 - `/resumes/print` 深色/浅色预览是否正常。
 
-### 7.7 修改 PDF 输出
+### 7.8 修改 PDF 输出
 
 优先看：
 
@@ -535,7 +600,7 @@ print.md
 - 雷达图轴线清晰一致。
 - 必要时提醒用户开启 background graphics。
 
-### 7.8 切换图片加载优先级
+### 7.9 切换图片加载优先级
 
 改：
 
@@ -587,7 +652,9 @@ src/utils/characterResume.js 的 buildPortraitCandidates()
 ```text
 AGENTS.md
 src/pages/PortfolioPage.jsx 的相关组件片段
+  简历索引优先看 ResumeDynastyChartSection；赏析画廊看 CharacterGallerySection
 src/App.css 的相关样式片段
+  简历索引优先看 .resume-dynasty / .resume-cover / .resume-support
 src/utils/routes.js（涉及 URL / 深链接）
 src/utils/imagePriority.js（涉及图片优先级）
 src/data/characterSlugs.js（涉及角色详情 URL）
@@ -619,4 +686,4 @@ npm run build
 npm run dev
 ```
 
-并检查对应 URL、深浅主题、响应式宽度、图片加载、本地/CDN 兜底、`/resumes/print` 预览和浏览器打印预览。
+并检查对应 URL、深浅主题、响应式宽度、图片加载、本地/CDN 兜底、`/resumes` 手机图谱、`/resumes/print` 预览和浏览器打印预览。

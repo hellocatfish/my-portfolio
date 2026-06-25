@@ -43,24 +43,58 @@ export function resolveRoute(pathname, resumeSlugToId) {
   const path = normalizePathname(pathname);
 
   if (path === '/') {
-    return { tab: 'home', selectedResumeId: null };
+    return { tab: 'home', selectedResumeId: null, selectedAppreciationCode: null, appreciationStateKey: null };
   }
 
   const segments = path.split('/').filter(Boolean);
-  const [section, detailSlug] = segments;
+  const [section, detailSlug, subDetail] = segments;
   const tab = PATH_TABS[section] ?? 'home';
 
+  if (tab === 'art') {
+    if (detailSlug === 'state') {
+      return {
+        tab: 'art',
+        selectedResumeId: null,
+        selectedAppreciationCode: null,
+        appreciationStateKey: subDetail ?? 'all',
+        printMode: false,
+      };
+    }
+
+    return {
+      tab: 'art',
+      selectedResumeId: null,
+      selectedAppreciationCode: detailSlug ?? null,
+      appreciationStateKey: null,
+      printMode: false,
+    };
+  }
+
   if (tab !== 'resume') {
-    return { tab, selectedResumeId: null, printMode: false };
+    return {
+      tab,
+      selectedResumeId: null,
+      selectedAppreciationCode: null,
+      appreciationStateKey: null,
+      printMode: false,
+    };
   }
 
   if (detailSlug === 'print') {
-    return { tab: 'resume', selectedResumeId: null, printMode: true };
+    return {
+      tab: 'resume',
+      selectedResumeId: null,
+      selectedAppreciationCode: null,
+      appreciationStateKey: null,
+      printMode: true,
+    };
   }
 
   return {
     tab: 'resume',
     selectedResumeId: detailSlug ? resumeSlugToId.get(detailSlug) ?? null : null,
+    selectedAppreciationCode: null,
+    appreciationStateKey: null,
     printMode: false,
   };
 }
@@ -72,4 +106,12 @@ export function getTabPath(tabKey) {
 export function getResumePath(resume, resumeIdToSlug) {
   const slug = resumeIdToSlug.get(resume.id);
   return slug ? `${TAB_PATHS.resume}/${slug}` : TAB_PATHS.resume;
+}
+
+export function getAppreciationPath(character) {
+  return character?.code ? `${TAB_PATHS.art}/${character.code}` : TAB_PATHS.art;
+}
+
+export function getAppreciationStatePath(stateKey) {
+  return stateKey && stateKey !== 'all' ? `${TAB_PATHS.art}/state/${stateKey}` : TAB_PATHS.art;
 }
