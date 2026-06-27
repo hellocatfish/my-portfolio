@@ -37,7 +37,8 @@ npm run deploy
 /                         首页：飞船舷窗 + 太空 + 球形卡牌云
 /appreciations            立绘赏析：介绍区 + 指标 + 精选陈列 + 角色画廊封面
 /resumes                  角色简历索引：七国分栏 + 王侯居中文武两侧辅佐图谱
-/resumes/:pinyin          单个角色简历详情，例如 /resumes/baiqi
+/resumes/:stateKey        按阵营筛选简历图谱，例如 /resumes/qin
+/resumes/:stateKey/:pinyin 阵营下单个角色简历详情，例如 /resumes/qin/baiqi
 /resumes/print            全角色 A4 打印预览
 /slg                      占位页
 /arpg                     占位页
@@ -46,9 +47,11 @@ npm run deploy
 路由规则：
 
 - `TAB_PATHS` 在 `src/utils/routes.js` 中维护。
+- `RESUME_STATE_KEYS` 在 `src/utils/routes.js` 中定义，包含七国阵营键 `chu / han / qi / qin / wei / yan / zhao`。`resolveRoute` 优先将 `detailSlug` 匹配为阵营键，再做角色 slug 解析，以此区分 `/resumes/chu`（阵营）和 `/resumes/chuhuaiwang`（角色）。
+- 角色详情 URL 采用两级结构 `/resumes/:stateKey/:pinyin`，由 `getResumePath(resume, idToSlug, stateKey)` 生成。旧格式 `/resumes/:pinyin`（无阵营前缀）仍兼容解析。
 - 角色详情 slug 来自 `src/data/characterSlugs.js`，不要运行时引入拼音库。
-- `/resumes/print` 是保留路由，不得作为角色 slug。
-- 同名/同音冲突用 `code-pinyin`，例如 `/resumes/031-hanming` 和 `/resumes/065-hanming`。
+- `/resumes/print` 是保留路由，不得作为角色 slug 或阵营键。
+- 同名/同音冲突用 `code-pinyin`，例如 `/resumes/031-hanming` 和 `/resumes/065-hanming`。（阵营键如 `chu` 与角色 slug 不冲突：阵营键为 2-4 字母缩写，角色 slug 为完整拼音。）
 - `public/_redirects` 必须保留：`/* /index.html 200`，用于 Cloudflare Pages 深链接刷新。
 - 如果迁移到 GitHub Pages，普通路径刷新可能需要 404 fallback 或 hash 路由；当前配置优先服务 Cloudflare Pages。
 
@@ -56,7 +59,7 @@ npm run deploy
 
 - 底部固定栏包含导航按钮、基础信息、社交链接和主题切换。
 - 首页没有返回按钮；子页左上角统一为纯箭头返回按钮（`back-btn`）。
-- 角色详情页（`/resumes/:pinyin`）已移除内部“返回角色画廊”按钮，复用左上角统一箭头：点一次回到 `/resumes` 角色画廊并恢复存档点滚动位置，再点一次返回首页。
+- 角色详情页（`/resumes/:stateKey/:pinyin`）已移除内部"返回角色画廊"按钮，复用左上角统一箭头：点一次回到 `/resumes` 角色画廊并恢复存档点滚动位置，再点一次返回首页。
 - 其他子页（赏析、简历索引、`/resumes/print`、SLG/ARPG）点左上角箭头直接返回首页。
 - 单个简历详情页不提供网页端 PDF 打印按钮；批量 PDF 入口统一是 `/resumes/print`。
 
@@ -102,7 +105,8 @@ src/utils/imagePriority.js
   图片加载优先级状态。useSyncExternalStore + public/images/image-priority.json。
 
 src/utils/routes.js
-  URL 解析、tab path、角色详情 path、打印路由。
+  URL 解析、tab path、角色详情 path（含阵营前缀）、打印路由、阵营筛选路由。
+  `RESUME_STATE_KEYS`、`getResumeStatePath()`、`getResumePath()`。
 
 public/
   Cloudflare redirects、图片资源、占位图、favicon/icons。
@@ -140,7 +144,7 @@ print.md
 角色身份与从属君主（`src/data/portfolioData.js` 的 `names` 数组项字段，已透传到扁平化结果）：
 
 - `role`：人物身份，取值仅 `文人` / `武人` / `王侯` 三种。
-  - 王侯：各国君主（名带“王”“侯”字）、王室公子、执政太后/王后、太子、封君贵族（如战国四公子田文/赵胜/魏无忌/黄歇，及魏冉、樗里疾、芈戎、嬴悝、嬴芾、成蟜、子兰、熊启、子之、太子丹、太子平、赵章、公子成、长安君、赵威后、君王后、李嫣、芈八子等）。
+  - 王侯：各国君主（名带"王""侯"字）、王室公子、执政太后/王后、太子、封君贵族（如战国四公子田文/赵胜/魏无忌/黄歇，及魏冉、樗里疾、芈戎、嬴悝、嬴芾、成蟜、子兰、熊启、子之、太子丹、太子平、赵章、公子成、长安君、赵威后、君王后、李嫣、芈八子等）。
   - 文人：相国、大夫、谋士、纵横家、学者、辩士、门客、史吏等文职。
   - 武人：将领、力士、刺客、郡守守将等武职。
 - `liege`：从属的本国君主姓名（如 `楚怀王`、`秦昭襄王`）；君主自身填空字符串 `''`。跨君主时期的人物取其主要侍奉或归档所属的君主，作为锚点。
@@ -190,7 +194,7 @@ print.md
 
 ## 5. 图片系统
 
-项目有两套图片：全身立绘（heroes）和简历头像（portraits）。两者都使用“本地前端包 + CDN 兜底”，并受 `public/images/image-priority.json` 控制。
+项目有两套图片：全身立绘（heroes）和简历头像（portraits）。两者都使用"本地前端包 + CDN 兜底"，并受 `public/images/image-priority.json` 控制。
 
 ### 5.1 全身立绘 heroes
 
@@ -304,15 +308,15 @@ Referer 白名单：*.pages.dev, *.cnb.run, 127.0.0.1, localhost
 - 精选角色来自 `FEATURED_CHARACTER_NAMES`。
 - 精选卡牌文字只显示国家和姓名；不要无需求恢复第三行 `item.note`。
 - 浅色主题下卡牌底部有暖光渐变，小标签和文字要保持足够对比。
-- 精选陈列（`.featured-grid`）下方追加「角色画廊」封面区块，使用 `CharacterGallerySection` 组件。赏析页画廊保留“全部 + 七国”的阵营筛选和全身立绘封面卡；不要把 `/resumes` 的头像图谱样式套到这里。
-- `/appreciations/:code` 是单个角色立绘赏析详情页；从画廊进入详情后，左上角返回定位到“用户最后查看的角色”的画廊滚动存档点（翻页/下一页后返回会停在最后查看的角色卡片，而非最初进入的角色）；若该角色不在当前筛选列表（跨阵营翻页），回退到进入详情前保存的滚动位置。
+- 精选陈列（`.featured-grid`）下方追加「角色画廊」封面区块，使用 `CharacterGallerySection` 组件。赏析页画廊保留"全部 + 七国"的阵营筛选和全身立绘封面卡；不要把 `/resumes` 的头像图谱样式套到这里。
+- `/appreciations/:code` 是单个角色立绘赏析详情页；从画廊进入详情后，左上角返回定位到"用户最后查看的角色"的画廊滚动存档点（翻页/下一页后返回会停在最后查看的角色卡片，而非最初进入的角色）；若该角色不在当前筛选列表（跨阵营翻页），回退到进入详情前保存的滚动位置。
 - 赏析详情运行时数据读取 `src/data/characterAppreciations_preview.js`；`src/data/characterAppreciations.js` 只作为批量生成 266 条预览数据的工具，不再作为页面真源。
 - `characterAppreciations_preview.js` 和 `characterResumes.js` 的 `lit` 状态都必须由 `src/data/whitelist.toml` 实时覆盖，白名单仍是点亮唯一真源。
-- 赏析详情左侧只展示人物图片、姓名和“原创立绘”标签，不展示国家、编号、身份、阵营色，也不展示人物履历/地位/性格说明。
-- 已点亮角色使用 `public/images/appreciations/` 和对应 CDN 的无水印赏析图；未点亮角色使用 `placeholder-general.webp`，保留“当前立绘创作灵感”抬头，并在 4 个赏析主题板块位置渲染占位板块（仅标题 + 留空 body，标题按同样的稳定伪随机 6 选 4 确定且不依赖 `appreciations_content`），不渲染具体赏析文案内容。
-- 赏析文案只展示 4 个主题板块：从 6 个主题中按 `code + name` 做稳定伪随机 6 选 4；如后续要求色彩必显，应改成“色彩设计 + 剩余 5 选 3”。
-- 电脑端详情页需在主内容区内一屏容纳图片、4 个赏析主题和底部“上一页/下一页”按钮；右侧 4 个主题使用 2 列并上下居中，翻页按钮短宽、居中，不能被底部导航栏遮挡。
-- 手机竖屏详情页使用紧凑网格：左上展示完整立绘图片和单行姓名/原创立绘标签，右上保留“当前立绘创作灵感”抬头及 2 个主题板块，底部左右各 1 个主题板块；尽量避免页面出现纵向滚动条。
+- 赏析详情左侧只展示人物图片、姓名和"原创立绘"标签，不展示国家、编号、身份、阵营色，也不展示人物履历/地位/性格说明。
+- 已点亮角色使用 `public/images/appreciations/` 和对应 CDN 的无水印赏析图；未点亮角色使用 `placeholder-general.webp`，保留"当前立绘创作灵感"抬头，并在 4 个赏析主题板块位置渲染占位板块（仅标题 + 留空 body，标题按同样的稳定伪随机 6 选 4 确定且不依赖 `appreciations_content`），不渲染具体赏析文案内容。
+- 赏析文案只展示 4 个主题板块：从 6 个主题中按 `code + name` 做稳定伪随机 6 选 4；如后续要求色彩必显，应改成"色彩设计 + 剩余 5 选 3"。
+- 电脑端详情页需在主内容区内一屏容纳图片、4 个赏析主题和底部"上一页/下一页"按钮；右侧 4 个主题使用 2 列并上下居中，翻页按钮短宽、居中，不能被底部导航栏遮挡。
+- 手机竖屏详情页使用紧凑网格：左上展示完整立绘图片和单行姓名/原创立绘标签，右上保留"当前立绘创作灵感"抬头及 2 个主题板块，底部左右各 1 个主题板块；尽量避免页面出现纵向滚动条。
 
 ### 6.3 角色简历页
 
@@ -535,11 +539,11 @@ src/data/characterResumes.js 的 title / portrait / sourcePortrait
 
 规则：
 
-- `/resumes` 顶部标题是“战国七雄角色简历”。
-- 七国筛选只显示楚、韩、齐、秦、魏、燕、赵，不显示“全部”；初始若 `activeState === 'all'`，组件内部回退到第一个国家预览。
+- `/resumes` 顶部标题是"战国七雄角色简历"。
+- 七国筛选只显示楚、韩、齐、秦、魏、燕、赵，不显示"全部"；初始若 `activeState === 'all'`，组件内部回退到第一个国家预览。
 - 王侯来自 `role === '王侯'`，居中纵向排列；排序按 `characterResumes.js` 的 `title` 中卒年，战国 BCE 年份数值越大越早，排越上；卒年相同按 `code` 升序。
 - 文臣武将来自 `role === '文人'` / `role === '武人'`；按 `liege` 匹配王侯 `name` 对齐到同一行；左侧武人，右侧文人；组内按 `code` 升序。
-- `liege` 无法匹配当前国家中心王侯的人物进入底部“旁支人物”，不要直接丢弃。
+- `liege` 无法匹配当前国家中心王侯的人物进入底部"旁支人物"，不要直接丢弃。
 - 索引封面卡使用 `PortraitImage`，头像点亮状态以 `whitelist.toml`（`resume.lit`）为唯一真源：已点亮角色用 `sourcePortrait || portrait`，未点亮角色统一回退到默认占位头像（`DEFAULT_PORTRAIT_FILE`）；不要用全身立绘 `CharacterImage`。
 - 封面卡只展示头像、人名、生卒年。生卒年来自 `title` 中中文逗号后的部分，例如 `前355年-前296年`；长文本允许两行换行。
 - 手机端图谱不横向滑动，中心王侯卡中轴线要和时间线重合；单侧文臣/武将卡至少两列；七国筛选固定两列，最后一项居左。

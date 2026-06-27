@@ -1,7 +1,7 @@
 export const STATES = [
   {
     key: 'all',
-    label: '全部',
+    label: '全',
     tone: '总览',
     names: [],
   },

@@ -43,6 +43,7 @@ import {
   getAppreciationPath,
   getAppreciationStatePath,
   getResumePath,
+  getResumeStatePath,
   getTabPath,
   resolveRoute,
 } from '../utils/routes';
@@ -528,16 +529,16 @@ function AppreciationDetailPage({ character, appreciation, previousCharacter, ne
         <section className="appreciation-detail-shell card-panel">
           <div className="appreciation-detail-grid">
             <div className="appreciation-figure">
+              <div className="appreciation-figure-caption">
+                <h1>{character.name}</h1>
+                <span>原创立绘</span>
+              </div>
               <div className="appreciation-image-wrap">
                 <AppreciationImage
                   fileName={appreciation?.lit ? appreciation.lit_Portrait : appreciation?.background}
                   alt={character.name}
                   className="select-none pointer-events-none"
                 />
-              </div>
-              <div className="appreciation-figure-caption">
-                <h1>{character.name}</h1>
-                <span>原创立绘</span>
               </div>
             </div>
 
@@ -789,7 +790,6 @@ function ResumeDynastyChartSection({ resumes, activeState, onStateChange, states
         <div className="resume-chart-summary card-panel">
           <span className="gallery-summary-label">{selectedState.label}国图谱</span>
           <strong>{chart.total} 位角色 / {chart.rulers.length} 位王侯</strong>
-          <p>按王侯卒年自上而下排列；同一年卒者按角色编号排序。</p>
         </div>
       </Reveal>
 
@@ -947,6 +947,7 @@ export default function PortfolioPage() {
     selectedResumeId,
     selectedAppreciationCode,
     appreciationStateKey,
+    resumeStateKey,
     printMode,
   } = routeState;
   const mainAreaRef = useRef(null);
@@ -1010,6 +1011,12 @@ export default function PortfolioPage() {
       setActiveState(stateExists ? appreciationStateKey : 'all');
     }
   }, [activeTab, appreciationStateKey]);
+
+  useEffect(() => {
+    if (activeTab === 'resume' && resumeStateKey) {
+      setActiveState(resumeStateKey);
+    }
+  }, [activeTab, resumeStateKey]);
 
   // 切换页面时管理主滚动容器的滚动位置：
   // - 进入角色详情 / 切换 tab / 进入打印页：重置到顶部
@@ -1103,7 +1110,8 @@ export default function PortfolioPage() {
     if (mainAreaRef.current) {
       savedResumeListScrollRef.current = mainAreaRef.current.scrollTop;
     }
-    navigateTo(getResumePath(resume, RESUME_ROUTE_MAPS.idToSlug));
+    const stateKey = activeState !== 'all' ? activeState : resume.stateKey;
+    navigateTo(getResumePath(resume, RESUME_ROUTE_MAPS.idToSlug, stateKey));
   };
 
   const openAppreciation = (character) => {
@@ -1124,6 +1132,11 @@ export default function PortfolioPage() {
   const changeAppreciationState = (stateKey) => {
     setActiveState(stateKey);
     navigateTo(getAppreciationStatePath(stateKey));
+  };
+
+  const changeResumeState = (stateKey) => {
+    setActiveState(stateKey);
+    navigateTo(getResumeStatePath(stateKey));
   };
 
   const toggleTheme = () => {
@@ -1306,7 +1319,7 @@ export default function PortfolioPage() {
             <ResumeDynastyChartSection
               resumes={CHARACTER_RESUMES}
               activeState={activeState}
-              onStateChange={setActiveState}
+              onStateChange={changeResumeState}
               states={RESUME_STATES}
               onOpenResume={openResume}
             />

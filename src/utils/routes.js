@@ -9,6 +9,8 @@ export const TAB_PATHS = {
   slg: '/slg',
 };
 
+const RESUME_STATE_KEYS = new Set(['chu', 'han', 'qi', 'qin', 'wei', 'yan', 'zhao']);
+
 const PATH_TABS = {
   appreciations: 'art',
   resumes: 'resume',
@@ -90,6 +92,18 @@ export function resolveRoute(pathname, resumeSlugToId) {
     };
   }
 
+  // 阵营筛选：/resumes/chu 或 /resumes/chu/chuhuaiwang
+  if (detailSlug && RESUME_STATE_KEYS.has(detailSlug)) {
+    return {
+      tab: 'resume',
+      selectedResumeId: subDetail ? resumeSlugToId.get(subDetail) ?? null : null,
+      selectedAppreciationCode: null,
+      appreciationStateKey: null,
+      resumeStateKey: detailSlug,
+      printMode: false,
+    };
+  }
+
   return {
     tab: 'resume',
     selectedResumeId: detailSlug ? resumeSlugToId.get(detailSlug) ?? null : null,
@@ -103,9 +117,17 @@ export function getTabPath(tabKey) {
   return TAB_PATHS[tabKey] ?? TAB_PATHS.home;
 }
 
-export function getResumePath(resume, resumeIdToSlug) {
+export function getResumePath(resume, resumeIdToSlug, stateKey) {
   const slug = resumeIdToSlug.get(resume.id);
-  return slug ? `${TAB_PATHS.resume}/${slug}` : TAB_PATHS.resume;
+  if (!slug) return TAB_PATHS.resume;
+  if (stateKey && stateKey !== 'all') {
+    return `${TAB_PATHS.resume}/${stateKey}/${slug}`;
+  }
+  return `${TAB_PATHS.resume}/${slug}`;
+}
+
+export function getResumeStatePath(stateKey) {
+  return stateKey && stateKey !== 'all' ? `${TAB_PATHS.resume}/${stateKey}` : TAB_PATHS.resume;
 }
 
 export function getAppreciationPath(character) {

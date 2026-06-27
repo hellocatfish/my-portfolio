@@ -99,7 +99,7 @@
   height: 40px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(14, 17, 23, 0.82);
+  background: rgba(14, 17, 23, 0.4);
   color: rgba(246, 241, 232, 0.78);
   cursor: pointer;
   backdrop-filter: blur(12px);
@@ -340,7 +340,7 @@
 .theme-light .back-btn,
 .theme-light .detail-back-btn {
   border-color: rgba(73, 55, 34, 0.14);
-  background: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.4);
   color: rgba(38, 31, 24, 0.74);
 }
 
@@ -613,6 +613,14 @@
 .theme-light .inspiration-design-item p,
 .theme-light .appreciation-empty p {
   color: rgba(60, 52, 42, 0.76);
+}
+
+.theme-light .inspiration-design-item p {
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(88, 66, 39, 0.03) 0 10px,
+    rgba(88, 66, 39, 0.066) 10px 20px
+  );
 }
 
 .theme-light .inspiration-design-item {
@@ -1541,7 +1549,7 @@
 
 .appreciation-figure {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: clamp(10px, 1.4vh, 14px);
   min-height: 0;
 }
@@ -1607,7 +1615,7 @@
 .inspiration-block {
   display: grid;
   gap: clamp(10px, 1.6vh, 16px);
-  align-content: center;
+  align-content: start;
   height: 100%;
   min-height: 0;
 }
@@ -1619,6 +1627,16 @@
   color: rgba(238, 232, 223, 0.76);
   font-size: clamp(0.78rem, 1.2vw, 0.96rem);
   line-height: clamp(1.45, 1.3vw, 1.68);
+}
+
+.inspiration-design-item p {
+  border-radius: 12px;
+  padding: clamp(8px, 1.2vh, 12px) clamp(10px, 1.5vw, 14px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0 10px,
+    rgba(255, 255, 255, 0.12) 10px 20px
+  );
 }
 
 .inspiration-design {
@@ -1712,6 +1730,7 @@
 /* ===== Resume Dynasty Chart ===== */
 .resume-dynasty-section {
   max-width: 1440px;
+  padding-top: 48px;
 }
 
 .resume-dynasty-heading h2 {
@@ -2598,7 +2617,7 @@
 
   .resume-state-tabs {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     justify-content: stretch;
   }
 
@@ -2773,7 +2792,7 @@
   }
 
   .filter-chip {
-    flex: 1 1 calc(50% - 10px);
+    flex: 1 1 calc(25% - 10px);
     justify-content: center;
     text-align: center;
   }
@@ -2802,11 +2821,15 @@
     border-radius: 22px;
   }
 
+  .resume-detail-view {
+    padding-top: 48px;
+  }
+
   .appreciation-detail-view {
     --appreciation-nav-height: 36px;
     --appreciation-nav-gap: 7px;
     gap: var(--appreciation-nav-gap);
-    padding: 13px 10px 12px;
+    padding: 24px 10px 12px;
   }
 
   .appreciation-detail-shell,
@@ -2906,7 +2929,7 @@
 
   .inspiration-design-item {
     gap: 4px;
-    align-content: center;
+    align-content: start;
     min-height: 0;
     padding: 7px 8px;
     border-radius: 12px;
@@ -3191,7 +3214,7 @@
   .appreciation-detail-view {
     --appreciation-nav-height: 34px;
     --appreciation-nav-gap: 6px;
-    padding: 9px 8px 9px;
+    padding: 20px 8px 9px;
   }
 
   .appreciation-detail-shell {
