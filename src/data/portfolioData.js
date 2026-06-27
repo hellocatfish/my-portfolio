@@ -78,7 +78,7 @@ export const STATES = [
       { code: '141', name: '阎乐', role: '文人', liege: '秦王政' }, { code: '142', name: '赵成', role: '文人', liege: '秦王政' }, { code: '143', name: '陈驰', role: '文人', liege: '秦王政' },
       { code: '144', name: '冯去疾', role: '文人', liege: '秦王政' }, { code: '145', name: '冯劫', role: '文人', liege: '秦王政' }, { code: '146', name: '蒙毅', role: '文人', liege: '秦王政' },
       { code: '147', name: '喜', role: '文人', liege: '秦王政' }, { code: '148', name: '白起', role: '武人', liege: '秦昭襄王' }, { code: '149', name: '司马靳', role: '武人', liege: '秦昭襄王' },
-      { code: '150', name: '尉缭', role: '武人', liege: '秦昭襄王' }, { code: '151', name: '王龁', role: '武人', liege: '秦昭襄王' }, { code: '152', name: '郑安平', role: '武人', liege: '秦昭襄王' },
+      { code: '150', name: '尉缭', role: '武人', liege: '秦王政' }, { code: '151', name: '王龁', role: '武人', liege: '秦昭襄王' }, { code: '152', name: '郑安平', role: '武人', liege: '秦昭襄王' },
       { code: '153', name: '王陵', role: '武人', liege: '秦昭襄王' }, { code: '154', name: '张唐', role: '武人', liege: '秦昭襄王' }, { code: '155', name: '胡阳', role: '武人', liege: '秦昭襄王' },
       { code: '156', name: '王翦', role: '武人', liege: '秦王政' }, { code: '157', name: '蒙骜', role: '武人', liege: '秦庄襄王' }, { code: '158', name: '蒙武', role: '武人', liege: '秦王政' },
       { code: '159', name: '桓齮', role: '武人', liege: '秦王政' }, { code: '160', name: '樊於期', role: '武人', liege: '秦王政' }, { code: '161', name: '杨端和', role: '武人', liege: '秦王政' },

@@ -530,8 +530,8 @@ function AppreciationDetailPage({ character, appreciation, previousCharacter, ne
           <div className="appreciation-detail-grid">
             <div className="appreciation-figure">
               <div className="appreciation-figure-caption">
-                <h1>{character.name}</h1>
                 <span>原创立绘</span>
+                <h1>{character.name}</h1>
               </div>
               <div className="appreciation-image-wrap">
                 <AppreciationImage
