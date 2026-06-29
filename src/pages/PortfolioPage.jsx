@@ -24,6 +24,7 @@ import {
   getStatKeys,
 } from '../utils/characterResume';
 import { loadImagePriorityConfig, useImagePriority } from '../utils/imagePriority';
+import { loadNavVisibilityConfig, useNavVisibility } from '../utils/navVisibility';
 import { FEATURED_CHARACTER_NAMES, SITE_COPY, STATES } from '../data/portfolioData';
 import {
   buildCharacters,
@@ -942,6 +943,7 @@ export default function PortfolioPage() {
   );
   const [activeState, setActiveState] = useState('all');
   const [theme, setTheme] = useState('dark');
+  const navVisibility = useNavVisibility();
   const {
     tab: activeTab,
     selectedResumeId,
@@ -1003,6 +1005,7 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     loadImagePriorityConfig();
+    loadNavVisibilityConfig();
   }, []);
 
   useEffect(() => {
@@ -1340,7 +1343,7 @@ export default function PortfolioPage() {
       {/* ===== Bottom Bar (bottom 1/4) ===== */}
       <div className="bottom-bar">
         <nav className="nav-row">
-          {NAV_TABS.map((tab) => {
+          {NAV_TABS.filter((tab) => navVisibility[tab.key] !== false).map((tab) => {
             const Icon = tab.icon;
             const isHomeFor = tab.key === activeTab;
             const isActive = activeTab !== 'home' && isHomeFor;

@@ -117,7 +117,7 @@ export const STATES = [
       { code: '222', name: '骑劫', role: '武人', liege: '燕惠王' }, { code: '223', name: '公孙操', role: '文人', liege: '燕惠王' }, { code: '224', name: '荣蚠', role: '武人', liege: '燕武成王' },
       { code: '225', name: '剧辛', role: '武人', liege: '燕昭王' }, { code: '226', name: '乐间', role: '武人', liege: '燕王喜' }, { code: '227', name: '蔡鸟', role: '文人', liege: '燕王喜' },
       { code: '228', name: '栗腹', role: '武人', liege: '燕王喜' }, { code: '229', name: '卿秦', role: '武人', liege: '燕王喜' }, { code: '230', name: '将渠', role: '文人', liege: '燕王喜' },
-      { code: '231', name: '鞠武', role: '文人', liege: '燕王喜' }, { code: '232', name: '宋意', role: '武人', liege: '燕王喜' }, { code: '233', name: '田光', role: '文人', liege: '燕王喜' },
+      { code: '231', name: '鞠武', role: '文人', liege: '燕王喜' }, { code: '232', name: '宋意', role: '文人', liege: '燕王喜' }, { code: '233', name: '田光', role: '文人', liege: '燕王喜' },
       { code: '234', name: '高渐离', role: '文人', liege: '燕王喜' }, { code: '235', name: '荆轲', role: '武人', liege: '燕王喜' }, { code: '236', name: '秦舞阳', role: '武人', liege: '燕王喜' },
       { code: '237', name: '燕市狗屠', role: '武人', liege: '燕王喜' },
     ],
