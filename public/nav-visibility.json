@@ -1,7 +1,7 @@
 {
   "_comment": "子页面底部导航按钮可见性开关。true=显示导航入口，false=隐藏导航入口（直接访问对应 URL 仍可进入页面，仅首页底部不显示按钮）。修改后刷新浏览器即可生效，无需重新构建。",
-  "art": false,
-  "resume": false,
+  "art": true,
+  "resume": true,
   "slg": true,
   "arpg": true
 }
